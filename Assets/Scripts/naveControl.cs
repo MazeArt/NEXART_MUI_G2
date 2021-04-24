@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class naveControl : MonoBehaviour
-{
+{   
     private float rotation = 35;    
     public Slider sliderRot;   
 
