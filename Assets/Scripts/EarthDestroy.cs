@@ -8,6 +8,6 @@ public class EarthDestroy : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        Destroy(gameObject);
+        Destroy(gameObject);        
     }
 }

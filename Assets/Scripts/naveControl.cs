@@ -9,13 +9,16 @@ public class naveControl : MonoBehaviour
     public Slider sliderRot;   
 
     [Header("BulletEffect")]
-    public float bulletSpeed = 10;
+    private float bulletSpeed = 1.5f;
     public Rigidbody bullet;
     public Transform bulletOrigin;
+    public static bool fireOn;
+    
 
     private void Start()
     {
         sliderRot.value = rotation;
+        fireOn = true;
     }
     private void Update()
     {
@@ -25,12 +28,23 @@ public class naveControl : MonoBehaviour
 
     public void Fire()
     {
-        Rigidbody bulletClone = (Rigidbody)Instantiate(bullet, bulletOrigin.transform.position, bulletOrigin.transform.rotation);
-        bulletClone.velocity = transform.up * bulletSpeed;
-        
+        if (fireOn)
+        {
+            Rigidbody bulletClone = (Rigidbody)Instantiate(bullet, bulletOrigin.transform.position, bulletOrigin.transform.rotation);
+            bulletClone.velocity = transform.up * bulletSpeed;
+            fireOn = false;
+            StartCoroutine(FireOnTrue());
+        }
+              
     }
 
-    
+    public IEnumerator FireOnTrue()
+    {
+        yield return new WaitForSeconds(5);
+        fireOn = true;
+    }
+
+
 
 
 
