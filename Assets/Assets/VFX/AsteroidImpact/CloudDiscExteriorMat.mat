@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: CloudDiscExteriorMat
+  m_Shader: {fileID: -6465566751694194690, guid: d069da0aecf010546a7cc45a497a933d, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _SampleTexture2D_3220fa7657674542b3097169884198ee_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 2bd7a826115fa1145b75f2957a829c8f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_46dae5bb1826494ba21d0545cb6795f0_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 2bd7a826115fa1145b75f2957a829c8f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_685d4611264349bc90e845bfe83c97b2_Texture_1:
+        m_Texture: {fileID: 10904, guid: 0000000000000000f000000000000000, type: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_a86968b395fb48a5b2d96b428f8e15cb_Texture_1:
+        m_Texture: {fileID: 10904, guid: 0000000000000000f000000000000000, type: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_1c51b48b74fa4ffc8230ec086575d681: -3.09
+    - Vector1_6b66653ad4fb4e65a6bb2e13eeee893e: 0.98
+    - Vector1_976765a1d13c461e81db093d1d2453c4: 0.82
+    - Vector1_dd5e2b20a9b64d219d765207a7a21d4d: -0.03
+    - Vector1_e607e178444544e69f92110c61032a1d: 0.66
+    m_Colors:
+    - CloudDIscColor: {r: 34.393753, g: 12.049224, b: 1.1031935, a: 0}
+    - Vector2_19ed8b82ce7f4f0789c4370e6e20ee8d: {r: 0.001, g: -0.0015, b: 0, a: 0}
+  m_BuildTextureStacks: []

@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - meteorito
+  - Element
+  - wrongElement
+  - Info
   layers:
   - Default
   - TransparentFX
