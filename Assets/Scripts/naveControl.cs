@@ -31,7 +31,7 @@ public class naveControl : MonoBehaviour
         if (fireOn)
         {
             Rigidbody bulletClone = (Rigidbody)Instantiate(bullet, bulletOrigin.transform.position, bulletOrigin.transform.rotation);
-            bulletClone.velocity = transform.up * bulletSpeed;
+            bulletClone.velocity = transform.right * bulletSpeed;
             fireOn = false;
             StartCoroutine(FireOnTrue());
         }
