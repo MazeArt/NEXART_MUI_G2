@@ -9,7 +9,7 @@ public class naveControl : MonoBehaviour
     public Slider sliderRot;   
 
     [Header("BulletEffect")]
-    private float bulletSpeed = 1.5f;
+    public float bulletSpeed = 25.5f;
     public Rigidbody bullet;
     public Transform bulletOrigin;
     public static bool fireOn;
@@ -22,7 +22,7 @@ public class naveControl : MonoBehaviour
     }
     private void Update()
     {
-        transform.localEulerAngles = new Vector3(0, 0, Mathf.PingPong(sliderRot.value, 70) - 35);       
+        transform.localEulerAngles = new Vector3(0, Mathf.PingPong(sliderRot.value, 70) - 35, 0 );       
 
     }
 

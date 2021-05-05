@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlanetRotation : MonoBehaviour
 {
-    public GameObject sun;
+   // public GameObject sun;
     public float rotationSpeed;
     public float sunRotationSpeed;
     public bool isMars;
@@ -16,7 +16,7 @@ public class PlanetRotation : MonoBehaviour
     private void Update()
     {
         transform.Rotate(0, 1 * rotationSpeed, 0);
-        transform.RotateAround(sun.transform.position, Vector3.forward, sunRotationSpeed * Time.deltaTime);
+        //transform.RotateAround(sun.transform.position, Vector3.forward, sunRotationSpeed * Time.deltaTime);
     }
     public IEnumerator stopMars()
     {
