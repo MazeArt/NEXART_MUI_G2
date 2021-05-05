@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3120351223455366355}
   - component: {fileID: 8078137109301174327}
   - component: {fileID: -607704996297104432}
+  - component: {fileID: 7358250723343781863}
   m_Layer: 0
   m_Name: AsteoirdBullet1
   m_TagString: meteorito
@@ -248,3 +249,15 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &7358250723343781863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237951219345291908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d33df4e27e0b6447a631a0071203f47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

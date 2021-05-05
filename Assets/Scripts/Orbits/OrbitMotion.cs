@@ -10,8 +10,9 @@ public class OrbitMotion : MonoBehaviour
     [Range(1f, 100f)]
     public float orbit_fastfwd = 1f;
     public float orbitOrigin;
-    [Range(0f, 1f)]
-    public float orbitProgress ;
+    //  [Range(0f, 1f)]
+    //  public float orbitProgress ;
+    public OrbitSliderManager orbitmanager;
     public float earth_orbitPeriod = 300f;
     public bool orbitActive = true;
     private float orbitPeriod;
@@ -44,7 +45,7 @@ public class OrbitMotion : MonoBehaviour
 
         //read orbitProgress
         //orbitProgress = orbitProgress + orbit_fastfwd / 100;
-        Vector2 orbitPos = orbitPath.Evaluate(orbitProgress + orbitOrigin);
+        Vector2 orbitPos = orbitPath.Evaluate(orbitmanager.orbitProgress + orbitOrigin);
         orbitingObject.localPosition = new Vector3(orbitPos.x, 0, orbitPos.y);
     }
 
@@ -58,8 +59,8 @@ public class OrbitMotion : MonoBehaviour
                 orbitPeriod = 0.1f;
             }
             float orbitSpeed = 1f / orbitPeriod;
-            orbitProgress += Time.deltaTime * orbitSpeed;
-            orbitProgress %= 1f;
+            orbitmanager.orbitProgress += Time.deltaTime * orbitSpeed;
+            orbitmanager.orbitProgress %= 1f;
             SetOrbitingObjectPosition();
             yield return null;
         }
