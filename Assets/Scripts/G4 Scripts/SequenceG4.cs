@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class SequenceG4 : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField] private TriviaUI triviaUI;
+    [SerializeField] private QuizDataScriptable quizData;
     private List<Question> _questions;
     public GameObject initialCanvas;
+    [SerializeField] private Button finishTheGameBtn;
     public GameObject themesCanvas;
     public GameObject triviaCanvas;
     public int timeLimit;
@@ -16,7 +18,7 @@ public class SequenceG4 : MonoBehaviour
 
     private int timeToWaitForHide = 1;
     private Question selectedQuestionToAnswer;
-    private List<Button> usedThemes;
+    public List<Button> notUsedThemes;
     public Question selectedQuestionFromList; //No editar desde inspector, se llena por codigo
     public List<Question> _selectedQuestionsList; //No editar desde inspector, se llena por codigo
 
@@ -28,6 +30,14 @@ public class SequenceG4 : MonoBehaviour
      */
     void Start()
     {
+        _questions = quizData.questions;
+        var collection = themesCanvas.GetComponentsInChildren<Button>();
+        foreach (Button button in collection)
+        {
+            notUsedThemes.Add(button);
+            Debug.Log(button.GetComponentInChildren<Text>().text);
+            
+        }
         triviaCanvas.SetActive(false);
         themesCanvas.SetActive(false);
 
@@ -39,11 +49,16 @@ public class SequenceG4 : MonoBehaviour
         //(escena video)
         //se presiona botón del canvas para continuar
         initialCanvas.SetActive(true);
+
     }
     public void GameIterationStart()
     {
         initialCanvas.SetActive(false);
         themesCanvas.SetActive(true);
+        foreach (var nUsed in notUsedThemes)
+        {
+            nUsed.interactable = true;
+        }
         selectedQuestionFromList = null;
         _selectedQuestionsList.Clear();
     }
@@ -53,7 +68,12 @@ public class SequenceG4 : MonoBehaviour
     /// <param name="button">Se debe seleccionar por inspector el boton a deshabilitar</param>
     public void RemoveButtonFromOptions(Button button)
     {
-        button.interactable = false;
+        Button[] buttons = themesCanvas.GetComponentsInChildren<Button>();
+        foreach (var but in buttons)
+        {
+            but.interactable = false;
+        }
+        notUsedThemes.Remove(button);
         StartCoroutine(WaitToHideSomething(timeToWaitForHide, themesCanvas));
     }
     /// <summary>
@@ -76,6 +96,7 @@ public class SequenceG4 : MonoBehaviour
         //Se reinicia el contador cada vez que comienza un nuevo tema
         StartCoroutine(TimerTriviaAndDeadEnd(timeLimit, timeToWaitForHide));
         selectedTheme = theme;
+        
         foreach (var question in _questions)
         {
             //Se agregan a la lista todas las preguntas relacionadas con el tema
@@ -96,6 +117,10 @@ public class SequenceG4 : MonoBehaviour
         int rnd = Random.Range(0, _selectedQuestionsList.Count);
         selectedQuestionToAnswer = _selectedQuestionsList[rnd];
         _selectedQuestionsList.RemoveAt(rnd);
+
+
+        triviaUI.SetQuestion(selectedQuestionToAnswer);
+
     }
     public bool Answer(string answered)
     {
@@ -108,7 +133,15 @@ public class SequenceG4 : MonoBehaviour
         {
             //Incorrecto
         }
-        Invoke("SelectQuestionToAnswer", 1);
+        if (_selectedQuestionsList.Count != 0)
+        {
+            Invoke("SelectQuestionToAnswer", 1);
+        }
+        else
+        {
+            RunOutOfQuestionsInTheme();
+
+        }
         return correctAnswer;
     }
     public IEnumerator TimerTriviaAndDeadEnd(int timeLimit, int tiempoDelay)
@@ -143,6 +176,24 @@ public class SequenceG4 : MonoBehaviour
         }
         videoPlayer.Play();
     }
+    public void RunOutOfQuestionsInTheme()
+    {
+        if (notUsedThemes.Count != 0)
+        {
+            triviaCanvas.SetActive(false);
+            initialCanvas.SetActive(true);
+            finishTheGameBtn.transform.gameObject.SetActive(true);
+        }
+        else
+        {
+            EndOfTheGame();
+        }
+        
+    }
+    public void EndOfTheGame()
+    {
+        Debug.Log("THE END");
+    }
 }
 
 
@@ -158,6 +209,7 @@ public class Question
 
     public List<string> options;
     public string correctAnswer;
+    public string answerExplanation;
     public int points;
 
 }

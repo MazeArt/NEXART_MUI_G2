@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57bb9200ebd0efc47a8779c50275d6e3, type: 3}
+  m_Name: QuestionData
+  m_EditorClassIdentifier: Assembly-CSharp::NewBehaviourScript
+  questions:
+  - questionTheme: 0
+    questionInfo: Question Text
+    questionType: 0
+    questionImg: {fileID: 0}
+    questionAudioClip: {fileID: 0}
+    questionVideoClip: {fileID: 0}
+    options:
+    - c
+    - a
+    - b
+    correctAnswer: a
+    answerExplanation: A is ok
+    points: 10
+  - questionTheme: 0
+    questionInfo: Question Image
+    questionType: 1
+    questionImg: {fileID: 21300000, guid: 0b077d3b4ced1a9419e4ed7c3397acee, type: 3}
+    questionAudioClip: {fileID: 0}
+    questionVideoClip: {fileID: 0}
+    options:
+    - f
+    - d
+    - e
+    correctAnswer: e
+    answerExplanation: e is ok
+    points: 20
+  - questionTheme: 1
+    questionInfo: Order question
+    questionType: 4
+    questionImg: {fileID: 0}
+    questionAudioClip: {fileID: 0}
+    questionVideoClip: {fileID: 0}
+    options:
+    - order 1
+    - order 2
+    - order 3
+    correctAnswer: order 3
+    answerExplanation: order 3 is ok
+    points: 30
+  - questionTheme: 0
+    questionInfo: Question Video
+    questionType: 2
+    questionImg: {fileID: 0}
+    questionAudioClip: {fileID: 0}
+    questionVideoClip: {fileID: 32900000, guid: 475674b429e035f4f9df68cd0cd97f0c, type: 3}
+    options:
+    - order 1
+    - order 2
+    - order 3
+    correctAnswer: order 3
+    answerExplanation: order 3 is ok
+    points: 30
+  - questionTheme: 0
+    questionInfo: Question Audio
+    questionType: 3
+    questionImg: {fileID: 0}
+    questionAudioClip: {fileID: 8300000, guid: 4ff4db2f19a3b7a48ab272ce9c98f03e, type: 3}
+    questionVideoClip: {fileID: 0}
+    options:
+    - order 2
+    - order 3
+    - order 1
+    correctAnswer: order 3
+    answerExplanation: order 3 is ok
+    points: 30
