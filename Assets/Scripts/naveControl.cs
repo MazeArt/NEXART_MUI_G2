@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class naveControl : MonoBehaviour
 {   
     private float rotation = 35;    
-    public Slider sliderRot;   
+    public Slider sliderRot;
+    public Slider sliderSpeed;
 
     [Header("BulletEffect")]
     public float bulletSpeed = 25.5f;
@@ -31,7 +32,7 @@ public class naveControl : MonoBehaviour
         if (fireOn)
         {
             Rigidbody bulletClone = (Rigidbody)Instantiate(bullet, bulletOrigin.transform.position, bulletOrigin.transform.rotation);
-            bulletClone.velocity = transform.right * bulletSpeed;
+            bulletClone.velocity = transform.right * sliderSpeed.value; // bulletSpeed;
             fireOn = false;
             StartCoroutine(FireOnTrue());
         }

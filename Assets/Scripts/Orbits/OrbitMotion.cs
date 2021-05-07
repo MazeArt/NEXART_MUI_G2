@@ -7,16 +7,25 @@ public class OrbitMotion : MonoBehaviour
     public Transform orbitingObject;
     public Ellipse orbitPath;
 
-    [Range(1f, 100f)]
-    public float orbit_fastfwd = 1f;
+    // Orbit Manager Variable
+    public OrbitSliderManager orbitManager;
+    //Variables from Orbit Manager
+      // [Range(1f, 100f)]
+      // public float orbit_fastfwd = 1f;
+      // public float earth_orbitPeriod = 300f;
+      // public bool  orbitActive = true;
+    
+          [Range(0f, 1f)]
+          public float orbitProgress ;
+    
+
+
+    //Planet Variables
+
+
     public float orbitOrigin;
-    //  [Range(0f, 1f)]
-    //  public float orbitProgress ;
-    public OrbitSliderManager orbitmanager;
-    public float earth_orbitPeriod = 300f;
-    public bool orbitActive = true;
-    private float orbitPeriod;
     private float planet_orbitPeriod;
+    private float orbitPeriod;
 
 
 
@@ -24,11 +33,10 @@ public class OrbitMotion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        planet_orbitPeriod = Check_planet(orbitingObject.name, earth_orbitPeriod);
        
         if(orbitingObject == null)
             {
-                orbitActive = false;
+                orbitManager.orbitActive = false;
                     return;
             }
         // set orbitign object position
@@ -40,27 +48,28 @@ public class OrbitMotion : MonoBehaviour
 
     void SetOrbitingObjectPosition()
     {
+        planet_orbitPeriod = Check_planet(orbitingObject.name, orbitManager.earth_orbitPeriod);
         //set orbiting speed
-        orbitPeriod = planet_orbitPeriod / (orbit_fastfwd * orbit_fastfwd);
+        orbitPeriod = planet_orbitPeriod / (orbitManager.orbit_fastfwd * Mathf.Abs(orbitManager.orbit_fastfwd) );
 
         //read orbitProgress
         //orbitProgress = orbitProgress + orbit_fastfwd / 100;
-        Vector2 orbitPos = orbitPath.Evaluate(orbitmanager.orbitProgress + orbitOrigin);
+        Vector2 orbitPos = orbitPath.Evaluate(orbitProgress + orbitOrigin);
         orbitingObject.localPosition = new Vector3(orbitPos.x, 0, orbitPos.y);
     }
 
         IEnumerator AnimateOrbit()
         {
 
-        while (orbitActive)
+        while (orbitManager.orbitActive)
         {
             if(orbitPeriod < 0.1f)
             {
-                orbitPeriod = 0.1f;
+                //orbitPeriod = 0.1f;
             }
             float orbitSpeed = 1f / orbitPeriod;
-            orbitmanager.orbitProgress += Time.deltaTime * orbitSpeed;
-            orbitmanager.orbitProgress %= 1f;
+            orbitProgress += Time.deltaTime * orbitSpeed;
+            orbitProgress %= 1f;
             SetOrbitingObjectPosition();
             yield return null;
         }
