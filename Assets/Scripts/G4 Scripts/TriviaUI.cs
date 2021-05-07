@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TriviaUI : MonoBehaviour
 {
-    [SerializeField] private SequenceG4 triviaManager;
+    [SerializeField] private ManagerG4 triviaManager;
     [SerializeField] private Text questionText;
     [SerializeField] private Image questionImage;
     [SerializeField] private UnityEngine.Video.VideoPlayer questionVideo;
@@ -13,26 +13,36 @@ public class TriviaUI : MonoBehaviour
     [SerializeField] private GameObject order;
     [SerializeField] private GameObject optionsHolder;
     [SerializeField] private List<Button> options;
+    [SerializeField] private List<GameObject> optionsOrder;
+    [SerializeField] private List<Vector3> optionsOrderInitialPosition;
+    [SerializeField] private List<GameObject> slotOptionsOrder;
+    [SerializeField] private Button confirmButtonOrder;
     [SerializeField] private Color correctColor, wrongColor, normalColor;
+    [SerializeField] public Image progressBarFill;
+    Transform poolOptionTransform;
 
     private Question actualQuestion;
     private bool answered;
 
-    // Start is called before the first frame update
     void Awake()
     {
+        poolOptionTransform = GameObject.FindGameObjectWithTag("ItemPool").transform;
         for (int i = 0; i < options.Count; i++)
         {
             Button localBtn = options[i];
             localBtn.onClick.AddListener(() => OnClick(localBtn));
 
         }
-    }
+        for (int i = 0; i < optionsOrder.Count; i++)
+        {
+            optionsOrderInitialPosition[i] = (optionsOrder[i].GetComponent<RectTransform>().position);
 
-    // Update is called once per frame
+        }
+        confirmButtonOrder.onClick.AddListener(() => OnClick(confirmButtonOrder));
+    }
     void Update()
     {
-        
+        progressBarFill.fillAmount = triviaManager.myPoints / (triviaManager.maxPoints * (triviaManager.requirementPercentage / 100));
     }
     public void SetQuestion(Question question)
     {
@@ -66,7 +76,7 @@ public class TriviaUI : MonoBehaviour
             case QuestionType.ORDER:
                 ViewHolderInitialSet();
                 order.transform.gameObject.SetActive(true);
-
+                FillQuestionOptionsOrder();
                 break;
             default:
                 break;
@@ -87,6 +97,24 @@ public class TriviaUI : MonoBehaviour
         }
         answered = false;
     }
+    void FillQuestionOptionsOrder()
+    {
+        List<string> optionList = actualQuestion.options;
+        List<Sprite> spriteOptionList = actualQuestion.optionsOrderSprites;
+
+        ShuffleList.ShuffledTwoListKeepingSamePosition(optionList, spriteOptionList);
+
+        for (int i = 0; i < optionsOrder.Count; i++)
+        {
+            optionsOrder[i].transform.SetParent(poolOptionTransform);
+            optionsOrder[i].GetComponentInChildren<Text>().text = optionList[i];
+            optionsOrder[i].name = optionList[i];
+            optionsOrder[i].GetComponent<Image>().sprite = actualQuestion.optionsOrderSprites[i];
+            optionsOrder[i].transform.position = optionsOrderInitialPosition[i];
+        }
+        confirmButtonOrder.image.color = normalColor;
+        answered = false;
+    }
     void ViewHolderInitialSet()
     {
         questionImage.transform.parent.gameObject.SetActive(true);
@@ -102,16 +130,47 @@ public class TriviaUI : MonoBehaviour
         if (!answered)
         {
             answered = true;
-            bool isRightAnswer = triviaManager.Answer(button.name);
-            if (isRightAnswer)
+            bool isRightAnswer = false;
+            switch (actualQuestion.questionType)
             {
-                button.image.color = correctColor;
+                case QuestionType.ORDER:
+                    for (int i = 0; i < slotOptionsOrder.Count; i++)
+                    {
+                        if (slotOptionsOrder[i].GetComponent<DropSlot>().item == null)
+                        {
+                            answered = false;
+                            break;
+                        }
+                    }
 
+                    isRightAnswer = triviaManager.Answer(slotOptionsOrder[0].GetComponent<DropSlot>().item.name + ", " + 
+                                                         slotOptionsOrder[1].GetComponent<DropSlot>().item.name + ", " + 
+                                                         slotOptionsOrder[2].GetComponent<DropSlot>().item.name + ", " + 
+                                                         slotOptionsOrder[3].GetComponent<DropSlot>().item.name);
+                    if (isRightAnswer)
+                    {
+                        button.image.color = correctColor;
+
+                    }
+                    else
+                    {
+                        button.image.color = wrongColor;
+                    }
+                    break;
+                default:
+                    isRightAnswer = triviaManager.Answer(button.name);
+                    if (isRightAnswer)
+                    {
+                        button.image.color = correctColor;
+
+                    }
+                    else
+                    {
+                        button.image.color = wrongColor;
+                    }
+                    break;
             }
-            else
-            {
-                button.image.color = wrongColor;
-            }
+
         }
     }
 }

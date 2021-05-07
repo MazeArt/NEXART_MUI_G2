@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SequenceG4 : MonoBehaviour
+public class ManagerG4 : MonoBehaviour
 {
     [SerializeField] private TriviaUI triviaUI;
     [SerializeField] private QuizDataScriptable quizData;
@@ -21,6 +21,12 @@ public class SequenceG4 : MonoBehaviour
     public List<Button> notUsedThemes;
     public Question selectedQuestionFromList; //No editar desde inspector, se llena por codigo
     public List<Question> _selectedQuestionsList; //No editar desde inspector, se llena por codigo
+    public List<Question> _wrongAnswered; //No editar desde inspector, se llena por codigo
+
+    public float maxPoints;
+    public float myPoints;
+    [SerializeField] public float requirementPercentage;
+    
 
     /*Secuencia
      * Introducción
@@ -104,6 +110,7 @@ public class SequenceG4 : MonoBehaviour
             {
                 selectedQuestionFromList = question;
                 _selectedQuestionsList.Add(selectedQuestionFromList);
+                maxPoints = maxPoints + question.points;
             }
         }
         SelectQuestionToAnswer();
@@ -127,11 +134,15 @@ public class SequenceG4 : MonoBehaviour
         bool correctAnswer = false;
         if (answered == selectedQuestionToAnswer.correctAnswer)
         {
+            //correcto
             correctAnswer = true;
+            myPoints = myPoints + selectedQuestionToAnswer.points;
         }
         else
         {
             //Incorrecto
+            _wrongAnswered.Add(selectedQuestionToAnswer); //recordar respuestas incorrectas
+
         }
         if (_selectedQuestionsList.Count != 0)
         {
@@ -192,7 +203,22 @@ public class SequenceG4 : MonoBehaviour
     }
     public void EndOfTheGame()
     {
+        StopAllCoroutines();
+        triviaCanvas.SetActive(false);
         Debug.Log("THE END");
+        Debug.Log(myPoints + "/" + maxPoints);
+        if (myPoints / (maxPoints * (requirementPercentage / 100)) >= 1)
+        {
+            //Animacion de victoria
+            if (myPoints == maxPoints)
+            {
+                //Jackpot
+            }
+        }
+        else
+        {
+            //animacion de derrota
+        }
     }
 }
 
@@ -208,6 +234,7 @@ public class Question
     public UnityEngine.Video.VideoClip questionVideoClip;
 
     public List<string> options;
+    public List<Sprite> optionsOrderSprites;
     public string correctAnswer;
     public string answerExplanation;
     public int points;

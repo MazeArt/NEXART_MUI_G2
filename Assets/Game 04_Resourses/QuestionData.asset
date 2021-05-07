@@ -20,9 +20,10 @@ MonoBehaviour:
     questionAudioClip: {fileID: 0}
     questionVideoClip: {fileID: 0}
     options:
-    - c
     - a
+    - c
     - b
+    optionsOrderSprites: []
     correctAnswer: a
     answerExplanation: A is ok
     points: 10
@@ -33,9 +34,10 @@ MonoBehaviour:
     questionAudioClip: {fileID: 0}
     questionVideoClip: {fileID: 0}
     options:
-    - f
     - d
+    - f
     - e
+    optionsOrderSprites: []
     correctAnswer: e
     answerExplanation: e is ok
     points: 20
@@ -46,10 +48,16 @@ MonoBehaviour:
     questionAudioClip: {fileID: 0}
     questionVideoClip: {fileID: 0}
     options:
-    - order 1
-    - order 2
-    - order 3
-    correctAnswer: order 3
+    - Gato maullando
+    - Gato sentado
+    - Gato jugando
+    - Muchos Gatos
+    optionsOrderSprites:
+    - {fileID: 21300000, guid: e24faaaf2d50fdb4d9dd3ef325517f3d, type: 3}
+    - {fileID: 21300000, guid: e1a4e87188f76cd47842c9546e797c76, type: 3}
+    - {fileID: 21300000, guid: 229ecf7254630194ea5f002cb564fe87, type: 3}
+    - {fileID: 21300000, guid: 0b077d3b4ced1a9419e4ed7c3397acee, type: 3}
+    correctAnswer: Gato sentado, Gato maullando, Muchos Gatos, Gato jugando
     answerExplanation: order 3 is ok
     points: 30
   - questionTheme: 0
@@ -59,11 +67,12 @@ MonoBehaviour:
     questionAudioClip: {fileID: 0}
     questionVideoClip: {fileID: 32900000, guid: 475674b429e035f4f9df68cd0cd97f0c, type: 3}
     options:
-    - order 1
-    - order 2
-    - order 3
-    correctAnswer: order 3
-    answerExplanation: order 3 is ok
+    - video 3
+    - video 1
+    - video 2
+    optionsOrderSprites: []
+    correctAnswer: video 3
+    answerExplanation: video 3 is ok
     points: 30
   - questionTheme: 0
     questionInfo: Question Audio
@@ -72,9 +81,29 @@ MonoBehaviour:
     questionAudioClip: {fileID: 8300000, guid: 4ff4db2f19a3b7a48ab272ce9c98f03e, type: 3}
     questionVideoClip: {fileID: 0}
     options:
+    - audio 1
+    - audio 3
+    - audio 2
+    optionsOrderSprites: []
+    correctAnswer: audio 3
+    answerExplanation: audio 3 is ok
+    points: 30
+  - questionTheme: 1
+    questionInfo: Question Order 2
+    questionType: 4
+    questionImg: {fileID: 0}
+    questionAudioClip: {fileID: 0}
+    questionVideoClip: {fileID: 0}
+    options:
+    - order 1
     - order 2
     - order 3
-    - order 1
-    correctAnswer: order 3
+    - order 4
+    optionsOrderSprites:
+    - {fileID: 21300000, guid: 0b077d3b4ced1a9419e4ed7c3397acee, type: 3}
+    - {fileID: 21300000, guid: e1a4e87188f76cd47842c9546e797c76, type: 3}
+    - {fileID: 21300000, guid: 229ecf7254630194ea5f002cb564fe87, type: 3}
+    - {fileID: 21300000, guid: e24faaaf2d50fdb4d9dd3ef325517f3d, type: 3}
+    correctAnswer: order 1, order 2, order 3, order 4
     answerExplanation: order 3 is ok
     points: 30
