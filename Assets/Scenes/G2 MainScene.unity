@@ -217,6 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 135352714}
+  orbitManager: {fileID: 792364053}
 --- !u!135 &135352716
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -288,6 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 254286298}
+  orbitManager: {fileID: 792364053}
 --- !u!135 &254286300
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1257,15 +1259,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orbit_fastfwd: 1
-  earth_orbitPeriod: 300
+  earthOrbitPeriodAbs: 300
   orbitActive: 1
-  orbitPeriod_Ura: 50
-  orbitPeriod_Jup: 11.86
-  orbitPeriod_Sat: 29.46
-  orbitPeriod_Mar: 1.88
-  orbitPeriod_Mer: 0.5
-  orbitPeriod_Ven: 0.8
-  orbitPeriod_Nep: 90
+  orbitPeriodMercury: 0.5
+  orbitPeriodVenus: 0.8
+  orbitPeriodMars: 1.88
+  orbitPeriodJupipter: 11.86
+  orbitPeriodSaturn: 29.46
+  massVenus: 100
+  massEarth: 200
+  massMars: 160
+  massJupiter: 5000
+  massSaturn: 8000
 --- !u!4 &792364054
 Transform:
   m_ObjectHideFlags: 0
@@ -1959,6 +1964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1208045358}
+  orbitManager: {fileID: 792364053}
 --- !u!135 &1208045360
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3137,6 +3143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 2106668263}
+  orbitManager: {fileID: 792364053}
 --- !u!135 &2106668265
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3236,6 +3243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 2113837125}
+  orbitManager: {fileID: 792364053}
 --- !u!114 &2113837127
 MonoBehaviour:
   m_ObjectHideFlags: 0

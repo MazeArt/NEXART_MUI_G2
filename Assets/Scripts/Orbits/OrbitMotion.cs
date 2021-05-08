@@ -8,7 +8,7 @@ public class OrbitMotion : MonoBehaviour
     public Ellipse orbitPath;
 
     // Orbit Manager Variable
-    public OrbitSliderManager orbitManager;
+    public OrbitManager orbitManager;
     //Variables from Orbit Manager
       // [Range(1f, 100f)]
       // public float orbit_fastfwd = 1f;
@@ -48,7 +48,7 @@ public class OrbitMotion : MonoBehaviour
 
     void SetOrbitingObjectPosition()
     {
-        planet_orbitPeriod = Check_planet(orbitingObject.name, orbitManager.earth_orbitPeriod);
+        planet_orbitPeriod = Check_planet(orbitingObject.name, orbitManager.earthOrbitPeriodAbs);
         //set orbiting speed
         orbitPeriod = planet_orbitPeriod / (orbitManager.orbit_fastfwd * Mathf.Abs(orbitManager.orbit_fastfwd) );
 
@@ -76,46 +76,45 @@ public class OrbitMotion : MonoBehaviour
         }
 
     float Check_planet(string planet_name,float oribtPeriod_planet)
-    {
-        
+    {  
 
         switch (planet_name)
         {
             case "Mercury":
-                oribtPeriod_planet = oribtPeriod_planet * orbitManager.orbitPeriod_Mer;
-                Debug.Log("This is " + planet_name + " , orbit period is: " + oribtPeriod_planet);
-                break;
-
-            case "Jupiter":
-                oribtPeriod_planet = oribtPeriod_planet * orbitManager.orbitPeriod_Jup;
-                Debug.Log("This is "+ planet_name+" , orbit period is: " + oribtPeriod_planet);
-                break;
-            
-            case "Saturn":
-                oribtPeriod_planet = oribtPeriod_planet * orbitManager.orbitPeriod_Sat;
-                Debug.Log("This is " + planet_name + " , orbit period is: " + oribtPeriod_planet);
-                break;
-
-            case "Mars":
-                oribtPeriod_planet = oribtPeriod_planet * orbitManager.orbitPeriod_Mar;
+                oribtPeriod_planet = oribtPeriod_planet * orbitManager.orbitPeriodMercury;
                 Debug.Log("This is " + planet_name + " , orbit period is: " + oribtPeriod_planet);
                 break;
 
             case "Venus":
-                oribtPeriod_planet = oribtPeriod_planet * orbitManager.orbitPeriod_Ven;
+                oribtPeriod_planet = oribtPeriod_planet * orbitManager.orbitPeriodVenus;
                 Debug.Log("This is " + planet_name + " , orbit period is: " + oribtPeriod_planet);
                 break;
 
-            case "Uranus":
-                oribtPeriod_planet = oribtPeriod_planet * orbitManager.orbitPeriod_Ura;
+            case "Mars":
+                oribtPeriod_planet = oribtPeriod_planet * orbitManager.orbitPeriodMars;
                 Debug.Log("This is " + planet_name + " , orbit period is: " + oribtPeriod_planet);
                 break;
-               
 
-            case "Neptune":
-                oribtPeriod_planet = oribtPeriod_planet * orbitManager.orbitPeriod_Nep;
+            case "Jupiter":
+                oribtPeriod_planet = oribtPeriod_planet * orbitManager.orbitPeriodJupipter;
+                Debug.Log("This is "+ planet_name+" , orbit period is: " + oribtPeriod_planet);
+                break;
+            
+            case "Saturn":
+                oribtPeriod_planet = oribtPeriod_planet * orbitManager.orbitPeriodSaturn;
                 Debug.Log("This is " + planet_name + " , orbit period is: " + oribtPeriod_planet);
                 break;
+
+        //   case "Uranus":
+        //       oribtPeriod_planet = oribtPeriod_planet * orbitManager.orbitPeriod_Ura;
+        //       Debug.Log("This is " + planet_name + " , orbit period is: " + oribtPeriod_planet);
+        //       break;
+        //      
+        //
+        //   case "Neptune":
+        //       oribtPeriod_planet = oribtPeriod_planet * orbitManager.orbitPeriod_Nep;
+        //       Debug.Log("This is " + planet_name + " , orbit period is: " + oribtPeriod_planet);
+        //       break;
             
         }
         return oribtPeriod_planet;
