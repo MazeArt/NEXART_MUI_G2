@@ -81,27 +81,44 @@ public class OrbitMotion : MonoBehaviour
 
         switch (planet_name)
         {
+            case "Mercury":
+                oribtPeriod_planet = oribtPeriod_planet * orbitManager.orbitPeriod_Mer;
+                Debug.Log("This is " + planet_name + " , orbit period is: " + oribtPeriod_planet);
+                break;
+
             case "Jupiter":
-                oribtPeriod_planet = oribtPeriod_planet * 11.86f;
+                oribtPeriod_planet = oribtPeriod_planet * orbitManager.orbitPeriod_Jup;
                 Debug.Log("This is "+ planet_name+" , orbit period is: " + oribtPeriod_planet);
                 break;
             
             case "Saturn":
-                oribtPeriod_planet = oribtPeriod_planet * 29.46f;
+                oribtPeriod_planet = oribtPeriod_planet * orbitManager.orbitPeriod_Sat;
                 Debug.Log("This is " + planet_name + " , orbit period is: " + oribtPeriod_planet);
                 break;
 
             case "Mars":
-                oribtPeriod_planet = oribtPeriod_planet * 1.88f;
+                oribtPeriod_planet = oribtPeriod_planet * orbitManager.orbitPeriod_Mar;
                 Debug.Log("This is " + planet_name + " , orbit period is: " + oribtPeriod_planet);
                 break;
 
+            case "Venus":
+                oribtPeriod_planet = oribtPeriod_planet * orbitManager.orbitPeriod_Ven;
+                Debug.Log("This is " + planet_name + " , orbit period is: " + oribtPeriod_planet);
+                break;
 
+            case "Uranus":
+                oribtPeriod_planet = oribtPeriod_planet * orbitManager.orbitPeriod_Ura;
+                Debug.Log("This is " + planet_name + " , orbit period is: " + oribtPeriod_planet);
+                break;
+               
+
+            case "Neptune":
+                oribtPeriod_planet = oribtPeriod_planet * orbitManager.orbitPeriod_Nep;
+                Debug.Log("This is " + planet_name + " , orbit period is: " + oribtPeriod_planet);
+                break;
+            
         }
-
-        return  oribtPeriod_planet;
+        return oribtPeriod_planet;
 
     }
-
-
 }
