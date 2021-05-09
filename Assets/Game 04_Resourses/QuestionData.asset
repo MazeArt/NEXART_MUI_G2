@@ -20,9 +20,9 @@ MonoBehaviour:
     questionAudioClip: {fileID: 0}
     questionVideoClip: {fileID: 0}
     options:
-    - a
-    - c
     - b
+    - c
+    - a
     optionsOrderSprites: []
     correctAnswer: a
     answerExplanation: A is ok
@@ -34,8 +34,8 @@ MonoBehaviour:
     questionAudioClip: {fileID: 0}
     questionVideoClip: {fileID: 0}
     options:
-    - d
     - f
+    - d
     - e
     optionsOrderSprites: []
     correctAnswer: e
@@ -48,15 +48,15 @@ MonoBehaviour:
     questionAudioClip: {fileID: 0}
     questionVideoClip: {fileID: 0}
     options:
-    - Gato maullando
-    - Gato sentado
     - Gato jugando
     - Muchos Gatos
+    - Gato sentado
+    - Gato maullando
     optionsOrderSprites:
-    - {fileID: 21300000, guid: e24faaaf2d50fdb4d9dd3ef325517f3d, type: 3}
-    - {fileID: 21300000, guid: e1a4e87188f76cd47842c9546e797c76, type: 3}
     - {fileID: 21300000, guid: 229ecf7254630194ea5f002cb564fe87, type: 3}
     - {fileID: 21300000, guid: 0b077d3b4ced1a9419e4ed7c3397acee, type: 3}
+    - {fileID: 21300000, guid: e1a4e87188f76cd47842c9546e797c76, type: 3}
+    - {fileID: 21300000, guid: e24faaaf2d50fdb4d9dd3ef325517f3d, type: 3}
     correctAnswer: Gato sentado, Gato maullando, Muchos Gatos, Gato jugando
     answerExplanation: order 3 is ok
     points: 30
@@ -67,9 +67,9 @@ MonoBehaviour:
     questionAudioClip: {fileID: 0}
     questionVideoClip: {fileID: 32900000, guid: 475674b429e035f4f9df68cd0cd97f0c, type: 3}
     options:
-    - video 3
-    - video 1
     - video 2
+    - video 1
+    - video 3
     optionsOrderSprites: []
     correctAnswer: video 3
     answerExplanation: video 3 is ok
@@ -82,8 +82,8 @@ MonoBehaviour:
     questionVideoClip: {fileID: 0}
     options:
     - audio 1
-    - audio 3
     - audio 2
+    - audio 3
     optionsOrderSprites: []
     correctAnswer: audio 3
     answerExplanation: audio 3 is ok
@@ -95,13 +95,13 @@ MonoBehaviour:
     questionAudioClip: {fileID: 0}
     questionVideoClip: {fileID: 0}
     options:
-    - order 1
     - order 2
+    - order 1
     - order 3
     - order 4
     optionsOrderSprites:
-    - {fileID: 21300000, guid: 0b077d3b4ced1a9419e4ed7c3397acee, type: 3}
     - {fileID: 21300000, guid: e1a4e87188f76cd47842c9546e797c76, type: 3}
+    - {fileID: 21300000, guid: 0b077d3b4ced1a9419e4ed7c3397acee, type: 3}
     - {fileID: 21300000, guid: 229ecf7254630194ea5f002cb564fe87, type: 3}
     - {fileID: 21300000, guid: e24faaaf2d50fdb4d9dd3ef325517f3d, type: 3}
     correctAnswer: order 1, order 2, order 3, order 4

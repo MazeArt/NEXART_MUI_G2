@@ -5,37 +5,38 @@ using UnityEngine.UI;
 
 public class ManagerG4 : MonoBehaviour
 {
+    private DialogueManager dialogueManager;
     [SerializeField] private TriviaUI triviaUI;
     [SerializeField] private QuizDataScriptable quizData;
     private List<Question> _questions;
     public GameObject initialCanvas;
-    [SerializeField] private Button finishTheGameBtn;
     public GameObject themesCanvas;
     public GameObject triviaCanvas;
+    public GameObject finalCanvas;
     public int timeLimit;
-    public int selectedTheme;
+    private int selectedTheme;
     public Text timer;
+    [SerializeField] private Button finishTheGameBtn;
+
+    public float requirementPercentage;
 
     private int timeToWaitForHide = 1;
     private Question selectedQuestionToAnswer;
-    public List<Button> notUsedThemes;
-    public Question selectedQuestionFromList; //No editar desde inspector, se llena por codigo
-    public List<Question> _selectedQuestionsList; //No editar desde inspector, se llena por codigo
-    public List<Question> _wrongAnswered; //No editar desde inspector, se llena por codigo
+
+    [Header("In game lists, no editar desde inspector ya que se llenan por código")]
 
     public float maxPoints;
     public float myPoints;
-    [SerializeField] public float requirementPercentage;
-    
+    public Question selectedQuestionFromList;
+    public List<Button> notUsedThemes;
+    public List<Question> _selectedQuestionsList; 
+    public List<Question> _wrongAnswered;
 
-    /*Secuencia
-     * Introducción
-     * Mostrar temas para preguntas
-     * --generar lista de botones con los temas posibles
-     * --Los temas se van descartando
-     */
     void Start()
     {
+        dialogueManager = this.gameObject.GetComponent<DialogueManager>();
+        maxPoints = 0;
+        myPoints = 0;
         _questions = quizData.questions;
         var collection = themesCanvas.GetComponentsInChildren<Button>();
         foreach (Button button in collection)
@@ -46,6 +47,7 @@ public class ManagerG4 : MonoBehaviour
         }
         triviaCanvas.SetActive(false);
         themesCanvas.SetActive(false);
+        finalCanvas.SetActive(false);
 
         GameIntroduction();
     }
@@ -55,6 +57,8 @@ public class ManagerG4 : MonoBehaviour
         //(escena video)
         //se presiona botón del canvas para continuar
         initialCanvas.SetActive(true);
+        dialogueManager.activeHolder = initialCanvas.GetComponentInChildren<DialogueHolder>();
+        dialogueManager.ResetDialogueManager();
 
     }
     public void GameIterationStart()
@@ -205,6 +209,11 @@ public class ManagerG4 : MonoBehaviour
     {
         StopAllCoroutines();
         triviaCanvas.SetActive(false);
+        initialCanvas.SetActive(false);
+        themesCanvas.SetActive(false);
+        finalCanvas.SetActive(true);
+        dialogueManager.activeHolder = finalCanvas.GetComponentInChildren<DialogueHolder>();
+        dialogueManager.ResetDialogueManager();
         Debug.Log("THE END");
         Debug.Log(myPoints + "/" + maxPoints);
         if (myPoints / (maxPoints * (requirementPercentage / 100)) >= 1)
@@ -212,13 +221,17 @@ public class ManagerG4 : MonoBehaviour
             //Animacion de victoria
             if (myPoints == maxPoints)
             {
-                //Jackpot
+                Jackpot();
             }
         }
         else
         {
             //animacion de derrota
         }
+    }
+    public void Jackpot()
+    {
+        Debug.Log("Jackpot!");
     }
 }
 
@@ -235,6 +248,7 @@ public class Question
 
     public List<string> options;
     public List<Sprite> optionsOrderSprites;
+    [Tooltip("Si question type es igual a Order, en respuesta correcta debe escribir options en orden esperado separado por ', ' (coma y espacio)")]
     public string correctAnswer;
     public string answerExplanation;
     public int points;

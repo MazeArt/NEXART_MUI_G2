@@ -6,7 +6,7 @@ TagManager:
   tags:
   - meteorito
   - DragParent
-  - ItemPool
+  - DialogueHolder
   layers:
   - Default
   - TransparentFX

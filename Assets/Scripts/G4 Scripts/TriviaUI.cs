@@ -18,15 +18,14 @@ public class TriviaUI : MonoBehaviour
     [SerializeField] private List<GameObject> slotOptionsOrder;
     [SerializeField] private Button confirmButtonOrder;
     [SerializeField] private Color correctColor, wrongColor, normalColor;
+    [SerializeField] private Transform poolOptionTransform;
     [SerializeField] public Image progressBarFill;
-    Transform poolOptionTransform;
 
     private Question actualQuestion;
     private bool answered;
 
     void Awake()
     {
-        poolOptionTransform = GameObject.FindGameObjectWithTag("ItemPool").transform;
         for (int i = 0; i < options.Count; i++)
         {
             Button localBtn = options[i];
@@ -35,7 +34,7 @@ public class TriviaUI : MonoBehaviour
         }
         for (int i = 0; i < optionsOrder.Count; i++)
         {
-            optionsOrderInitialPosition[i] = (optionsOrder[i].GetComponent<RectTransform>().position);
+            optionsOrderInitialPosition.Add(optionsOrder[i].GetComponent<RectTransform>().position);
 
         }
         confirmButtonOrder.onClick.AddListener(() => OnClick(confirmButtonOrder));
@@ -47,34 +46,31 @@ public class TriviaUI : MonoBehaviour
     public void SetQuestion(Question question)
     {
         this.actualQuestion = question;
+        ViewHolderInitialSet();
         switch (question.questionType)
         {
             case QuestionType.TEXT:
-                ViewHolderInitialSet();
                 questionText.transform.parent.gameObject.SetActive(true);
                 FillQuestionOptionsNormal();
                 break;
             case QuestionType.IMAGE:
-                ViewHolderInitialSet();
                 questionImage.transform.gameObject.SetActive(true);
-                questionImage.sprite = question.questionImg;
                 FillQuestionOptionsNormal();
+                questionImage.sprite = question.questionImg;
                 break;
             case QuestionType.VIDEO:
-                ViewHolderInitialSet();
                 questionVideo.transform.gameObject.SetActive(true);
                 questionVideo.clip = question.questionVideoClip;
-                questionVideo.Play();
                 FillQuestionOptionsNormal();
+                questionVideo.Play();
                 break;
             case QuestionType.AUDIO:
-                ViewHolderInitialSet();
                 questionAudio.transform.gameObject.SetActive(true);
-                questionAudio.PlayOneShot(actualQuestion.questionAudioClip);
                 FillQuestionOptionsNormal();
+                questionAudio.clip = question.questionAudioClip;
+                questionAudio.Play();
                 break;
             case QuestionType.ORDER:
-                ViewHolderInitialSet();
                 order.transform.gameObject.SetActive(true);
                 FillQuestionOptionsOrder();
                 break;
