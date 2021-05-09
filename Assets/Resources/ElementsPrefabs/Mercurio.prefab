@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7788988765251971170}
   - component: {fileID: 7788988765251971181}
   m_Layer: 0
-  m_Name: Mercury
+  m_Name: Mercurio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
