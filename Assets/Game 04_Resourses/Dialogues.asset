@@ -20,6 +20,9 @@ MonoBehaviour:
     - Frase 3
   - dialogueName: FinalExplanation
     dialogueScript:
-    - Frase 4
-    - Frase 5
-    - Frase 6
+    - Te equivocaste en algunas preguntas
+  - dialogueName: AskIfContinue
+    dialogueScript:
+    - Te queda tiempo!
+    - Si deseas presiona "Continuar" para elegir otro tema
+    - Si no, presiona "Finalizar"

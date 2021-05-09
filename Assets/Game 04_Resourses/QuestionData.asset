@@ -14,28 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NewBehaviourScript
   questions:
   - questionTheme: 0
-    questionInfo: Question Text
-    questionType: 0
-    questionImg: {fileID: 0}
-    questionAudioClip: {fileID: 0}
-    questionVideoClip: {fileID: 0}
-    options:
-    - b
-    - c
-    - a
-    optionsOrderSprites: []
-    correctAnswer: a
-    answerExplanation: A is ok
-    points: 10
-  - questionTheme: 0
     questionInfo: Question Image
     questionType: 1
     questionImg: {fileID: 21300000, guid: 0b077d3b4ced1a9419e4ed7c3397acee, type: 3}
     questionAudioClip: {fileID: 0}
     questionVideoClip: {fileID: 0}
     options:
-    - f
     - d
+    - e
+    - f
     - e
     optionsOrderSprites: []
     correctAnswer: e
@@ -48,15 +35,15 @@ MonoBehaviour:
     questionAudioClip: {fileID: 0}
     questionVideoClip: {fileID: 0}
     options:
-    - Gato jugando
-    - Muchos Gatos
-    - Gato sentado
     - Gato maullando
+    - Gato sentado
+    - Muchos Gatos
+    - Gato jugando
     optionsOrderSprites:
-    - {fileID: 21300000, guid: 229ecf7254630194ea5f002cb564fe87, type: 3}
-    - {fileID: 21300000, guid: 0b077d3b4ced1a9419e4ed7c3397acee, type: 3}
-    - {fileID: 21300000, guid: e1a4e87188f76cd47842c9546e797c76, type: 3}
     - {fileID: 21300000, guid: e24faaaf2d50fdb4d9dd3ef325517f3d, type: 3}
+    - {fileID: 21300000, guid: e1a4e87188f76cd47842c9546e797c76, type: 3}
+    - {fileID: 21300000, guid: 0b077d3b4ced1a9419e4ed7c3397acee, type: 3}
+    - {fileID: 21300000, guid: 229ecf7254630194ea5f002cb564fe87, type: 3}
     correctAnswer: Gato sentado, Gato maullando, Muchos Gatos, Gato jugando
     answerExplanation: order 3 is ok
     points: 30
@@ -67,8 +54,9 @@ MonoBehaviour:
     questionAudioClip: {fileID: 0}
     questionVideoClip: {fileID: 32900000, guid: 475674b429e035f4f9df68cd0cd97f0c, type: 3}
     options:
-    - video 2
     - video 1
+    - video 2
+    - video 2
     - video 3
     optionsOrderSprites: []
     correctAnswer: video 3
@@ -81,13 +69,32 @@ MonoBehaviour:
     questionAudioClip: {fileID: 8300000, guid: 4ff4db2f19a3b7a48ab272ce9c98f03e, type: 3}
     questionVideoClip: {fileID: 0}
     options:
-    - audio 1
+    - audio 3
     - audio 2
+    - audio 1
     - audio 3
     optionsOrderSprites: []
     correctAnswer: audio 3
     answerExplanation: audio 3 is ok
     points: 30
+  - questionTheme: 0
+    questionInfo: "En el Universo hay muchas estrellas como nuestro Sol, \xBFqu\xE9
+      comparaci\xF3n es la m\xE1s acertada?"
+    questionType: 0
+    questionImg: {fileID: 0}
+    questionAudioClip: {fileID: 0}
+    questionVideoClip: {fileID: 0}
+    options:
+    - "Hay m\xE1s estrellas que granos de arena de todas las playas de la Tierra"
+    - "Hay m\xE1s estrellas que todo el dinero de la Tierra"
+    - "Hay m\xE1s estrellas que personas en la Tierra"
+    - "Hay m\xE1s estrellas que jugadores de Fortnite"
+    optionsOrderSprites: []
+    correctAnswer: "Hay m\xE1s estrellas que granos de arena de todas las playas
+      de la Tierra"
+    answerExplanation: "Hay m\xE1s estrellas que granos de arena de todas las playas
+      de la Tierra"
+    points: 10
   - questionTheme: 1
     questionInfo: Question Order 2
     questionType: 4
@@ -95,15 +102,128 @@ MonoBehaviour:
     questionAudioClip: {fileID: 0}
     questionVideoClip: {fileID: 0}
     options:
-    - order 2
-    - order 1
-    - order 3
     - order 4
+    - order 1
+    - order 2
+    - order 3
     optionsOrderSprites:
-    - {fileID: 21300000, guid: e1a4e87188f76cd47842c9546e797c76, type: 3}
-    - {fileID: 21300000, guid: 0b077d3b4ced1a9419e4ed7c3397acee, type: 3}
-    - {fileID: 21300000, guid: 229ecf7254630194ea5f002cb564fe87, type: 3}
     - {fileID: 21300000, guid: e24faaaf2d50fdb4d9dd3ef325517f3d, type: 3}
+    - {fileID: 21300000, guid: 0b077d3b4ced1a9419e4ed7c3397acee, type: 3}
+    - {fileID: 21300000, guid: e1a4e87188f76cd47842c9546e797c76, type: 3}
+    - {fileID: 21300000, guid: 229ecf7254630194ea5f002cb564fe87, type: 3}
     correctAnswer: order 1, order 2, order 3, order 4
     answerExplanation: order 3 is ok
     points: 30
+  - questionTheme: 0
+    questionInfo: "El Sol no es la estrella m\xE1s grande que conocemos, pero es
+      bastante grande. \xBFCu\xE1ntas veces cabe la Tierra en el Sol?"
+    questionType: 0
+    questionImg: {fileID: 0}
+    questionAudioClip: {fileID: 0}
+    questionVideoClip: {fileID: 0}
+    options:
+    - 1.337 veces
+    - 163.000 veces
+    - 1,3 millones de veces
+    - 17 millones de veces
+    optionsOrderSprites: []
+    correctAnswer: 1,3 millones de veces
+    answerExplanation: 1,3 millones de veces
+    points: 10
+  - questionTheme: 0
+    questionInfo: "En nuestro sistema solar conocemos 8 planetas, 9 planetas enanos,
+      181 lunas y diversos otros objetos. \xBFQu\xE9 porcentaje de la masa de nuestro
+      sistema solar ocupa el sol?"
+    questionType: 0
+    questionImg: {fileID: 0}
+    questionAudioClip: {fileID: 0}
+    questionVideoClip: {fileID: 0}
+    options:
+    - 10%
+    - 33,47%
+    - 83,24%
+    - 99,86%
+    optionsOrderSprites: []
+    correctAnswer: 99,86%
+    answerExplanation: 99,86%
+    points: 10
+  - questionTheme: 0
+    questionInfo: "Cuando miramos al cielo, podemos ver miles de estrellas. \xBFQu\xE9
+      caracter\xEDstica particular tienen las estrellas que vemos?"
+    questionType: 0
+    questionImg: {fileID: 0}
+    questionAudioClip: {fileID: 0}
+    questionVideoClip: {fileID: 0}
+    options:
+    - "Todas son m\xE1s fr\xEDas que nuestro Sol, por eso las vemos blancas"
+    - Muestran su pasado, ya que la luz tiene que recorrer mucha distancia
+    - Todas son parte de nuestra galaxia
+    - "Todas est\xE1n a la misma distancia"
+    optionsOrderSprites: []
+    correctAnswer: Muestran su pasado, ya que la luz tiene que recorrer mucha distancia
+    answerExplanation: Muestran su pasado, ya que la luz tiene que recorrer mucha
+      distancia
+    points: 10
+  - questionTheme: 0
+    questionInfo: "\xBFCu\xE1l es la monta\xF1a m\xE1s grande que hemos observado?"
+    questionType: 0
+    questionImg: {fileID: 0}
+    questionAudioClip: {fileID: 0}
+    questionVideoClip: {fileID: 0}
+    options:
+    - Everest (Tierra)
+    - Mauna Kea (Tierra)
+    - Olimpus Mons (Marte)
+    - Skadi Mons (Venus)
+    optionsOrderSprites: []
+    correctAnswer: Olimpus Mons (Marte)
+    answerExplanation: Olimpus Mons (Marte)
+    points: 10
+  - questionTheme: 0
+    questionInfo: "Cuando miramos al cielo podemos ver estrellas con distintos niveles
+      de brillo, \xBFcu\xE1l es la estrella m\xE1s brillante que podemos observar?"
+    questionType: 0
+    questionImg: {fileID: 0}
+    questionAudioClip: {fileID: 0}
+    questionVideoClip: {fileID: 0}
+    options:
+    - Sirius
+    - Arcturus
+    - Sol
+    - Canopus
+    optionsOrderSprites: []
+    correctAnswer: Sirius
+    answerExplanation: Sirius
+    points: 10
+  - questionTheme: 0
+    questionInfo: "\xBFCu\xE1l es el planeta que tiene mayor masa, en relaci\xF3n
+      a la Tierra?"
+    questionType: 0
+    questionImg: {fileID: 0}
+    questionAudioClip: {fileID: 0}
+    questionVideoClip: {fileID: 0}
+    options:
+    - Marte
+    - Saturno
+    - Urano
+    - "J\xFApiter"
+    optionsOrderSprites: []
+    correctAnswer: "J\xFApiter"
+    answerExplanation: "J\xFApiter"
+    points: 10
+  - questionTheme: 0
+    questionInfo: "\xBFQu\xE9 caracter\xEDstica de Venus es falsa?"
+    questionType: 0
+    questionImg: {fileID: 0}
+    questionAudioClip: {fileID: 0}
+    questionVideoClip: {fileID: 0}
+    options:
+    - "Su atm\xF3sfera es la m\xE1s caliente del sistema solar"
+    - Tiene una luna de hierro
+    - "Su d\xEDa (giro en su eje) es m\xE1s largo que su a\xF1o (giro alrededor del
+      Sol)"
+    - "Gira al rev\xE9s que los otros planetas del sistema solar"
+    optionsOrderSprites: []
+    correctAnswer: Tiene una luna de hierro
+    answerExplanation: Tiene una luna de hierro
+    points: 10

@@ -11,7 +11,7 @@ public class DialogueManager : MonoBehaviour
     public AudioClip typingSound;
     string activeSentence;
     int activeSentencePosition = 0;
-    bool sentenceTimeFinished = true;
+    bool sentenceTimeFinished = false;
     [Header("No editar desde el inspector")]
     public List<DialogueHolder> dialogueHolders;
     public DialogueHolder activeHolder;
@@ -32,7 +32,7 @@ public class DialogueManager : MonoBehaviour
                 if (dialoguesData.dialogueScripts[i].dialogueName == holder.myDialogueIs && !found)
                 {
                     holder.onScreenDialogue = dialoguesData.dialogueScripts[i];
-                    holder.GetComponentInChildren<Text>().text = dialoguesData.dialogueScripts[i].dialogueScript[0];
+                    holder.GetComponentInChildren<Text>().text = "";
                     found = true;
                 }
             }
@@ -73,8 +73,6 @@ public class DialogueManager : MonoBehaviour
         activeSentencePosition++;
         StopCoroutine(WritingTheSentence(thisDialogueHolder));
         StartCoroutine(WritingTheSentence(thisDialogueHolder));
-        //StartCoroutine("WritingTheSentence");
-        //thisDialogueHolder.GetComponentInChildren<Text>().text = activeSentence;
 
     }
     public IEnumerator WritingTheSentence(DialogueHolder thisDialogueHolder)
@@ -88,7 +86,6 @@ public class DialogueManager : MonoBehaviour
             thisDialogueHolder.GetComponentInChildren<Text>().text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
-
             sentenceTimeFinished = true;
         
     }
@@ -96,13 +93,14 @@ public class DialogueManager : MonoBehaviour
     public void ResetDialogueManager()
     {
         if (!activeHolder.dialoguePlayed)
-        {
+        {   activeHolder.GetComponentInChildren<Text>().text = "";
+            activeSentence = activeHolder.onScreenDialogue.dialogueScript[activeSentencePosition];
             activeSentencePosition = 0;
+            StartCoroutine(WritingTheSentence(activeHolder));
             activeHolder.dialoguePlayed = true;
         }
         else
         {
-
             activeSentencePosition = -1;
             sentenceTimeFinished = true;
         }

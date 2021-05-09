@@ -9,16 +9,15 @@ public class ManagerG4 : MonoBehaviour
     [SerializeField] private TriviaUI triviaUI;
     [SerializeField] private QuizDataScriptable quizData;
     private List<Question> _questions;
-    public GameObject initialCanvas;
-    public GameObject themesCanvas;
-    public GameObject triviaCanvas;
-    public GameObject finalCanvas;
+    public GameObject initialCanvas, themesCanvas, triviaCanvas, finalCanvas;
     public int timeLimit;
+    public int questionsInGameCount;
     private int selectedTheme;
     public Text timer;
     [SerializeField] private Button finishTheGameBtn;
 
     public float requirementPercentage;
+    public GameObject wrongAnsweredPrefab;
 
     private int timeToWaitForHide = 1;
     private Question selectedQuestionToAnswer;
@@ -31,6 +30,8 @@ public class ManagerG4 : MonoBehaviour
     public List<Button> notUsedThemes;
     public List<Question> _selectedQuestionsList; 
     public List<Question> _wrongAnswered;
+    public List<Question> temp = null;
+    public List<int> usedInt = null;
 
     void Start()
     {
@@ -106,19 +107,47 @@ public class ManagerG4 : MonoBehaviour
         //Se reinicia el contador cada vez que comienza un nuevo tema
         StartCoroutine(TimerTriviaAndDeadEnd(timeLimit, timeToWaitForHide));
         selectedTheme = theme;
-        
+        temp.Clear();
+        usedInt.Clear();
         foreach (var question in _questions)
         {
             //Se agregan a la lista todas las preguntas relacionadas con el tema
             if (question.questionTheme == selectedTheme)
             {
                 selectedQuestionFromList = question;
-                _selectedQuestionsList.Add(selectedQuestionFromList);
-                maxPoints = maxPoints + question.points;
+                temp.Add(selectedQuestionFromList);
             }
+
         }
+            SelectQuestionsFromList(temp);
         SelectQuestionToAnswer();
 
+    }
+    void SelectQuestionsFromList(List<Question> list)
+    {
+        for (int i = 0; i < questionsInGameCount; i++)
+        {
+            int rnd = Random.Range(0, list.Count);
+            RecCallSelectQuestionsFromList(list, rnd);
+        }
+        foreach (var item in usedInt)
+        {
+                Debug.Log(item);
+            }
+    }
+    void RecCallSelectQuestionsFromList(List<Question> list, int rnd)
+    {
+        if (usedInt.Contains(rnd))
+        {
+            rnd = Random.Range(0, list.Count);
+            RecCallSelectQuestionsFromList(list, rnd);
+        }
+        else
+        {
+            usedInt.Add(rnd);
+            _selectedQuestionsList.Add(temp[rnd]);
+            maxPoints = maxPoints + temp[rnd].points;
+        }
     }
     /// <summary>
     /// Selecciona una pregunta aleatoria de la lista de preguntas generada y la elimina de la lista
@@ -197,6 +226,9 @@ public class ManagerG4 : MonoBehaviour
         {
             triviaCanvas.SetActive(false);
             initialCanvas.SetActive(true);
+            dialogueManager.activeHolder = initialCanvas.GetComponentInChildren<DialogueHolder>();
+            dialogueManager.activeHolder.GetComponentInChildren<Text>().text = "";
+            dialogueManager.ResetDialogueManager();
             finishTheGameBtn.transform.gameObject.SetActive(true);
         }
         else
@@ -213,7 +245,6 @@ public class ManagerG4 : MonoBehaviour
         themesCanvas.SetActive(false);
         finalCanvas.SetActive(true);
         dialogueManager.activeHolder = finalCanvas.GetComponentInChildren<DialogueHolder>();
-        dialogueManager.ResetDialogueManager();
         Debug.Log("THE END");
         Debug.Log(myPoints + "/" + maxPoints);
         if (myPoints / (maxPoints * (requirementPercentage / 100)) >= 1)
@@ -228,10 +259,21 @@ public class ManagerG4 : MonoBehaviour
         {
             //animacion de derrota
         }
+            GetAndShowWrongAnswered();
     }
     public void Jackpot()
     {
         Debug.Log("Jackpot!");
+    }
+    public void GetAndShowWrongAnswered()
+    {
+        foreach (Question question in _wrongAnswered)
+        {   GameObject wrongAnswered = Instantiate(wrongAnsweredPrefab, FindObjectOfType<GridLayoutGroup>().gameObject.transform);
+            wrongAnswered.name = question.questionInfo;
+            wrongAnswered.GetComponentInChildren<Text>().text = question.questionInfo;
+            wrongAnswered.transform.Find("Explanation").GetComponent<Text>().text = question.answerExplanation;
+
+        }
     }
 }
 
