@@ -177,12 +177,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orbitingObject: {fileID: 135352713}
+  orbitManager: {fileID: 792364053}
   orbitPath:
     xAxis: 150
     eccentricty: 0.8
-  orbitManager: {fileID: 792364053}
   orbitProgress: 0
   orbitOrigin: 0.75
+  OrbitPeriodRelativeToEarth: 1
 --- !u!4 &135352713 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5945289451100835115, guid: c8a604e6c37bdef4aa1dab89be008111, type: 3}
@@ -249,12 +250,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orbitingObject: {fileID: 254286297}
+  orbitManager: {fileID: 792364053}
   orbitPath:
     xAxis: 107
     eccentricty: 0.8
-  orbitManager: {fileID: 792364053}
   orbitProgress: 0
   orbitOrigin: 0.9
+  OrbitPeriodRelativeToEarth: 0.8
 --- !u!4 &254286297 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1725094711383610037, guid: d9c66e071ab53e247a6f28e4b341796c, type: 3}
@@ -984,6 +986,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d6a668f755af8f46a01b394a59612e7, type: 3}
+--- !u!1 &650444855 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 810470838266484684, guid: 5d6a668f755af8f46a01b394a59612e7, type: 3}
+  m_PrefabInstance: {fileID: 650444854}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &659464912
 GameObject:
   m_ObjectHideFlags: 0
@@ -1327,7 +1334,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a562f206620d2dc429ab0978e64c7079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbit_fastfwd: 1
+  planet: {fileID: 1244347294}
+  orbit_fastfwd: 1.2
   earthOrbitPeriodAbs: 300
   orbitActive: 1
   orbitPeriodMercury: 0.5
@@ -1335,11 +1343,17 @@ MonoBehaviour:
   orbitPeriodMars: 1.88
   orbitPeriodJupipter: 11.86
   orbitPeriodSaturn: 29.46
-  massVenus: 100
   massEarth: 200
   massMars: 160
   massJupiter: 5000
   massSaturn: 8000
+  siezeOfPlanets:
+    sizeEarth: 1
+    sizeSun: 100
+    sizeVenus: 1
+    sizeMars: 0.4
+    sizeJupiter: 10
+    sizeSaturn: 10
 --- !u!4 &792364054
 Transform:
   m_ObjectHideFlags: 0
@@ -1998,12 +2012,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orbitingObject: {fileID: 1208045355}
+  orbitManager: {fileID: 792364053}
   orbitPath:
     xAxis: 230
     eccentricty: 0.8
-  orbitManager: {fileID: 792364053}
   orbitProgress: 0
   orbitOrigin: 0.6
+  OrbitPeriodRelativeToEarth: 1.88
 --- !u!54 &1208045358
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2047,6 +2062,72 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 20.195032
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1244347291
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1244347293}
+  - component: {fileID: 1244347294}
+  - component: {fileID: 1244347295}
+  m_Layer: 0
+  m_Name: planetManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1244347293
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244347291}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 276.90225, y: -173.89923, z: 54.695366}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1783057973}
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1244347294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244347291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c01ba579e1cd0d4caf905d042e20a25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedOption: 0
+  Earth: {fileID: 135352709}
+  Venus: {fileID: 254286293}
+  Mars: {fileID: 1208045352}
+  Jupiter: {fileID: 2106668262}
+  Saturn: {fileID: 2113837123}
+  Sun: {fileID: 650444855}
+  planetDictionary: {fileID: 1783057972}
+  option: 
+--- !u!114 &1244347295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244347291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccc5e13d8fa7143409d37a3bfa8bae54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1244663103
 GameObject:
   m_ObjectHideFlags: 0
@@ -2706,6 +2787,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1783057971
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1783057973}
+  - component: {fileID: 1783057972}
+  m_Layer: 0
+  m_Name: planetPropertiesDict
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1783057972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783057971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccc5e13d8fa7143409d37a3bfa8bae54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1783057973
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783057971}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -653.9062, y: 230.08177, z: -53.933376}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1244347293}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1904124556 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2bc2729455b0bae4e8e2bd91f88d5776, type: 3}
@@ -3164,12 +3288,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orbitingObject: {fileID: 2106668269}
+  orbitManager: {fileID: 792364053}
   orbitPath:
     xAxis: 330
     eccentricty: 0.8
-  orbitManager: {fileID: 792364053}
   orbitProgress: 0
   orbitOrigin: 0.83
+  OrbitPeriodRelativeToEarth: 0
 --- !u!1 &2113837123 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8331238281820664140, guid: 84721c4142c449a45b7fe34725fe41df, type: 3}
@@ -3251,12 +3376,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orbitingObject: {fileID: 2113837130}
+  orbitManager: {fileID: 792364053}
   orbitPath:
     xAxis: 420
     eccentricty: 0.8
-  orbitManager: {fileID: 792364053}
   orbitProgress: 0
   orbitOrigin: 0.7
+  OrbitPeriodRelativeToEarth: 0
 --- !u!1 &2138449879
 GameObject:
   m_ObjectHideFlags: 0

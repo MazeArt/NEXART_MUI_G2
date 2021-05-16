@@ -5,36 +5,32 @@ using UnityEngine;
 public class OrbitMotion : MonoBehaviour
 {
     public Transform orbitingObject;
-    public Ellipse orbitPath;
-
-    // Orbit Manager Variable
     public OrbitManager orbitManager;
-    //Variables from Orbit Manager
-      // [Range(1f, 100f)]
-      // public float orbit_fastfwd = 1f;
-      // public float earth_orbitPeriod = 300f;
-      // public bool  orbitActive = true;
+    public Ellipse orbitPath;
     
-          [Range(0f, 1f)]
-          public float orbitProgress ;
-    
-
-
-    //Planet Variables
-
-
-    public float orbitOrigin;
-    private float planet_orbitPeriod;
+    // Orbit Manager Variable
     private float orbitPeriod;
+    
+    [Range(0f, 1f)]
+    public float orbitProgress ;
+    //Origin in Ellipse
+    public float orbitOrigin;
 
+    //review THIS 
+    public float OrbitPeriodRelativeToEarth;
+    private float planetOrbitPeriod;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
+        //public float earthPeriodSpeed = orbitManager.orbit_fastfwd;
        
-        if(orbitingObject == null)
+       
+        planetOrbitPeriod = orbitManager.earthOrbitPeriodAbs * OrbitPeriodRelativeToEarth;
+        Debug.Log(orbitingObject.name+ " PLANET ORBIT PERIOD " + planetOrbitPeriod );
+        if (orbitingObject == null)
             {
                 orbitManager.orbitActive = false;
                     return;
@@ -48,10 +44,15 @@ public class OrbitMotion : MonoBehaviour
 
     void SetOrbitingObjectPosition()
     {
-        planet_orbitPeriod = Check_planet(orbitingObject.name, orbitManager.earthOrbitPeriodAbs);
-        //set orbiting speed
-        orbitPeriod = planet_orbitPeriod / (orbitManager.orbit_fastfwd * Mathf.Abs(orbitManager.orbit_fastfwd) );
+        //DEPRECATED
+        //planetOrbitPeriod = Check_planet(orbitingObject.name, orbitManager.earthOrbitPeriodAbs);
 
+
+
+        // planetOrbitPeriod = orbitPeriod;
+        //set orbiting speed
+        orbitPeriod = planetOrbitPeriod / (orbitManager.orbit_fastfwd * Mathf.Abs(orbitManager.orbit_fastfwd) );
+        Debug.Log(orbitingObject.name + " PLANET ORBIT PERIOD :: : " + orbitPeriod + " " + planetOrbitPeriod);
         //read orbitProgress
         //orbitProgress = orbitProgress + orbit_fastfwd / 100;
         Vector2 orbitPos = orbitPath.Evaluate(orbitProgress + orbitOrigin);
@@ -82,27 +83,27 @@ public class OrbitMotion : MonoBehaviour
         {
             case "Mercury":
                 oribtPeriod_planet = oribtPeriod_planet * orbitManager.orbitPeriodMercury;
-                Debug.Log("This is " + planet_name + " , orbit period is: " + oribtPeriod_planet);
+              //  Debug.Log("This is " + planet_name + " , orbit period is: " + oribtPeriod_planet);
                 break;
 
             case "Venus":
                 oribtPeriod_planet = oribtPeriod_planet * orbitManager.orbitPeriodVenus;
-                Debug.Log("This is " + planet_name + " , orbit period is: " + oribtPeriod_planet);
+                //    Debug.Log("This is " + planet_name + " , orbit period is: " + oribtPeriod_planet);
                 break;
 
             case "Mars":
                 oribtPeriod_planet = oribtPeriod_planet * orbitManager.orbitPeriodMars;
-                Debug.Log("This is " + planet_name + " , orbit period is: " + oribtPeriod_planet);
+                //   Debug.Log("This is " + planet_name + " , orbit period is: " + oribtPeriod_planet);
                 break;
 
             case "Jupiter":
                 oribtPeriod_planet = oribtPeriod_planet * orbitManager.orbitPeriodJupipter;
-                Debug.Log("This is "+ planet_name+" , orbit period is: " + oribtPeriod_planet);
+                //    Debug.Log("This is "+ planet_name+" , orbit period is: " + oribtPeriod_planet);
                 break;
             
             case "Saturn":
                 oribtPeriod_planet = oribtPeriod_planet * orbitManager.orbitPeriodSaturn;
-                Debug.Log("This is " + planet_name + " , orbit period is: " + oribtPeriod_planet);
+                //     Debug.Log("This is " + planet_name + " , orbit period is: " + oribtPeriod_planet);
                 break;
 
         //   case "Uranus":

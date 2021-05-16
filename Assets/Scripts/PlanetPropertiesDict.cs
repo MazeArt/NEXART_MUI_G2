@@ -1,0 +1,87 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlanetPropertiesDict : MonoBehaviour
+{
+
+    public Dictionary<string, PlanetProperties> EarthOptions = new Dictionary<string, PlanetProperties>();
+    public Dictionary<string, PlanetProperties> MercuryOptions = new Dictionary<string, PlanetProperties>();
+    public Dictionary<string, PlanetProperties> VenusOptions = new Dictionary<string, PlanetProperties>();
+    public Dictionary<string, PlanetProperties> MarsOptions = new Dictionary<string, PlanetProperties>();
+    public Dictionary<string, PlanetProperties> JupiterOptions = new Dictionary<string, PlanetProperties>();
+    public Dictionary<string, PlanetProperties> SaturnOptions = new Dictionary<string, PlanetProperties>();
+    public Dictionary<string, PlanetProperties> SunOptions = new Dictionary<string, PlanetProperties>();
+
+
+
+    // Start is called before the first frame update
+
+    void Awake()
+    {
+        // Build OPT1 Options for all planets ( celestial bodies)
+        //planetOptions["optx"] :                       mass,   xAxis, scale,   oribtalPeriod}
+        EarthOptions["opt1"] = new PlanetProperties     (200f,  151f,  0.1234f,     1f);
+        MercuryOptions["opt1"] = new PlanetProperties   (111f,  50f,   1f,           0.5f);
+        VenusOptions["opt1"] = new PlanetProperties     (111f,  107f,  0.0848f,  0.8f);
+        MarsOptions["opt1"] = new PlanetProperties      (160f,  231f,  0.0688f,  1.88f);
+        JupiterOptions["opt1"] = new PlanetProperties   (5000f, 331f,  0.4128f,   11.86f);
+        SaturnOptions["opt1"] = new PlanetProperties    (8000f, 420f,  0.2539f,   29.46f);
+        SunOptions["opt1"] = new PlanetProperties       (10000f,0f,    57.352f,    0f);
+
+
+        // Build OPT2 Options for all ...
+        //planetOptions["optx"] :                       mass,   xAxis,  scale,      oribtalPeriod}
+        EarthOptions["opt2"] = new PlanetProperties     (200f,   151f,   0.12364f,     1f);
+        MercuryOptions["opt2"] = new PlanetProperties   (111f,   50f,   1f,           0.5f);
+        VenusOptions["opt2"] = new PlanetProperties     (111f,   107f,   0.08485565f,  0.8f);  
+        MarsOptions["opt2"] = new PlanetProperties      (160f,   231f,   0.06888629f,  1.88f);   
+        JupiterOptions["opt2"] = new PlanetProperties   (5000f,  731f,   0.4128256f,   11.86f);
+        SaturnOptions["opt2"] = new PlanetProperties    (8000f,  1420f,   0.2539039f,   29.46f);
+        SunOptions["opt2"] = new PlanetProperties       (10000f,0f,     1.35249f,    0f);
+
+
+        // Debug.Log("jupiter classDict opt1 : " + JupiterOptions["opt1"].planetMass);
+
+    }
+
+// Update is called once per frame
+    void Update()
+        {
+        
+        }
+
+}
+
+
+public class PlanetProperties
+{
+    
+    public float planetMass;
+    public float planetxAxis;
+    public float planetScale;
+    public float planetorbitPeriod;
+
+    public PlanetProperties(float mass, float xAxis, float scale, float period)
+    {
+        this.planetMass = mass;
+        this.planetxAxis = xAxis;
+        this.planetScale = scale;
+        this.planetorbitPeriod = period;
+
+    }   
+}
+
+
+
+// using Dictrionay and Lists alternative
+//  Dictionary<string, List<float>> massOptions = new Dictionary<string, List<float>>();
+
+
+
+
+
+
+
+
+

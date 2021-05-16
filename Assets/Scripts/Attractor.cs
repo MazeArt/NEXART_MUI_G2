@@ -31,8 +31,6 @@ public class Attractor : MonoBehaviour
         //genera un vector de distancia del vector dirección
         float distance = direction.magnitude;
 
-       
-
         rb.mass = Check_planet_mass(rb.gameObject.name);
 
         // aquí usamos la ecuación de Newton : F = G* (m1 * m2 ) / d^2 
@@ -50,31 +48,31 @@ public class Attractor : MonoBehaviour
 
         switch (planet_name)
         {
-            case "Mercury":             
-                Debug.Log("This is " + planet_name + " ,  mass is: " + planet_mass);
+            case "Mercury":
+                //       Debug.Log("This is " + planet_name + " ,  mass is: " + planet_mass);
                 break;
 
-            case "Venus":            
-                Debug.Log("This is " + planet_name + " ,  mass is: " + planet_mass);
+            case "Venus":
+                //      Debug.Log("This is " + planet_name + " ,  mass is: " + planet_mass);
                 break;
 
             case "Earth":
                 planet_mass = orbitManager.massEarth;
-                Debug.Log("This is " + planet_name + " ,  mass is: " + planet_mass);
+                //     Debug.Log("This is " + planet_name + " ,  mass is: " + planet_mass);
                 break;
 
             case "Mars":
-                Debug.Log("This is " + planet_name + " ,  mass is: " + planet_mass);
+                //   Debug.Log("This is " + planet_name + " ,  mass is: " + planet_mass);
                 break;
 
             case "Jupiter":
                planet_mass = orbitManager.massJupiter;
-                Debug.Log("This is " + planet_name + " ,  mass is: " + planet_mass);
+                //   Debug.Log("This is " + planet_name + " ,  mass is: " + planet_mass);
                 break;
 
             case "Saturn":
                 planet_mass = orbitManager.massSaturn;
-                Debug.Log("This is " + planet_name + " ,  mass is: " + planet_mass);
+                //        Debug.Log("This is " + planet_name + " ,  mass is: " + planet_mass);
                 break;
 
 
