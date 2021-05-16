@@ -46,7 +46,7 @@ public class ElementTouch : MonoBehaviour
         if (hitOutside)
         {
             Debug.Log("Hit " + hitInfoOutSide.transform.gameObject.name);
-            if (hitInfoOutSide.transform.gameObject.tag == "Element")
+            if (hitInfoOutSide.transform.gameObject)
             {
                 textInfo.SetActive(true);
                 inventory.ElementInfo(hitInfoOutSide.transform.gameObject.name);

@@ -14,9 +14,7 @@ public class ChangeLevel : MonoBehaviour
     public Material[] sky;
     public bool forward;
     public bool backward;
-
-    
-
+    public GameObject naveCam;
 
     private void Update()
     {
@@ -44,6 +42,7 @@ public class ChangeLevel : MonoBehaviour
         forward = false;
         backward = false;
         changeLVL = false;
+        
     }
 
     //primer evento en animacion descativa los planetas
@@ -59,6 +58,7 @@ public class ChangeLevel : MonoBehaviour
     //Comparacion de variables, adicion de estas para cambios de escena con planetas diferentes.
     public void EndJourney()
     {
+        naveCam.GetComponent<Animator>().Play("landing");
         #region forward
         if (lvl == 0 && forward)
         {

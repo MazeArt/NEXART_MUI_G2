@@ -125,8 +125,8 @@ public class Inventory : MonoBehaviour
         Debug.Log("Nombre " + elementAdd.title);
         nameText.text = elementAdd.title;
         descriptionText.text = elementAdd.description;        
-        massText.text = "Masa: " + elementAdd.ElementStats["Masa"].ToString();        
-        gravityText.text =  "Gravidedad: " +  elementAdd.ElementStats["Gravedad"].ToString() + "m/s2";
+        massText.text = "Masa: " + elementAdd.ElementStats["Masa"].ToString() + " x 10^23 kg ";        
+        gravityText.text =  "Gravedad: " +  elementAdd.ElementStats["Gravedad"].ToString() + " m/s2";
     }
 
     #endregion
