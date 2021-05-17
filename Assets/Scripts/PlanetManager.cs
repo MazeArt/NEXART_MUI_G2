@@ -15,24 +15,25 @@ public class PlanetManager : MonoBehaviour
     public GameObject Sun;
 
     public PlanetPropertiesDict planetDictionary;
+    public OrbitManager orbitManager;
     public string option;
     private string _prevValueOfOption;
     
     
-    //to move planets 
-    private Vector3 target;
-    private float speed = 100;
+    //to move planets
+
+    public Dictionary<GameObject, PlanetProperties> planetObjDict = new Dictionary<GameObject, PlanetProperties>();
 
     void Start()
     {
 
-        // string option = "opt2";
-
-        //  earthOptions = new PlanetOptions("opt1", new PlanetProperties(111, 222, 1, 1));
-        //   Debug.Log("test class opt1 earth  " + this.JupiterOptions["opt1"].planetMass);
+        option = orbitManager.dropdOption;
+        //option = selectedOption.ToString();
         _prevValueOfOption = option;
-        option = selectedOption.ToString();
-        Debug.Log("OPTION ENUM ::  " + option);
+
+        //build planet dictionary:
+        buildPlanetDictionary(option);
+
 
         updateAllPlanets();
 
@@ -40,46 +41,60 @@ public class PlanetManager : MonoBehaviour
 
      void Update()
     {
-        option = selectedOption.ToString();
+        option = orbitManager.dropdOption;
        
         if(_prevValueOfOption != option)
         {
             _prevValueOfOption = option;
 
-            //float currentz=Jupiter.GetComponent<Transform>().position.z;
-            
-            float xtarget = planetDictionary.JupiterOptions[option].planetxAxis;
-            float movingx = Jupiter.GetComponent<OrbitMotion>().orbitPath.xAxis;
-            while (movingx < xtarget)
+            buildPlanetDictionary(option);
+
+            // FOR EACH  planet in planetList; 
+            foreach (var planet in planetObjDict.Keys)
             {
-                Debug.Log("moving , target ::  " + movingx + " " + xtarget);
+                float xtarget;
+                float movingx;
 
-                //Jupiter.GetComponent<OrbitMotion>().orbitPath.xAxis += 1; 
+                
+                if (planet != Sun)
+                {
+                    //AXIS change smooth:
+                    xtarget = planetObjDict[planet].planetxAxis;
+                    movingx = planet.GetComponent<OrbitMotion>().orbitPath.xAxis;
+                    StartCoroutine(movePlanet(planet, movingx, xtarget,3,"xAxis"));
+                }
+
+                //SCALE change smooth:
+                xtarget = planetObjDict[planet].planetScale;
+                movingx = planet.GetComponent<Transform>().localScale.x;
+                StartCoroutine(movePlanet(planet, movingx, xtarget, 3,"Scale"));
+
             }
-            
-            //Jupiter.GetComponent<OrbitMotion>().orbitPath.xAxis = ;
-            
-            
-            //target = new Vector3(-1f * planetDictionary.JupiterOptions[option].planetxAxis, 0, currentz);
-            //transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * speed);
-
-           // updateAllPlanets();
+                //Move Main Camera
+                StartCoroutine(moveCamera());
 
         }
     }
 
     public void changePlanetProperties(GameObject targetPlanet, Dictionary<string, PlanetProperties> planetOption, string opt)
    {
-       targetPlanet.GetComponent<Rigidbody>().mass = planetOption[opt].planetMass;
-       targetPlanet.GetComponent<OrbitMotion>().orbitPath.xAxis = planetOption[opt].planetxAxis;
+        if (targetPlanet != Sun)
+        {
+            targetPlanet.GetComponent<Rigidbody>().mass = planetOption[opt].planetMass;
+            targetPlanet.GetComponent<OrbitMotion>().orbitPath.xAxis = planetOption[opt].planetxAxis;
+
+            float scaleValue = planetOption[opt].planetScale;
+            targetPlanet.GetComponent<Transform>().localScale = new Vector3(scaleValue, scaleValue, scaleValue);
+
+            targetPlanet.GetComponent<OrbitMotion>().OrbitPeriodRelativeToEarth = planetOption[opt].planetorbitPeriod;
+        }else
+        {
+            //else Sun -> only mass and scale needs to be changed
+            targetPlanet.GetComponent<Rigidbody>().mass = planetOption[opt].planetMass;
+            float scaleValue = planetOption[opt].planetScale;
+            targetPlanet.GetComponent<Transform>().localScale = new Vector3(scaleValue, scaleValue, scaleValue);
+        }
         
-       float scaleValue = planetOption[opt].planetScale;
-       targetPlanet.GetComponent<Transform>().localScale = new Vector3(scaleValue, scaleValue, scaleValue);
-       
-       targetPlanet.GetComponent<OrbitMotion>().OrbitPeriodRelativeToEarth = planetOption[opt].planetorbitPeriod;
-
-        Debug.Log(targetPlanet + " SHOW MEE  " + planetOption[opt].planetorbitPeriod);
-
 
     }
 
@@ -91,7 +106,98 @@ public class PlanetManager : MonoBehaviour
         changePlanetProperties(Mars, planetDictionary.MarsOptions, option);
         changePlanetProperties(Jupiter, planetDictionary.JupiterOptions, option);
         changePlanetProperties(Saturn, planetDictionary.SaturnOptions, option);
-        //Debug.Log(" hasupdateall planets SUCESSSSSS: ");
+
+        changePlanetProperties(Sun, planetDictionary.SunOptions, option);
+        
+    }
+
+
+    void buildPlanetDictionary(string option)
+    {
+        Debug.Log("Building Planets  Properties Dictionaries at option: " + option);
+        planetObjDict[Earth] = planetDictionary.EarthOptions[option];
+        planetObjDict[Mars] = planetDictionary.MarsOptions[option];
+        planetObjDict[Venus] = planetDictionary.VenusOptions[option];
+        planetObjDict[Jupiter] = planetDictionary.JupiterOptions[option];
+        planetObjDict[Saturn] = planetDictionary.SaturnOptions[option];
+        planetObjDict[Sun] = planetDictionary.SunOptions[option];
+    }
+
+    IEnumerator movePlanet(GameObject planet, float currentValue,float targetValue, int seconds, string param_to_change)
+    {
+        float delta = (targetValue - currentValue);
+        float speed = Mathf.Abs(delta) / seconds;
+        int direction = 1;
+        float valueChange;
+        Debug.LogFormat("moving from current {0} to target {1} at speed {2}",currentValue, targetValue,speed);
+
+        if (delta < 1) //if delta is negative, invert values
+        {
+            targetValue = -targetValue;
+            currentValue = -currentValue;
+            direction = -1;
+            
+        }
+
+        while (currentValue < targetValue)
+        {
+            Debug.LogFormat("evaluating current {0} vs target {1}::  ", currentValue, targetValue);
+
+            
+            float timeElapsed = 0f;
+            float startValue = currentValue;
+
+            while (timeElapsed < seconds)
+            {
+             
+                float t = timeElapsed / seconds;
+                //t = t * t * (3f - 2f * t);
+
+                currentValue = Mathf.Lerp(startValue, targetValue, Mathf.SmoothStep(0.0f, 1.0f, t));
+           
+                //Debug.LogFormat("increasing LERPING now:: {0}  {1} seconds" ,currentValue, timeElapsed);
+
+                valueChange = currentValue * direction;
+
+                //planet.GetComponent<OrbitMotion>().orbitPath.xAxis = valueChange;
+                ChangeComponent(param_to_change, valueChange);
+
+                timeElapsed = 0.1f + timeElapsed; //Time.deltaTime;
+                //Debug.LogFormat("increasing time {0}  {1} seconds", timeElapsed, Time.deltaTime );
+                yield return null;
+            }
+            currentValue = targetValue;
+
+        }
+
+        void ChangeComponent(string param_to_change, float valueChange)
+        {
+            switch (param_to_change)
+            {
+                case "xAxis":
+                    planet.GetComponent<OrbitMotion>().orbitPath.xAxis = valueChange;
+                    break;
+
+                case "Scale":
+                    Debug.Log("Changing scale to" + targetValue);
+                    planet.GetComponent<Transform>().localScale = new Vector3(valueChange, valueChange, valueChange);
+                    break;
+            }
+
+
+        }
+    }
+
+    IEnumerator moveCamera()
+    {
+        float currentCameraPos=GameObject.Find("Main Camera").GetComponent<Transform>().position.x;
+        float newCameraPos = -200f + Saturn.GetComponent<OrbitMotion>().orbitPath.xAxis;
+
+        Vector3 tP = GameObject.Find("Main Camera").transform.position;
+        tP.x = newCameraPos;
+        Debug.Log("Moving Camera to " + newCameraPos);
+
+        yield return null; 
     }
 }
 

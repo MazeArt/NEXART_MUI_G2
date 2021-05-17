@@ -897,15 +897,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5945289451100835115, guid: c8a604e6c37bdef4aa1dab89be008111, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.12364
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 5945289451100835115, guid: c8a604e6c37bdef4aa1dab89be008111, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.12364
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 5945289451100835115, guid: c8a604e6c37bdef4aa1dab89be008111, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.12364
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 5945289451100835115, guid: c8a604e6c37bdef4aa1dab89be008111, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1061,6 +1061,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 810470838266484680, guid: 5d6a668f755af8f46a01b394a59612e7, type: 3}
   m_PrefabInstance: {fileID: 650444854}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &650444860
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650444855}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 14
+  m_CollisionDetection: 0
 --- !u!1 &659464912
 GameObject:
   m_ObjectHideFlags: 0
@@ -1386,7 +1402,7 @@ GameObject:
   - component: {fileID: 792364054}
   - component: {fileID: 792364053}
   m_Layer: 0
-  m_Name: OrbitSlideManager
+  m_Name: OrbitManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1404,26 +1420,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a562f206620d2dc429ab0978e64c7079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planet: {fileID: 1244347294}
+  selectedOption: 0
+  dropdOption: 
+  _prevOption: 
   orbit_fastfwd: 1.2
   earthOrbitPeriodAbs: 300
   orbitActive: 1
+  massOfPlanets:
+    massEarth: 0
+    massSun: 0
+    massVenus: 0
+    massMars: 0
+    massJupiter: 0
+    massSaturn: 0
+  distOfPlanets:
+    distEarth: 0
+    distSun: 0
+    distVenus: 0
+    distMars: 0
+    distJupiter: 0
+    distSaturn: 0
+  sizeOfPlanets:
+    sizeEarth: 1
+    sizeSun: 100
+    sizeVenus: 1
+    sizeMars: 0.4000000059604645
+    sizeJupiter: 10
+    sizeSaturn: 10
   orbitPeriodMercury: 0.5
   orbitPeriodVenus: 0.8
   orbitPeriodMars: 1.88
   orbitPeriodJupipter: 11.86
   orbitPeriodSaturn: 29.46
-  massEarth: 200
-  massMars: 160
-  massJupiter: 5000
-  massSaturn: 8000
-  siezeOfPlanets:
-    sizeEarth: 1
-    sizeSun: 100
-    sizeVenus: 1
-    sizeMars: 0.4
-    sizeJupiter: 10
-    sizeSaturn: 10
 --- !u!4 &792364054
 Transform:
   m_ObjectHideFlags: 0
@@ -1670,6 +1698,7 @@ MonoBehaviour:
   turnOnObj:
   - {fileID: 2063121260}
   - {fileID: 1084138770}
+  - {fileID: 400045902}
 --- !u!1 &1003503097
 GameObject:
   m_ObjectHideFlags: 0
@@ -2185,6 +2214,7 @@ MonoBehaviour:
   Saturn: {fileID: 2113837123}
   Sun: {fileID: 650444855}
   planetDictionary: {fileID: 1783057972}
+  orbitManager: {fileID: 792364053}
   option: 
 --- !u!114 &1244347295
 MonoBehaviour:
