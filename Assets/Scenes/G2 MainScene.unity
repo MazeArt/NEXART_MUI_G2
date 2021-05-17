@@ -1423,7 +1423,7 @@ MonoBehaviour:
   selectedOption: 0
   dropdOption: 
   _prevOption: 
-  orbit_fastfwd: 1.2
+  orbit_fastfwd: 9.7
   earthOrbitPeriodAbs: 300
   orbitActive: 1
   massOfPlanets:
@@ -2206,7 +2206,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c01ba579e1cd0d4caf905d042e20a25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedOption: 0
   Earth: {fileID: 135352709}
   Venus: {fileID: 254286293}
   Mars: {fileID: 1208045352}
@@ -2215,7 +2214,6 @@ MonoBehaviour:
   Sun: {fileID: 650444855}
   planetDictionary: {fileID: 1783057972}
   orbitManager: {fileID: 792364053}
-  option: 
 --- !u!114 &1244347295
 MonoBehaviour:
   m_ObjectHideFlags: 0

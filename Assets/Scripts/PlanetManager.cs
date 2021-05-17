@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class PlanetManager : MonoBehaviour
 {
-    public enum dropoptions { opt1, opt2 };
-    public dropoptions selectedOption;
+
 
     public GameObject Earth;
     public GameObject Venus;
@@ -16,7 +15,7 @@ public class PlanetManager : MonoBehaviour
 
     public PlanetPropertiesDict planetDictionary;
     public OrbitManager orbitManager;
-    public string option;
+    private string option;
     private string _prevValueOfOption;
     
     
