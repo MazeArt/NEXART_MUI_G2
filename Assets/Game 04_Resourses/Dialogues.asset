@@ -15,12 +15,12 @@ MonoBehaviour:
   dialogueScripts:
   - dialogueName: InitialExplanation
     dialogueScript:
-    - Frase 1
-    - Frase 2
-    - Frase 3
+    - Hola!
+    - "\xBFMe ayudas a arreglar mi computadora?"
+    - "\xA1Elige un tema y responde correctamente para darle energ\xEDa!"
   - dialogueName: FinalExplanation
     dialogueScript:
-    - Te equivocaste en algunas preguntas
+    - Revisa si te equivocaste en algunas preguntas
   - dialogueName: AskIfContinue
     dialogueScript:
     - Te queda tiempo!

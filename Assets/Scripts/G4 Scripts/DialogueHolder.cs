@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DialogueHolder : MonoBehaviour
 {
-    public string myDialogueIs;
+    [HideInInspector] public string myDialogueIs;
     public Dialogue onScreenDialogue;
     public bool dialoguePlayed;
 

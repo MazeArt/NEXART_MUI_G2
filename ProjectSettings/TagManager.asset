@@ -7,6 +7,7 @@ TagManager:
   - meteorito
   - DragParent
   - DialogueHolder
+  - DontPlaySound
   layers:
   - Default
   - TransparentFX

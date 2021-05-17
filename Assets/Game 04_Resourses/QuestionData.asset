@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: QuestionData
   m_EditorClassIdentifier: Assembly-CSharp::NewBehaviourScript
   questions:
-  - questionTheme: 0
+  - questionTheme: 2
     questionInfo: Question Image
     questionType: 1
     questionImg: {fileID: 21300000, guid: 0b077d3b4ced1a9419e4ed7c3397acee, type: 3}
@@ -28,26 +28,29 @@ MonoBehaviour:
     correctAnswer: e
     answerExplanation: e is ok
     points: 20
-  - questionTheme: 1
-    questionInfo: Order question
+  - questionTheme: 0
+    questionInfo: "Cuando miramos al cielo podemos ver estrellas con distintos niveles
+      de brillo, \xBFcu\xE1l es el orden de estrellas desde la menos brillante a
+      la m\xE1s brillante que podemos observar en el hemisferio sur?"
     questionType: 4
     questionImg: {fileID: 0}
     questionAudioClip: {fileID: 0}
     questionVideoClip: {fileID: 0}
     options:
-    - Gato maullando
-    - Gato sentado
-    - Muchos Gatos
-    - Gato jugando
+    - Arcturus
+    - Alfa Centauri
+    - Canopus
+    - Sirius
     optionsOrderSprites:
-    - {fileID: 21300000, guid: e24faaaf2d50fdb4d9dd3ef325517f3d, type: 3}
-    - {fileID: 21300000, guid: e1a4e87188f76cd47842c9546e797c76, type: 3}
-    - {fileID: 21300000, guid: 0b077d3b4ced1a9419e4ed7c3397acee, type: 3}
-    - {fileID: 21300000, guid: 229ecf7254630194ea5f002cb564fe87, type: 3}
-    correctAnswer: Gato sentado, Gato maullando, Muchos Gatos, Gato jugando
-    answerExplanation: order 3 is ok
+    - {fileID: 21300000, guid: dfd1ffae4cf36d049a606e0cbde964a8, type: 3}
+    - {fileID: 21300000, guid: 049ba137d81c5a04abe4177456f435e6, type: 3}
+    - {fileID: 21300000, guid: d3c8aa2054f4bd345911d9ae4bfc068f, type: 3}
+    - {fileID: 21300000, guid: 55cd8cb30430c8e4581477e9d78e6170, type: 3}
+    correctAnswer: Alfa Centauri, Arcturus, Canopus, Sirius
+    answerExplanation: "Sirius es la estrella m\xE1s brillante de nuestro firmamento,
+      seguida por Canopus, Arcturus y Alfa Centauri"
     points: 30
-  - questionTheme: 0
+  - questionTheme: 2
     questionInfo: Question Video
     questionType: 2
     questionImg: {fileID: 0}
@@ -62,7 +65,7 @@ MonoBehaviour:
     correctAnswer: video 3
     answerExplanation: video 3 is ok
     points: 30
-  - questionTheme: 0
+  - questionTheme: 2
     questionInfo: Question Audio
     questionType: 3
     questionImg: {fileID: 0}
@@ -85,9 +88,9 @@ MonoBehaviour:
     questionAudioClip: {fileID: 0}
     questionVideoClip: {fileID: 0}
     options:
+    - "Hay m\xE1s estrellas que personas en la Tierra"
     - "Hay m\xE1s estrellas que granos de arena de todas las playas de la Tierra"
     - "Hay m\xE1s estrellas que todo el dinero de la Tierra"
-    - "Hay m\xE1s estrellas que personas en la Tierra"
     - "Hay m\xE1s estrellas que jugadores de Fortnite"
     optionsOrderSprites: []
     correctAnswer: "Hay m\xE1s estrellas que granos de arena de todas las playas
@@ -96,25 +99,26 @@ MonoBehaviour:
       de la Tierra"
     points: 10
   - questionTheme: 1
-    questionInfo: Question Order 2
+    questionInfo: "Ordena de menor a mayor los planetas seg\xFAn su masa."
     questionType: 4
     questionImg: {fileID: 0}
     questionAudioClip: {fileID: 0}
     questionVideoClip: {fileID: 0}
     options:
-    - order 4
-    - order 1
-    - order 2
-    - order 3
+    - "J\xFApiter"
+    - Urano
+    - Saturno
+    - Marte
     optionsOrderSprites:
-    - {fileID: 21300000, guid: e24faaaf2d50fdb4d9dd3ef325517f3d, type: 3}
-    - {fileID: 21300000, guid: 0b077d3b4ced1a9419e4ed7c3397acee, type: 3}
-    - {fileID: 21300000, guid: e1a4e87188f76cd47842c9546e797c76, type: 3}
-    - {fileID: 21300000, guid: 229ecf7254630194ea5f002cb564fe87, type: 3}
-    correctAnswer: order 1, order 2, order 3, order 4
-    answerExplanation: order 3 is ok
+    - {fileID: 21300000, guid: 52cc480c4ec939d46920bd2681dda96b, type: 3}
+    - {fileID: 21300000, guid: ed873d2056579674990ccd00b1907861, type: 3}
+    - {fileID: 21300000, guid: 6c89f4f24556f384a881ada5d17bc6c2, type: 3}
+    - {fileID: 21300000, guid: 10784a4afc3f5a441ae2b6126c6e1c0a, type: 3}
+    correctAnswer: "Marte, Urano, Saturno, J\xFApiter"
+    answerExplanation: "En comparaci\xF3n a la Tierra Marte tiene 0,11 veces su masa,
+      Urano 14,6 veces, Saturno 95,1 veces y Saturno 95,1 veces."
     points: 30
-  - questionTheme: 0
+  - questionTheme: 1
     questionInfo: "El Sol no es la estrella m\xE1s grande que conocemos, pero es
       bastante grande. \xBFCu\xE1ntas veces cabe la Tierra en el Sol?"
     questionType: 0
@@ -130,7 +134,7 @@ MonoBehaviour:
     correctAnswer: 1,3 millones de veces
     answerExplanation: 1,3 millones de veces
     points: 10
-  - questionTheme: 0
+  - questionTheme: 1
     questionInfo: "En nuestro sistema solar conocemos 8 planetas, 9 planetas enanos,
       181 lunas y diversos otros objetos. \xBFQu\xE9 porcentaje de la masa de nuestro
       sistema solar ocupa el sol?"
@@ -164,7 +168,7 @@ MonoBehaviour:
     answerExplanation: Muestran su pasado, ya que la luz tiene que recorrer mucha
       distancia
     points: 10
-  - questionTheme: 0
+  - questionTheme: 1
     questionInfo: "\xBFCu\xE1l es la monta\xF1a m\xE1s grande que hemos observado?"
     questionType: 0
     questionImg: {fileID: 0}
@@ -195,7 +199,7 @@ MonoBehaviour:
     correctAnswer: Sirius
     answerExplanation: Sirius
     points: 10
-  - questionTheme: 0
+  - questionTheme: 1
     questionInfo: "\xBFCu\xE1l es el planeta que tiene mayor masa, en relaci\xF3n
       a la Tierra?"
     questionType: 0
@@ -211,7 +215,7 @@ MonoBehaviour:
     correctAnswer: "J\xFApiter"
     answerExplanation: "J\xFApiter"
     points: 10
-  - questionTheme: 0
+  - questionTheme: 1
     questionInfo: "\xBFQu\xE9 caracter\xEDstica de Venus es falsa?"
     questionType: 0
     questionImg: {fileID: 0}
@@ -219,10 +223,10 @@ MonoBehaviour:
     questionVideoClip: {fileID: 0}
     options:
     - "Su atm\xF3sfera es la m\xE1s caliente del sistema solar"
+    - "Gira al rev\xE9s que los otros planetas del sistema solar"
     - Tiene una luna de hierro
     - "Su d\xEDa (giro en su eje) es m\xE1s largo que su a\xF1o (giro alrededor del
       Sol)"
-    - "Gira al rev\xE9s que los otros planetas del sistema solar"
     optionsOrderSprites: []
     correctAnswer: Tiene una luna de hierro
     answerExplanation: Tiene una luna de hierro

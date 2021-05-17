@@ -1,0 +1,3 @@
+Temas de preguntas:
+0 = Estrellas
+1 = Sistema Solar

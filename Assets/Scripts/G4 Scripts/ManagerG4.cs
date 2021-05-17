@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ManagerG4 : MonoBehaviour
 {
@@ -9,29 +10,29 @@ public class ManagerG4 : MonoBehaviour
     [SerializeField] private TriviaUI triviaUI;
     [SerializeField] private QuizDataScriptable quizData;
     private List<Question> _questions;
-    public GameObject initialCanvas, themesCanvas, triviaCanvas, finalCanvas;
+    public GameObject initialCanvas, themesCanvas, triviaCanvas, finalCanvas, settingsCanvas, settingsTriviaCanvas;
     public int timeLimit;
     public int questionsInGameCount;
     private int selectedTheme;
     public Text timer;
     [SerializeField] private Button finishTheGameBtn;
+    public Text puntaje;
+    public Text sliderPercentage;
 
-    public float requirementPercentage;
+    [HideInInspector] public float requirementPercentage;
     public GameObject wrongAnsweredPrefab;
 
     private int timeToWaitForHide = 1;
     private Question selectedQuestionToAnswer;
 
-    [Header("In game lists, no editar desde inspector ya que se llenan por código")]
-
-    public float maxPoints;
-    public float myPoints;
-    public Question selectedQuestionFromList;
-    public List<Button> notUsedThemes;
-    public List<Question> _selectedQuestionsList; 
-    public List<Question> _wrongAnswered;
-    public List<Question> temp = null;
-    public List<int> usedInt = null;
+    [HideInInspector] public float maxPoints;
+    [HideInInspector] public float myPoints;
+    [HideInInspector] public Question selectedQuestionFromList;
+    [HideInInspector] public List<Button> notUsedThemes;
+    [HideInInspector] public List<Question> _selectedQuestionsList;
+    [HideInInspector] public List<Question> _wrongAnswered;
+    [HideInInspector] public List<Question> temp = null;
+    [HideInInspector] public List<int> usedInt = null;
 
     void Start()
     {
@@ -49,18 +50,50 @@ public class ManagerG4 : MonoBehaviour
         triviaCanvas.SetActive(false);
         themesCanvas.SetActive(false);
         finalCanvas.SetActive(false);
+        initialCanvas.SetActive(false);
+        settingsCanvas.SetActive(false);
 
-        GameIntroduction();
+        //GameIntroduction();
+        //Se inicia el contador
+        StopAllCoroutines();
+        StartCoroutine(TimerTriviaAndDeadEnd(timeLimit, timeToWaitForHide));
+    }
+
+    public void SettingsPercentage(float porcentaje)
+    {
+        float porc = Mathf.Round(porcentaje * 100);
+        requirementPercentage = porcentaje;
+        
+        sliderPercentage.text = porc.ToString() + '%';
+    }
+    public void SettingsQuestionsCount(string count)
+    {
+       int.TryParse(count, out questionsInGameCount);
+    }
+    public void SettingsTimeLimit(string count)
+    {
+        int.TryParse(count, out timeLimit);
+    }
+    public void SettingsActiveOrNotSettings()
+    {
+        if (settingsCanvas.active == true)
+        {
+            settingsCanvas.SetActive(false);
+        }
+        else
+        {
+            settingsCanvas.SetActive(true);
+        }
     }
     public void GameIntroduction()
     {
         //El profesor introduce y expone el objetivo
         //(escena video)
         //se presiona botón del canvas para continuar
+        settingsTriviaCanvas.SetActive(false);
         initialCanvas.SetActive(true);
         dialogueManager.activeHolder = initialCanvas.GetComponentInChildren<DialogueHolder>();
-        dialogueManager.ResetDialogueManager();
-
+        dialogueManager.ResetDialogueManager("InitialExplanation");
     }
     public void GameIterationStart()
     {
@@ -104,8 +137,7 @@ public class ManagerG4 : MonoBehaviour
     /// <param name="theme">Se debe configurar por inspector el numero del tema (del 0 a n-1) cuando n = numero de temas</param>
     public void SelectTheme(int theme)
     {
-        //Se reinicia el contador cada vez que comienza un nuevo tema
-        StartCoroutine(TimerTriviaAndDeadEnd(timeLimit, timeToWaitForHide));
+        triviaCanvas.SetActive(true);
         selectedTheme = theme;
         temp.Clear();
         usedInt.Clear();
@@ -125,15 +157,23 @@ public class ManagerG4 : MonoBehaviour
     }
     void SelectQuestionsFromList(List<Question> list)
     {
-        for (int i = 0; i < questionsInGameCount; i++)
+        if (list.Count >= questionsInGameCount)
         {
-            int rnd = Random.Range(0, list.Count);
-            RecCallSelectQuestionsFromList(list, rnd);
-        }
-        foreach (var item in usedInt)
-        {
-                Debug.Log(item);
+            for (int i = 0; i < questionsInGameCount; i++)
+            {
+                int rnd = Random.Range(0, list.Count);
+                RecCallSelectQuestionsFromList(list, rnd);
             }
+        }
+        else
+        {
+            for (int i = 0; i < list.Count; i++)
+            {
+                int rnd = Random.Range(0, list.Count);
+                RecCallSelectQuestionsFromList(list, rnd);
+            }
+        }
+
     }
     void RecCallSelectQuestionsFromList(List<Question> list, int rnd)
     {
@@ -194,7 +234,7 @@ public class ManagerG4 : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
         }
-        triviaCanvas.SetActive(true);
+        
         for (int i = timeLimit; i > 0; i--)
         {
             timer.text = i.ToString();
@@ -227,8 +267,8 @@ public class ManagerG4 : MonoBehaviour
             triviaCanvas.SetActive(false);
             initialCanvas.SetActive(true);
             dialogueManager.activeHolder = initialCanvas.GetComponentInChildren<DialogueHolder>();
-            dialogueManager.activeHolder.GetComponentInChildren<Text>().text = "";
-            dialogueManager.ResetDialogueManager();
+            dialogueManager.activeHolder.dialoguePlayed = false;
+            dialogueManager.ResetDialogueManager("AskIfContinue");
             finishTheGameBtn.transform.gameObject.SetActive(true);
         }
         else
@@ -245,9 +285,11 @@ public class ManagerG4 : MonoBehaviour
         themesCanvas.SetActive(false);
         finalCanvas.SetActive(true);
         dialogueManager.activeHolder = finalCanvas.GetComponentInChildren<DialogueHolder>();
+        dialogueManager.ResetDialogueManager("FinalExplanation");
+
         Debug.Log("THE END");
-        Debug.Log(myPoints + "/" + maxPoints);
-        if (myPoints / (maxPoints * (requirementPercentage / 100)) >= 1)
+        puntaje.text = myPoints + "/" + maxPoints;
+        if (myPoints / (maxPoints * (requirementPercentage)) >= 1)
         {
             //Animacion de victoria
             if (myPoints == maxPoints)
@@ -257,9 +299,14 @@ public class ManagerG4 : MonoBehaviour
         }
         else
         {
+
             //animacion de derrota
         }
             GetAndShowWrongAnswered();
+    }
+    public void ReStartScene()
+    {
+        SceneManager.LoadScene("G4 MainScene");
     }
     public void Jackpot()
     {
