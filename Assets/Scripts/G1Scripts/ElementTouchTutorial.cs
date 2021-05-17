@@ -7,7 +7,8 @@ public class ElementTouchTutorial : MonoBehaviour
     public Canvas myCanvas;
     public TutorialTravel ttravel;
     private bool firstStep;
-    public GameObject galaxyKey;
+    
+    public GameObject naveCam;
 
     void Update()
     {
@@ -37,7 +38,11 @@ public class ElementTouchTutorial : MonoBehaviour
                 {
                     ttravel.tutorialPart = 1;
                     firstStep = true;
-                    galaxyKey.SetActive(true);
+                    ;
+                    ttravel.warp.GetComponent<Animator>().Play("Warpdrive__Sequence");
+                    ttravel.starendtuto = true;
+                    
+
                 }
             }
             Debug.Log("Mouse is down");
