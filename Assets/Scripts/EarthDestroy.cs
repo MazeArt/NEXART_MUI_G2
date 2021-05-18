@@ -9,6 +9,9 @@ public class EarthDestroy : MonoBehaviour
     public int points;
     public UnityEvent destructionEarthEvent;
     public bool add;
+    public Rigidbody EarthRb;
+    public GameObject ImpactAnim;
+    public GameObject ZoomDestroy;
 
     private void Start()
     {
@@ -24,7 +27,9 @@ public class EarthDestroy : MonoBehaviour
         if (collision.gameObject.CompareTag("meteorito"))
         {
             destructionEarthEvent.Invoke();
-            Destroy(gameObject);
+            EarthRb.constraints = RigidbodyConstraints.FreezeAll;
+            ImpactAnim.SetActive(true);
+            ZoomDestroy.SetActive(true);
             if (add)
             {
                 Puntaje.valorpuntaje++;

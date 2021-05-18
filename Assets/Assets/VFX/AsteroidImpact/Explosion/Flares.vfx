@@ -6447,7 +6447,11 @@ MonoBehaviour:
       slotIndex: 0
     - context: {fileID: 8926484042661617810}
       slotIndex: 0
-  eventName: destructionEarthEvent
+    - context: {fileID: 8926484042661619184}
+      slotIndex: 0
+    - context: {fileID: 8926484042661618697}
+      slotIndex: 0
+  eventName: OnStart
 --- !u!114 &8926484042661617483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6471,6 +6475,8 @@ MonoBehaviour:
   - {fileID: 8926484042661617482}
   - {fileID: 8926484042661616512}
   - {fileID: 8926484042661617810}
+  - {fileID: 8926484042661619184}
+  - {fileID: 8926484042661618697}
 --- !u!114 &8926484042661617810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13954,9 +13960,11 @@ MonoBehaviour:
   m_InputSlots: []
   m_OutputSlots: []
   m_Label: Torus Emiter
-  m_Data: {fileID: 8926484042661619438}
+  m_Data: {fileID: 8926484042661617483}
   m_InputFlowSlot:
-  - link: []
+  - link:
+    - context: {fileID: 8926484042661617482}
+      slotIndex: 0
   - link: []
   m_OutputFlowSlot:
   - link:
@@ -17528,9 +17536,11 @@ MonoBehaviour:
   m_InputSlots: []
   m_OutputSlots: []
   m_Label: Torus Emiter
-  m_Data: {fileID: 8926484042661619439}
+  m_Data: {fileID: 8926484042661617483}
   m_InputFlowSlot:
-  - link: []
+  - link:
+    - context: {fileID: 8926484042661617482}
+      slotIndex: 0
   - link: []
   m_OutputFlowSlot:
   - link:
@@ -20351,45 +20361,3 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
   m_Direction: 0
   m_LinkedSlots: []
---- !u!114 &8926484042661619438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f68759077adc0b143b6e1c101e82065e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UIIgnoredErrors: []
-  m_Parent: {fileID: 114350483966674976}
-  m_Children: []
-  m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 1
-  m_UISuperCollapsed: 0
-  title: 
-  m_Owners:
-  - {fileID: 8926484042661618697}
---- !u!114 &8926484042661619439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f68759077adc0b143b6e1c101e82065e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UIIgnoredErrors: []
-  m_Parent: {fileID: 114350483966674976}
-  m_Children: []
-  m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 1
-  m_UISuperCollapsed: 0
-  title: 
-  m_Owners:
-  - {fileID: 8926484042661619184}
