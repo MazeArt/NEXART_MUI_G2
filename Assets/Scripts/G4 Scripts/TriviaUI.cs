@@ -105,7 +105,7 @@ public class TriviaUI : MonoBehaviour
             optionsOrder[i].transform.SetParent(poolOptionTransform);
             optionsOrder[i].GetComponentInChildren<Text>().text = optionList[i];
             optionsOrder[i].name = optionList[i];
-            optionsOrder[i].GetComponent<Image>().sprite = actualQuestion.optionsOrderSprites[i];
+            optionsOrder[i].GetComponentInChildren<GuideItem>().gameObject.GetComponent<Image>().sprite = actualQuestion.optionsOrderSprites[i];
             optionsOrder[i].transform.position = optionsOrderInitialPosition[i];
         }
         confirmButtonOrder.image.color = normalColor;

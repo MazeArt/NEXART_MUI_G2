@@ -20,14 +20,14 @@ MonoBehaviour:
     questionAudioClip: {fileID: 0}
     questionVideoClip: {fileID: 0}
     options:
+    - e
+    - e
     - d
-    - e
     - f
-    - e
     optionsOrderSprites: []
     correctAnswer: e
     answerExplanation: e is ok
-    points: 20
+    points: 10
   - questionTheme: 0
     questionInfo: "Cuando miramos al cielo podemos ver estrellas con distintos niveles
       de brillo, \xBFcu\xE1l es el orden de estrellas desde la menos brillante a
@@ -37,19 +37,19 @@ MonoBehaviour:
     questionAudioClip: {fileID: 0}
     questionVideoClip: {fileID: 0}
     options:
+    - Sirius
+    - Canopus
     - Arcturus
     - Alfa Centauri
-    - Canopus
-    - Sirius
     optionsOrderSprites:
+    - {fileID: 21300000, guid: 55cd8cb30430c8e4581477e9d78e6170, type: 3}
+    - {fileID: 21300000, guid: d3c8aa2054f4bd345911d9ae4bfc068f, type: 3}
     - {fileID: 21300000, guid: dfd1ffae4cf36d049a606e0cbde964a8, type: 3}
     - {fileID: 21300000, guid: 049ba137d81c5a04abe4177456f435e6, type: 3}
-    - {fileID: 21300000, guid: d3c8aa2054f4bd345911d9ae4bfc068f, type: 3}
-    - {fileID: 21300000, guid: 55cd8cb30430c8e4581477e9d78e6170, type: 3}
     correctAnswer: Alfa Centauri, Arcturus, Canopus, Sirius
     answerExplanation: "Sirius es la estrella m\xE1s brillante de nuestro firmamento,
       seguida por Canopus, Arcturus y Alfa Centauri"
-    points: 30
+    points: 10
   - questionTheme: 2
     questionInfo: Question Video
     questionType: 2
@@ -64,7 +64,7 @@ MonoBehaviour:
     optionsOrderSprites: []
     correctAnswer: video 3
     answerExplanation: video 3 is ok
-    points: 30
+    points: 10
   - questionTheme: 2
     questionInfo: Question Audio
     questionType: 3
@@ -79,7 +79,7 @@ MonoBehaviour:
     optionsOrderSprites: []
     correctAnswer: audio 3
     answerExplanation: audio 3 is ok
-    points: 30
+    points: 10
   - questionTheme: 0
     questionInfo: "En el Universo hay muchas estrellas como nuestro Sol, \xBFqu\xE9
       comparaci\xF3n es la m\xE1s acertada?"
@@ -88,9 +88,9 @@ MonoBehaviour:
     questionAudioClip: {fileID: 0}
     questionVideoClip: {fileID: 0}
     options:
-    - "Hay m\xE1s estrellas que personas en la Tierra"
     - "Hay m\xE1s estrellas que granos de arena de todas las playas de la Tierra"
     - "Hay m\xE1s estrellas que todo el dinero de la Tierra"
+    - "Hay m\xE1s estrellas que personas en la Tierra"
     - "Hay m\xE1s estrellas que jugadores de Fortnite"
     optionsOrderSprites: []
     correctAnswer: "Hay m\xE1s estrellas que granos de arena de todas las playas
@@ -105,19 +105,19 @@ MonoBehaviour:
     questionAudioClip: {fileID: 0}
     questionVideoClip: {fileID: 0}
     options:
-    - "J\xFApiter"
     - Urano
-    - Saturno
+    - "J\xFApiter"
     - Marte
+    - Saturno
     optionsOrderSprites:
-    - {fileID: 21300000, guid: 52cc480c4ec939d46920bd2681dda96b, type: 3}
     - {fileID: 21300000, guid: ed873d2056579674990ccd00b1907861, type: 3}
-    - {fileID: 21300000, guid: 6c89f4f24556f384a881ada5d17bc6c2, type: 3}
+    - {fileID: 21300000, guid: 52cc480c4ec939d46920bd2681dda96b, type: 3}
     - {fileID: 21300000, guid: 10784a4afc3f5a441ae2b6126c6e1c0a, type: 3}
+    - {fileID: 21300000, guid: 6c89f4f24556f384a881ada5d17bc6c2, type: 3}
     correctAnswer: "Marte, Urano, Saturno, J\xFApiter"
     answerExplanation: "En comparaci\xF3n a la Tierra Marte tiene 0,11 veces su masa,
       Urano 14,6 veces, Saturno 95,1 veces y Saturno 95,1 veces."
-    points: 30
+    points: 10
   - questionTheme: 1
     questionInfo: "El Sol no es la estrella m\xE1s grande que conocemos, pero es
       bastante grande. \xBFCu\xE1ntas veces cabe la Tierra en el Sol?"
@@ -143,8 +143,8 @@ MonoBehaviour:
     questionAudioClip: {fileID: 0}
     questionVideoClip: {fileID: 0}
     options:
-    - 10%
     - 33,47%
+    - 10%
     - 83,24%
     - 99,86%
     optionsOrderSprites: []
@@ -159,10 +159,10 @@ MonoBehaviour:
     questionAudioClip: {fileID: 0}
     questionVideoClip: {fileID: 0}
     options:
-    - "Todas son m\xE1s fr\xEDas que nuestro Sol, por eso las vemos blancas"
     - Muestran su pasado, ya que la luz tiene que recorrer mucha distancia
-    - Todas son parte de nuestra galaxia
     - "Todas est\xE1n a la misma distancia"
+    - Todas son parte de nuestra galaxia
+    - "Todas son m\xE1s fr\xEDas que nuestro Sol, por eso las vemos blancas"
     optionsOrderSprites: []
     correctAnswer: Muestran su pasado, ya que la luz tiene que recorrer mucha distancia
     answerExplanation: Muestran su pasado, ya que la luz tiene que recorrer mucha
@@ -175,9 +175,9 @@ MonoBehaviour:
     questionAudioClip: {fileID: 0}
     questionVideoClip: {fileID: 0}
     options:
-    - Everest (Tierra)
-    - Mauna Kea (Tierra)
     - Olimpus Mons (Marte)
+    - Mauna Kea (Tierra)
+    - Everest (Tierra)
     - Skadi Mons (Venus)
     optionsOrderSprites: []
     correctAnswer: Olimpus Mons (Marte)
@@ -191,9 +191,9 @@ MonoBehaviour:
     questionAudioClip: {fileID: 0}
     questionVideoClip: {fileID: 0}
     options:
-    - Sirius
     - Arcturus
     - Sol
+    - Sirius
     - Canopus
     optionsOrderSprites: []
     correctAnswer: Sirius
@@ -207,10 +207,10 @@ MonoBehaviour:
     questionAudioClip: {fileID: 0}
     questionVideoClip: {fileID: 0}
     options:
-    - Marte
-    - Saturno
-    - Urano
     - "J\xFApiter"
+    - Saturno
+    - Marte
+    - Urano
     optionsOrderSprites: []
     correctAnswer: "J\xFApiter"
     answerExplanation: "J\xFApiter"
@@ -223,10 +223,10 @@ MonoBehaviour:
     questionVideoClip: {fileID: 0}
     options:
     - "Su atm\xF3sfera es la m\xE1s caliente del sistema solar"
-    - "Gira al rev\xE9s que los otros planetas del sistema solar"
-    - Tiene una luna de hierro
     - "Su d\xEDa (giro en su eje) es m\xE1s largo que su a\xF1o (giro alrededor del
       Sol)"
+    - "Gira al rev\xE9s que los otros planetas del sistema solar"
+    - Tiene una luna de hierro
     optionsOrderSprites: []
     correctAnswer: Tiene una luna de hierro
     answerExplanation: Tiene una luna de hierro
