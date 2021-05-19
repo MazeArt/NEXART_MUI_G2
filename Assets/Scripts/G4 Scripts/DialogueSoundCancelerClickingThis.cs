@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Detecting2D : MonoBehaviour, IPointerDownHandler
+public class DialogueSoundCancelerClickingThis : MonoBehaviour, IPointerDownHandler
 {
     DialogueManager dialogueManager;
 
@@ -22,10 +22,6 @@ public class Detecting2D : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
             Debug.Log("hi");
-        if (eventData.pointerCurrentRaycast.gameObject.tag == "DontPlaySound")
-        {
             dialogueManager.StopAllCoroutines();
-
-        }
     }
 }

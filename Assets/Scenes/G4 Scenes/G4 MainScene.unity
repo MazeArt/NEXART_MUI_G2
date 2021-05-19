@@ -4353,9 +4353,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialoguesData: {fileID: 11400000, guid: 3e648673648391948a449fb28b541bc9, type: 2}
   audioSource: {fileID: 663282825}
-  typingSpeed: 0.08
-  typingSound: {fileID: 8300000, guid: bb570d4ac6a8b3e4c816c183d6caa76d, type: 3}
   activeHolder: {fileID: 0}
+  typingSpeed: 0.08
+  typingSound: {fileID: 8300000, guid: 0426309986710e34888104ef441a30ab, type: 3}
 --- !u!82 &663282825
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4368,7 +4368,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.58
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4720,7 +4720,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 595.60535, y: -120.66}
+  m_AnchoredPosition: {x: 595.60547, y: -120.65991}
   m_SizeDelta: {x: 1191.2107, y: 241.32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &706077464
@@ -5487,7 +5487,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\xA1Comencemos!"
+  m_Text: "\xA1Jugar!"
 --- !u!222 &922232094
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6992,11 +6992,6 @@ MonoBehaviour:
   - {fileID: 1882726792}
   - {fileID: 1356953063}
   - {fileID: 403891946}
-  optionsOrderSprite:
-  - {fileID: 1669751679}
-  - {fileID: 291829059}
-  - {fileID: 359657985}
-  - {fileID: 1163790690}
   optionsOrderInitialPosition: []
   slotOptionsOrder:
   - {fileID: 80465634}
@@ -9945,7 +9940,7 @@ GameObject:
   - component: {fileID: 1942556921}
   m_Layer: 5
   m_Name: StartButton
-  m_TagString: DontPlaySound
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

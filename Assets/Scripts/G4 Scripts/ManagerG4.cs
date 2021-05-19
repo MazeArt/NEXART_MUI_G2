@@ -92,8 +92,7 @@ public class ManagerG4 : MonoBehaviour
         //se presiona botón del canvas para continuar
         settingsTriviaCanvas.SetActive(false);
         initialCanvas.SetActive(true);
-        dialogueManager.activeHolder = initialCanvas.GetComponentInChildren<DialogueHolder>();
-        dialogueManager.ResetDialogueManager("InitialExplanation");
+        dialogueManager.StartNewDialogueManager(initialCanvas.GetComponentInChildren<DialogueHolder>(), "InitialExplanation");
     }
     public void GameIterationStart()
     {
@@ -266,9 +265,7 @@ public class ManagerG4 : MonoBehaviour
         {
             triviaCanvas.SetActive(false);
             initialCanvas.SetActive(true);
-            dialogueManager.activeHolder = initialCanvas.GetComponentInChildren<DialogueHolder>();
-            dialogueManager.activeHolder.dialoguePlayed = false;
-            dialogueManager.ResetDialogueManager("AskIfContinue");
+            dialogueManager.StartNewDialogueManager(initialCanvas.GetComponentInChildren<DialogueHolder>(), "AskIfContinue");
             finishTheGameBtn.transform.gameObject.SetActive(true);
         }
         else
@@ -284,8 +281,7 @@ public class ManagerG4 : MonoBehaviour
         initialCanvas.SetActive(false);
         themesCanvas.SetActive(false);
         finalCanvas.SetActive(true);
-        dialogueManager.activeHolder = finalCanvas.GetComponentInChildren<DialogueHolder>();
-        dialogueManager.ResetDialogueManager("FinalExplanation");
+        dialogueManager.StartNewDialogueManager(finalCanvas.GetComponentInChildren<DialogueHolder>(), "FinalExplanation");
 
         Debug.Log("THE END");
         puntaje.text = myPoints + "/" + maxPoints;
