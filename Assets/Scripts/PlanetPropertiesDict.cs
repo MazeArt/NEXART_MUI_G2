@@ -21,7 +21,7 @@ public class PlanetPropertiesDict : MonoBehaviour
     {
         // Build OPT1 Options for all planets ( celestial bodies)
         //planetOptions["optx"] :                       mass,   xAxis, scale,   oribtalPeriod}
-        EarthOptions["opt1"] = new PlanetProperties     (200f,  151f,  0.12f,     1f);
+        EarthOptions["opt1"] = new PlanetProperties     (1000f,  151f,  0.12f,     1f);
         MercuryOptions["opt1"] = new PlanetProperties   (111f,  50f,   1f,           0.5f);
         VenusOptions["opt1"] = new PlanetProperties     (111f,  107f,  0.08f,  0.8f);
         MarsOptions["opt1"] = new PlanetProperties      (160f,  231f,  0.06f,  1.88f);

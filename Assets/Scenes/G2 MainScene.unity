@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &10686935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,13 +232,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 10686934}
-  m_LocalRotation: {x: -0.0077135265, y: 0.5123103, z: 0.004635727, w: 0.85875326}
-  m_LocalPosition: {x: -159.0664, y: -0.31269836, z: -10.955566}
+  m_LocalRotation: {x: 0.060128804, y: 0.5110764, z: -0.03583739, w: 0.8566803}
+  m_LocalPosition: {x: -159.992, y: 3.55, z: -9.393}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 19
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 8.028, y: 61.639, z: 0.003}
 --- !u!1 &128378515
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,7 +831,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6710299411790196235, guid: 122ed48cb86fbce42aa980b02dd55789, type: 3}
       propertyPath: m_Name
-      value: Sun(Glow)
+      value: Sun
       objectReference: {fileID: 0}
     - target: {fileID: 6710299411790196235, guid: 122ed48cb86fbce42aa980b02dd55789, type: 3}
       propertyPath: m_IsActive
@@ -990,6 +990,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6710299411790196235, guid: 122ed48cb86fbce42aa980b02dd55789, type: 3}
   m_PrefabInstance: {fileID: 351803548}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &420886990
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420886985}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &468874131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1545,8 +1561,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 135352713}
     m_Modifications:
     - target: {fileID: 4424230926104085331, guid: 1118f3883788d994baefb63a409fe4b5, type: 3}
-      propertyPath: m_Materials.Array.size
+      propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4424230926104085331, guid: 1118f3883788d994baefb63a409fe4b5, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4424230926104085331, guid: 1118f3883788d994baefb63a409fe4b5, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1579,6 +1599,10 @@ PrefabInstance:
     - target: {fileID: 6318317694067369492, guid: 1118f3883788d994baefb63a409fe4b5, type: 3}
       propertyPath: m_Name
       value: AsteroidImpactVFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 6318317694067369492, guid: 1118f3883788d994baefb63a409fe4b5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6318317694067369494, guid: 1118f3883788d994baefb63a409fe4b5, type: 3}
       propertyPath: m_RootOrder
