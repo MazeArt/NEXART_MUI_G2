@@ -34,7 +34,7 @@ public class PlanetManager : MonoBehaviour
         buildPlanetDictionary(option);
 
 
-        updateAllPlanets();
+        InitAllPlanets();
 
     }
 
@@ -60,13 +60,18 @@ public class PlanetManager : MonoBehaviour
                     //AXIS change smooth:
                     xtarget = planetObjDict[planet].planetxAxis;
                     movingx = planet.GetComponent<OrbitMotion>().orbitPath.xAxis;
-                    StartCoroutine(movePlanet(planet, movingx, xtarget,3,"xAxis"));
+                    StartCoroutine(SmoothPropertyChange(planet, movingx, xtarget,3,"xAxis"));
+
+                    //MASS change smooth:
+                    xtarget = planetObjDict[planet].planetMass;
+                    movingx = planet.GetComponent<Rigidbody>().mass;
+                    StartCoroutine(SmoothPropertyChange(planet, movingx, xtarget, 3, "Mass"));
                 }
 
                 //SCALE change smooth:
                 xtarget = planetObjDict[planet].planetScale;
                 movingx = planet.GetComponent<Transform>().localScale.x;
-                StartCoroutine(movePlanet(planet, movingx, xtarget, 3,"Scale"));
+                StartCoroutine(SmoothPropertyChange(planet, movingx, xtarget, 3,"Scale"));
 
             }
                 //Move Main Camera
@@ -75,11 +80,12 @@ public class PlanetManager : MonoBehaviour
         }
     }
 
-    public void changePlanetProperties(GameObject targetPlanet, Dictionary<string, PlanetProperties> planetOption, string opt)
+    public void InitPlanetProperties(GameObject targetPlanet, Dictionary<string, PlanetProperties> planetOption, string opt)
    {
         if (targetPlanet != Sun)
         {
             targetPlanet.GetComponent<Rigidbody>().mass = planetOption[opt].planetMass;
+   
             targetPlanet.GetComponent<OrbitMotion>().orbitPath.xAxis = planetOption[opt].planetxAxis;
 
             float scaleValue = planetOption[opt].planetScale;
@@ -97,16 +103,16 @@ public class PlanetManager : MonoBehaviour
 
     }
 
-    void updateAllPlanets()
+    void InitAllPlanets()
     {
-        changePlanetProperties(Earth, planetDictionary.EarthOptions, option);
+        InitPlanetProperties(Earth, planetDictionary.EarthOptions, option);
         //changePlanetProperties(Mercury, planetDictionary.MercuryOptions, "opt1");
-        changePlanetProperties(Venus, planetDictionary.VenusOptions, option);
-        changePlanetProperties(Mars, planetDictionary.MarsOptions, option);
-        changePlanetProperties(Jupiter, planetDictionary.JupiterOptions, option);
-        changePlanetProperties(Saturn, planetDictionary.SaturnOptions, option);
+        InitPlanetProperties(Venus, planetDictionary.VenusOptions, option);
+        InitPlanetProperties(Mars, planetDictionary.MarsOptions, option);
+        InitPlanetProperties(Jupiter, planetDictionary.JupiterOptions, option);
+        InitPlanetProperties(Saturn, planetDictionary.SaturnOptions, option);
 
-        changePlanetProperties(Sun, planetDictionary.SunOptions, option);
+        InitPlanetProperties(Sun, planetDictionary.SunOptions, option);
         
     }
 
@@ -122,7 +128,7 @@ public class PlanetManager : MonoBehaviour
         planetObjDict[Sun] = planetDictionary.SunOptions[option];
     }
 
-    IEnumerator movePlanet(GameObject planet, float currentValue,float targetValue, int seconds, string param_to_change)
+    IEnumerator SmoothPropertyChange(GameObject planet, float currentValue,float targetValue, int seconds, string param_to_change)
     {
         float delta = (targetValue - currentValue);
         float speed = Mathf.Abs(delta) / seconds;
@@ -180,6 +186,11 @@ public class PlanetManager : MonoBehaviour
                 case "Scale":
                     Debug.Log("Changing scale to" + targetValue);
                     planet.GetComponent<Transform>().localScale = new Vector3(valueChange, valueChange, valueChange);
+                    break;
+
+                case "Mass":
+                    Debug.Log("Changing scale to" + targetValue);
+                    planet.GetComponent<Rigidbody>().mass = valueChange;
                     break;
             }
 

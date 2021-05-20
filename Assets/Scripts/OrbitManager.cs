@@ -6,13 +6,14 @@ using System;
 
 public class OrbitManager : MonoBehaviour
 {
-   // public PlanetManager planetManager;
+    // public PlanetManager planetManager;
 
 
     //  public enum dropoptions { Opt1, Opt2, Opt3 };
     //  public dropoptions option;
+    public PlanetPropertiesDict planetPropertiesDict;
 
-    public enum dropoptions { opt1, opt2 };
+    public enum dropoptions { opt1,opt0, opt2 };
     [Header("Solar System Scale Options")]
     public dropoptions selectedOption;
 
@@ -61,22 +62,30 @@ public class OrbitManager : MonoBehaviour
     public class SizeVariableHolder
     {
         [Header("Size of Planet Relative to Earth (non-editable) ")]
-        public double sizeEarth = 1f;
-        public double sizeSun = 100f;
-        public double sizeVenus = 1f;
-        public double sizeMars = 0.4f;
-        public double sizeJupiter = 10f;
-        public double sizeSaturn = 10f;
+        public double sizeEarth;
+        public double sizeSun;
+        public double sizeVenus;
+        public double sizeMars ;
+        public double sizeJupiter;
+        public double sizeSaturn ;
     }
     [Space(10)]
     public SizeVariableHolder sizeOfPlanets = new SizeVariableHolder();
-                
-    [Header("Periods of Planets (non-editable)")]
-    public float orbitPeriodMercury ;
-    public float orbitPeriodVenus;
-    public float orbitPeriodMars ;
-    public float orbitPeriodJupipter ;
-    public float orbitPeriodSaturn ;
+
+    [Serializable]
+    public class periodVariableHolder
+    {
+        [Header("Periods of Planets (non-editable)")]
+        public float orbitPeriodMercury ;
+        public float orbitPeriodVenus;
+        public float orbitPeriodMars ;
+        public float orbitPeriodJupipter;
+        public float orbitPeriodSaturn ;
+
+    }
+    [Space(10)]
+    public periodVariableHolder periodsOfPlanets = new periodVariableHolder();
+
 
 
 
@@ -95,8 +104,9 @@ public class OrbitManager : MonoBehaviour
         dropdOption = selectedOption.ToString();
         if(_prevOption != dropdOption)
         {
-            getvalues();
+
             _prevOption = dropdOption;
+            getvalues();
 
         }
 
@@ -108,30 +118,33 @@ public class OrbitManager : MonoBehaviour
 
     void getvalues()
     {
-        orbitPeriodVenus = GameObject.Find("Venus").GetComponent<OrbitMotion>().OrbitPeriodRelativeToEarth;
-        orbitPeriodMars = GameObject.Find("Mars").GetComponent<OrbitMotion>().OrbitPeriodRelativeToEarth;
-        orbitPeriodJupipter = GameObject.Find("Jupiter").GetComponent<OrbitMotion>().OrbitPeriodRelativeToEarth;
-        orbitPeriodSaturn = GameObject.Find("Saturn").GetComponent<OrbitMotion>().OrbitPeriodRelativeToEarth;
+        massOfPlanets.massEarth =   planetPropertiesDict.EarthOptions[dropdOption].planetMass;
+        massOfPlanets.massSun =     planetPropertiesDict.SunOptions[dropdOption].planetMass;
+        massOfPlanets.massMars =    planetPropertiesDict.MarsOptions[dropdOption].planetMass;
+        massOfPlanets.massJupiter = planetPropertiesDict.JupiterOptions[dropdOption].planetMass;
+        massOfPlanets.massSaturn =  planetPropertiesDict.SaturnOptions[dropdOption].planetMass;
+
+        distOfPlanets.distEarth =   planetPropertiesDict.EarthOptions[dropdOption].planetxAxis / planetPropertiesDict.EarthOptions[dropdOption].planetxAxis; 
+        distOfPlanets.distVenus =   planetPropertiesDict.VenusOptions[dropdOption].planetxAxis   / planetPropertiesDict.EarthOptions[dropdOption].planetxAxis;
+        distOfPlanets.distMars =    planetPropertiesDict.MarsOptions[dropdOption].planetxAxis  / planetPropertiesDict.EarthOptions[dropdOption].planetxAxis;
+        distOfPlanets.distJupiter = planetPropertiesDict.JupiterOptions[dropdOption].planetxAxis/planetPropertiesDict.EarthOptions[dropdOption].planetxAxis; 
+        distOfPlanets.distSaturn =  planetPropertiesDict.SaturnOptions[dropdOption].planetxAxis/ planetPropertiesDict.EarthOptions[dropdOption].planetxAxis; 
+
+        sizeOfPlanets.sizeEarth =   planetPropertiesDict.EarthOptions[dropdOption].planetScale / planetPropertiesDict.EarthOptions[dropdOption].planetScale;
+        sizeOfPlanets.sizeSun =     planetPropertiesDict.SunOptions[dropdOption].planetScale / planetPropertiesDict.EarthOptions[dropdOption].planetScale;
+        sizeOfPlanets.sizeMars =    planetPropertiesDict.MarsOptions[dropdOption].planetScale  / planetPropertiesDict.EarthOptions[dropdOption].planetScale;
+        sizeOfPlanets.sizeVenus =   planetPropertiesDict.VenusOptions[dropdOption].planetScale/planetPropertiesDict.EarthOptions[dropdOption].planetScale;
+        sizeOfPlanets.sizeJupiter = planetPropertiesDict.JupiterOptions[dropdOption].planetScale/ planetPropertiesDict.EarthOptions[dropdOption].planetScale;
+        sizeOfPlanets.sizeSaturn =  planetPropertiesDict.SaturnOptions[dropdOption].planetScale/planetPropertiesDict.EarthOptions[dropdOption].planetScale;
 
 
-        massOfPlanets.massSun = GameObject.Find("Sun").GetComponent<Rigidbody>().mass;
-        massOfPlanets.massEarth = GameObject.Find("Earth").GetComponent<Rigidbody>().mass;
-        massOfPlanets.massMars = GameObject.Find("Mars").GetComponent<Rigidbody>().mass;
-        massOfPlanets.massJupiter = GameObject.Find("Jupiter").GetComponent<Rigidbody>().mass;
-        massOfPlanets.massSaturn = GameObject.Find("Saturn").GetComponent<Rigidbody>().mass;
 
-        distOfPlanets.distEarth = GameObject.Find("Earth").GetComponent<OrbitMotion>().orbitPath.xAxis / GameObject.Find("Earth").GetComponent<OrbitMotion>().orbitPath.xAxis;
-        distOfPlanets.distVenus = GameObject.Find("Venus").GetComponent<OrbitMotion>().orbitPath.xAxis / GameObject.Find("Earth").GetComponent<OrbitMotion>().orbitPath.xAxis; ;
-        distOfPlanets.distMars = GameObject.Find("Mars").GetComponent<OrbitMotion>().orbitPath.xAxis / GameObject.Find("Earth").GetComponent<OrbitMotion>().orbitPath.xAxis; ;
-        distOfPlanets.distJupiter = GameObject.Find("Jupiter").GetComponent<OrbitMotion>().orbitPath.xAxis / GameObject.Find("Earth").GetComponent<OrbitMotion>().orbitPath.xAxis; ;
-        distOfPlanets.distSaturn = GameObject.Find("Saturn").GetComponent<OrbitMotion>().orbitPath.xAxis / GameObject.Find("Earth").GetComponent<OrbitMotion>().orbitPath.xAxis; ;
+        periodsOfPlanets.orbitPeriodVenus = planetPropertiesDict.VenusOptions[dropdOption].planetorbitPeriod;
+        periodsOfPlanets.orbitPeriodMars = planetPropertiesDict.MarsOptions[dropdOption].planetorbitPeriod;
+        periodsOfPlanets.orbitPeriodJupipter = planetPropertiesDict.JupiterOptions[dropdOption].planetorbitPeriod;
+        periodsOfPlanets.orbitPeriodSaturn = planetPropertiesDict.SaturnOptions[dropdOption].planetorbitPeriod;
 
-        sizeOfPlanets.sizeSun = GameObject.Find("Sun").GetComponent<Transform>().localScale.x / GameObject.Find("Earth").GetComponent<Transform>().localScale.x;
-        sizeOfPlanets.sizeEarth = GameObject.Find("Earth").GetComponent<Transform>().localScale.x / GameObject.Find("Earth").GetComponent<Transform>().localScale.x;
-        sizeOfPlanets.sizeMars = GameObject.Find("Mars").GetComponent<Transform>().localScale.x / GameObject.Find("Earth").GetComponent<Transform>().localScale.x;
-        sizeOfPlanets.sizeVenus = GameObject.Find("Venus").GetComponent<Transform>().localScale.x / GameObject.Find("Earth").GetComponent<Transform>().localScale.x;
-        sizeOfPlanets.sizeJupiter = GameObject.Find("Jupiter").GetComponent<Transform>().localScale.x / GameObject.Find("Earth").GetComponent<Transform>().localScale.x;
-        sizeOfPlanets.sizeSaturn = GameObject.Find("Saturn").GetComponent<Transform>().localScale.x / GameObject.Find("Earth").GetComponent<Transform>().localScale.x;
+
 
     }
 }
