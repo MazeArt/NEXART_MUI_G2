@@ -18,6 +18,11 @@ public class ManagerG4 : MonoBehaviour
     [SerializeField] private Button finishTheGameBtn;
     public Text puntaje;
     public Text sliderPercentage;
+    public Text sliderSFX;
+    public Text sliderMusic;
+    public AudioSource audioSourceMusic;
+    public AudioSource audioSourceSFX;
+
 
     [HideInInspector] public float requirementPercentage;
     public GameObject wrongAnsweredPrefab;
@@ -36,6 +41,7 @@ public class ManagerG4 : MonoBehaviour
 
     void Start()
     {
+
         dialogueManager = this.gameObject.GetComponent<DialogueManager>();
         maxPoints = 0;
         myPoints = 0;
@@ -47,13 +53,19 @@ public class ManagerG4 : MonoBehaviour
             Debug.Log(button.GetComponentInChildren<Text>().text);
             
         }
+        settingsTriviaCanvas = GameObject.FindGameObjectWithTag("Settings");
+        settingsCanvas = settingsTriviaCanvas.GetComponent<DontDestroyOnLoadSettings>().settingCanvas;
+        sliderPercentage = settingsTriviaCanvas.GetComponent<DontDestroyOnLoadSettings>().sliderPercentage;
+        sliderSFX = settingsTriviaCanvas.GetComponent<DontDestroyOnLoadSettings>().sliderSFX;
+        sliderMusic = settingsTriviaCanvas.GetComponent<DontDestroyOnLoadSettings>().sliderMusic;
+        //SetInitialSettings();
+        settingsTriviaCanvas.SetActive(true);
         triviaCanvas.SetActive(false);
         themesCanvas.SetActive(false);
         finalCanvas.SetActive(false);
         initialCanvas.SetActive(false);
         settingsCanvas.SetActive(false);
 
-        //GameIntroduction();
         //Se inicia el contador
         StopAllCoroutines();
         StartCoroutine(TimerTriviaAndDeadEnd(timeLimit, timeToWaitForHide));
@@ -61,7 +73,7 @@ public class ManagerG4 : MonoBehaviour
 
     public void SettingsPercentage(float porcentaje)
     {
-        float porc = Mathf.Round(porcentaje * 100);
+        float porc = Mathf.Round(porcentaje);
         requirementPercentage = porcentaje;
         
         sliderPercentage.text = porc.ToString() + '%';
@@ -85,6 +97,31 @@ public class ManagerG4 : MonoBehaviour
             settingsCanvas.SetActive(true);
         }
     }
+    public void SettingsSoundMusic(float count)
+    {
+        audioSourceMusic.volume = count;
+        float text = Mathf.Round(audioSourceMusic.volume * 100);
+        sliderMusic.text = text.ToString();
+    }
+    public void SettingsSFX(float count)
+    {
+        audioSourceSFX.volume = count;
+        float text = Mathf.Round(audioSourceSFX.volume * 100);
+        sliderSFX.text = text.ToString();
+        
+    }
+    public void SetInitialSettings()
+    {
+        SettingsPercentage(requirementPercentage);
+        SettingsQuestionsCount(questionsInGameCount.ToString());
+        SettingsTimeLimit(timeLimit.ToString());
+        SettingsSoundMusic(audioSourceMusic.volume);
+        SettingsSFX(audioSourceSFX.volume);
+        sliderMusic.GetComponentInParent<Slider>().value = audioSourceMusic.volume;
+        sliderSFX.GetComponentInParent<Slider>().value = audioSourceSFX.volume;
+        sliderPercentage.GetComponentInParent<Slider>().value = requirementPercentage;
+    }
+
     public void GameIntroduction()
     {
         //El profesor introduce y expone el objetivo
@@ -241,7 +278,7 @@ public class ManagerG4 : MonoBehaviour
         }
         timer.text = null;
         triviaCanvas.SetActive(false);
-        Debug.Log("capum!"); //escena video
+        EndOfTheGame();
     }
     public void PlayAgainAudioQuestion(AudioSource audioSource)
     {
@@ -302,6 +339,8 @@ public class ManagerG4 : MonoBehaviour
     }
     public void ReStartScene()
     {
+        settingsCanvas.SetActive(true);
+        settingsTriviaCanvas.SetActive(true);
         SceneManager.LoadScene("G4 MainScene");
     }
     public void Jackpot()
@@ -317,6 +356,11 @@ public class ManagerG4 : MonoBehaviour
             wrongAnswered.transform.Find("Explanation").GetComponent<Text>().text = question.answerExplanation;
 
         }
+    }
+    //Sound
+    public void PlaySFXSound(AudioClip audioClip)
+    {
+        audioSourceSFX.PlayOneShot(audioClip);
     }
 }
 

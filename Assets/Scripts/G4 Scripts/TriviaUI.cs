@@ -158,7 +158,7 @@ public class TriviaUI : MonoBehaviour
                     if (isRightAnswer)
                     {
                         button.image.color = correctColor;
-
+                        //agregar sonido aqui
                     }
                     else
                     {
