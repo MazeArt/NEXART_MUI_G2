@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Hologram_mat
+  m_Shader: {fileID: -6465566751694194690, guid: 120760d5bf2774c498b6f007505981de, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_37c1c9bf54f149a5be4c70152c3e310d:
+        m_Texture: {fileID: 2800000, guid: a08e7cf892c69c3489faa67c61fa2ca5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_60643adce84845a18ecec4927b278e24_Texture_1:
+        m_Texture: {fileID: 2800000, guid: a08e7cf892c69c3489faa67c61fa2ca5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_7606184acb7349e59f989490819d5961_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 7645cb151e02fee4b8ac15c76e86fdba, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_840d04bb31624387aa953777fdceef2c_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 7645cb151e02fee4b8ac15c76e86fdba, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_28b441ab26f64b578a9542b9ce4a1b34: 0.08
+    - Vector1_c123f1a2c91a49ebb291fdba0a0ddb0b: 0.31
+    - Vector1_f7988d28020b41d98d129a9b544242e4: 4.17
+    m_Colors:
+    - Color_fd709b79c4b343d3a5ee5ac9ee06ec5b: {r: 6.0628657, g: 6.0628657, b: 6.0628657, a: 0}
+    - Vector2_6797df603d0c4fe791f9834eab2a2589: {r: 1, g: 5, b: 1, a: 0}
+  m_BuildTextureStacks: []
