@@ -188,12 +188,12 @@ public class PlanetManager : MonoBehaviour
             switch (param_to_change)
             {
                 case "xAxis":
-                   // planet.GetComponent<OrbitMotion>().orbitPath.xAxis = valueChange;
+                    planet.GetComponent<OrbitMotion>().orbitPath.xAxis = valueChange;
                     break;
 
                 case "Scale":
-                   // Debug.Log("Changing scale to" + targetValue);
                     planet.GetComponent<Transform>().localScale = new Vector3(valueChange, valueChange, valueChange);
+                    //Debug.Log("Changing scale to" + targetValue);
                     break;
 
                 case "Mass":

@@ -5,29 +5,36 @@ using UnityEngine;
 public class OrbitMotion : MonoBehaviour
 {
     public Transform orbitingObject;
+    public OrbitManager orbitManager;
     public Ellipse orbitPath;
-
-    [Range(1f, 100f)]
-    public float orbit_fastfwd = 1f;
-    public float orbitOrigin;
+    
+    // Orbit Manager Variable
+    private float orbitPeriod;
+    
     [Range(0f, 1f)]
     public float orbitProgress ;
-    public float earth_orbitPeriod = 300f;
-    public bool orbitActive = true;
-    private float orbitPeriod;
-    private float planet_orbitPeriod;
+    //Origin in Ellipse
+    public float orbitOrigin;
 
+    //review THIS 
+    public float OrbitPeriodRelativeToEarth;
+    private float planetOrbitPeriod;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        planet_orbitPeriod = Check_planet(orbitingObject.name, earth_orbitPeriod);
+        //public float earthPeriodSpeed = orbitManager.orbit_fastfwd;
        
-        if(orbitingObject == null)
+       
+        planetOrbitPeriod = orbitManager.earthOrbitPeriodAbs * OrbitPeriodRelativeToEarth;
+
+      //  Debug.Log(orbitingObject.name + " PLANET ORBIT PERIOD " + planetOrbitPeriod);
+
+        if (orbitingObject == null)
             {
-                orbitActive = false;
+                orbitManager.orbitActive = false;
                     return;
             }
         // set orbitign object position
@@ -39,9 +46,15 @@ public class OrbitMotion : MonoBehaviour
 
     void SetOrbitingObjectPosition()
     {
-        //set orbiting speed
-        orbitPeriod = planet_orbitPeriod / (orbit_fastfwd * orbit_fastfwd);
+        //DEPRECATED
+        //planetOrbitPeriod = Check_planet(orbitingObject.name, orbitManager.earthOrbitPeriodAbs);
 
+
+
+        // planetOrbitPeriod = orbitPeriod;
+        //set orbiting speed
+        orbitPeriod = planetOrbitPeriod / (orbitManager.orbit_fastfwd * Mathf.Abs(orbitManager.orbit_fastfwd) );
+//        Debug.Log(orbitingObject.name + " PLANET ORBIT PERIOD :: : " + orbitPeriod + " " + planetOrbitPeriod);
         //read orbitProgress
         //orbitProgress = orbitProgress + orbit_fastfwd / 100;
         Vector2 orbitPos = orbitPath.Evaluate(orbitProgress + orbitOrigin);
@@ -51,11 +64,11 @@ public class OrbitMotion : MonoBehaviour
         IEnumerator AnimateOrbit()
         {
 
-        while (orbitActive)
+        while (orbitManager.orbitActive)
         {
             if(orbitPeriod < 0.1f)
             {
-                orbitPeriod = 0.1f;
+                //orbitPeriod = 0.1f;
             }
             float orbitSpeed = 1f / orbitPeriod;
             orbitProgress += Time.deltaTime * orbitSpeed;
@@ -64,34 +77,5 @@ public class OrbitMotion : MonoBehaviour
             yield return null;
         }
         }
-
-    float Check_planet(string planet_name,float oribtPeriod_planet)
-    {
-        
-
-        switch (planet_name)
-        {
-            case "Jupiter":
-                oribtPeriod_planet = oribtPeriod_planet * 11.86f;
-                Debug.Log("This is "+ planet_name+" , orbit period is: " + oribtPeriod_planet);
-                break;
-            
-            case "Saturn":
-                oribtPeriod_planet = oribtPeriod_planet * 29.46f;
-                Debug.Log("This is " + planet_name + " , orbit period is: " + oribtPeriod_planet);
-                break;
-
-            case "Mars":
-                oribtPeriod_planet = oribtPeriod_planet * 1.88f;
-                Debug.Log("This is " + planet_name + " , orbit period is: " + oribtPeriod_planet);
-                break;
-
-
-        }
-
-        return  oribtPeriod_planet;
-
-    }
-
 
 }

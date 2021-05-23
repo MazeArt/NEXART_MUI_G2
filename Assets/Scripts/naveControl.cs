@@ -7,7 +7,8 @@ public class naveControl : MonoBehaviour
 {
     public PlanetPropertiesDict planetPropertiesDict;
     private float rotation = 35;    
-    public Slider sliderRot;   
+    public Slider sliderRot;
+    public Slider sliderSpeed;
 
     [Header("BulletEffect")]
     public float bulletSpeed;
@@ -34,11 +35,9 @@ public class naveControl : MonoBehaviour
         {
             
             Rigidbody bulletClone = (Rigidbody)Instantiate(bullet, bulletOrigin.transform.position, bulletOrigin.transform.rotation);
-<<<<<<< Updated upstream
-            bulletClone.velocity = transform.right * bulletSpeed;
-=======
+
             bulletClone.velocity = transform.right * sliderSpeed.value * bulletSpeed; // bulletSpeed;
->>>>>>> Stashed changes
+
             fireOn = false;
             StartCoroutine(FireOnTrue());
         }
