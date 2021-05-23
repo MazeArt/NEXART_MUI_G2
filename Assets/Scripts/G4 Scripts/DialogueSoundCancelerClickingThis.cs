@@ -21,7 +21,6 @@ public class DialogueSoundCancelerClickingThis : MonoBehaviour, IPointerDownHand
 
     public void OnPointerDown(PointerEventData eventData)
     {
-            Debug.Log("hi");
             dialogueManager.StopAllCoroutines();
     }
 }

@@ -19,7 +19,6 @@ public class DialogueManager : MonoBehaviour
     private void Awake()
     {
         audioSource = this.gameObject.GetComponent<AudioSource>();
-
     }
     /// <summary>
     /// Inicia la accion de cambiar el texto cuando se presiona el click izquierdo (o tap) en la pantalla
@@ -84,11 +83,9 @@ public class DialogueManager : MonoBehaviour
         thisDialogueHolder.GetComponentInChildren<Text>().text = "";
         foreach (char letter in activeSentence)
         {
-            
             audioSource.PlayOneShot(typingSound);
             thisDialogueHolder.GetComponentInChildren<Text>().text += letter;
-            yield return new WaitForSeconds(typingSpeed);
-            
+            yield return new WaitForSeconds(typingSpeed);    
         }
         sentenceTimeFinished = true;
     }

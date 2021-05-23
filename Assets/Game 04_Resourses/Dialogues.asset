@@ -26,3 +26,7 @@ MonoBehaviour:
     - Te queda tiempo!
     - Si deseas presiona "Continuar" para elegir otro tema
     - Si no, presiona "Finalizar"
+  - dialogueName: JackPot
+    dialogueScript:
+    - "\xA1Genial! no tuviste ninguna respuesta incorrecta"
+    - "\xA1Eres incre\xEDble!"

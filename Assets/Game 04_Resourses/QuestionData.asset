@@ -28,28 +28,6 @@ MonoBehaviour:
     correctAnswer: e
     answerExplanation: e is ok
     points: 10
-  - questionTheme: 0
-    questionInfo: "Cuando miramos al cielo podemos ver estrellas con distintos niveles
-      de brillo, \xBFcu\xE1l es el orden de estrellas desde la menos brillante a
-      la m\xE1s brillante que podemos observar en el hemisferio sur?"
-    questionType: 4
-    questionImg: {fileID: 0}
-    questionAudioClip: {fileID: 0}
-    questionVideoClip: {fileID: 0}
-    options:
-    - Sirius
-    - Canopus
-    - Arcturus
-    - Alfa Centauri
-    optionsOrderSprites:
-    - {fileID: 21300000, guid: 55cd8cb30430c8e4581477e9d78e6170, type: 3}
-    - {fileID: 21300000, guid: d3c8aa2054f4bd345911d9ae4bfc068f, type: 3}
-    - {fileID: 21300000, guid: dfd1ffae4cf36d049a606e0cbde964a8, type: 3}
-    - {fileID: 21300000, guid: 049ba137d81c5a04abe4177456f435e6, type: 3}
-    correctAnswer: Alfa Centauri, Arcturus, Canopus, Sirius
-    answerExplanation: "Sirius es la estrella m\xE1s brillante de nuestro firmamento,
-      seguida por Canopus, Arcturus y Alfa Centauri"
-    points: 10
   - questionTheme: 2
     questionInfo: Question Video
     questionType: 2
@@ -79,6 +57,47 @@ MonoBehaviour:
     optionsOrderSprites: []
     correctAnswer: audio 3
     answerExplanation: audio 3 is ok
+    points: 10
+  - questionTheme: 2
+    questionInfo: Pregunta de orden
+    questionType: 4
+    questionImg: {fileID: 0}
+    questionAudioClip: {fileID: 0}
+    questionVideoClip: {fileID: 0}
+    options:
+    - 1
+    - 2
+    - 3
+    - 4
+    optionsOrderSprites:
+    - {fileID: 21300000, guid: 049ba137d81c5a04abe4177456f435e6, type: 3}
+    - {fileID: 21300000, guid: dfd1ffae4cf36d049a606e0cbde964a8, type: 3}
+    - {fileID: 21300000, guid: d3c8aa2054f4bd345911d9ae4bfc068f, type: 3}
+    - {fileID: 21300000, guid: 55cd8cb30430c8e4581477e9d78e6170, type: 3}
+    correctAnswer: 1, 2, 3, 4
+    answerExplanation: 1 2 3 4
+    points: 10
+  - questionTheme: 0
+    questionInfo: "Cuando miramos al cielo podemos ver estrellas con distintos niveles
+      de brillo, \xBFcu\xE1l es el orden de estrellas desde la menos brillante a
+      la m\xE1s brillante que podemos observar en el hemisferio sur?"
+    questionType: 4
+    questionImg: {fileID: 0}
+    questionAudioClip: {fileID: 0}
+    questionVideoClip: {fileID: 0}
+    options:
+    - Sirius
+    - Canopus
+    - Arcturus
+    - Alfa Centauri
+    optionsOrderSprites:
+    - {fileID: 21300000, guid: 55cd8cb30430c8e4581477e9d78e6170, type: 3}
+    - {fileID: 21300000, guid: d3c8aa2054f4bd345911d9ae4bfc068f, type: 3}
+    - {fileID: 21300000, guid: dfd1ffae4cf36d049a606e0cbde964a8, type: 3}
+    - {fileID: 21300000, guid: 049ba137d81c5a04abe4177456f435e6, type: 3}
+    correctAnswer: Alfa Centauri, Arcturus, Canopus, Sirius
+    answerExplanation: "Sirius es la estrella m\xE1s brillante de nuestro firmamento,
+      seguida por Canopus, Arcturus y Alfa Centauri"
     points: 10
   - questionTheme: 0
     questionInfo: "En el Universo hay muchas estrellas como nuestro Sol, \xBFqu\xE9

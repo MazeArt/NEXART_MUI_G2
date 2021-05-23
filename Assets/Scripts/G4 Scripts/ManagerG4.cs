@@ -10,7 +10,7 @@ public class ManagerG4 : MonoBehaviour
     [SerializeField] private TriviaUI triviaUI;
     [SerializeField] private QuizDataScriptable quizData;
     private List<Question> _questions;
-    public GameObject initialCanvas, themesCanvas, triviaCanvas, finalCanvas, settingsTriviaCanvas, generalFinalCanvas, generalAnimationFinalCanvas;
+    public GameObject initialCanvas, themesCanvas, triviaCanvas, finalCanvas, settingsTriviaCanvas, generalFinalCanvas, generalAnimationFinal, jackpotFinalCanvas;
     public int timeLimit;
     public int questionsInGameCount;
     private int selectedTheme;
@@ -51,19 +51,17 @@ public class ManagerG4 : MonoBehaviour
         foreach (Button button in collection)
         {
             notUsedThemes.Add(button);
-            Debug.Log(button.GetComponentInChildren<Text>().text);
-
         }
-
         settingsTriviaCanvas.SetActive(true);
         triviaCanvas.SetActive(false);
         themesCanvas.SetActive(false);
         finalCanvas.SetActive(false);
         initialCanvas.SetActive(false);
-        generalAnimationFinalCanvas.SetActive(false);
-
-
+        generalAnimationFinal.SetActive(false);
     }
+    /// <summary>
+    /// Introduccion del juego, picarte pide ayuda para arreglar su computadora y se activa el contador de tiempo limite
+    /// </summary>    
     public void GameIntroduction()
     {
         //Se inicia el contador
@@ -84,36 +82,7 @@ public class ManagerG4 : MonoBehaviour
         selectedQuestionFromList = null;
         _selectedQuestionsList.Clear();
     }
-    /// <summary>
-    /// Se deshabilita el boton de la opcion seleccionada
-    /// </summary>
-    /// <param name="button">Se debe seleccionar por inspector el boton a deshabilitar</param>
-    public void RemoveButtonFromOptions(Button button)
-    {
-        Button[] buttons = themesCanvas.GetComponentsInChildren<Button>();
-        foreach (var but in buttons)
-        {
-            but.interactable = false;
-        }
-        notUsedThemes.Remove(button);
-        StartCoroutine(WaitToHideSomething(1, themesCanvas));
-    }
-    /// <summary>
-    /// Esperar un tiempo para desactivar un objeto
-    /// </summary>
-    /// <param name="time">tiempo de espera</param>
-    /// <param name="elementToHide">elemento que se desactivara</param>
-    /// <returns></returns>
-    IEnumerator WaitToHideSomething(int time, GameObject elementToHide)
-    {
-        yield return new WaitForSeconds(time);
-        elementToHide.SetActive(false);
-    }
-    IEnumerator WaitToShowSomething(int time, GameObject elementToShow)
-    {
-        yield return new WaitForSeconds(time);
-        elementToShow.SetActive(true);
-    }
+
     /// <summary>
     /// Se selecciona el tema en base al botón seleccionado. Se utiliza para seleccionar las preguntas relacionadas con el tema llenando la lista "_selectedQuestionsList"
     /// </summary>
@@ -136,8 +105,11 @@ public class ManagerG4 : MonoBehaviour
         }
         SelectQuestionsFromList(temp);
         SelectQuestionToAnswer();
-
     }
+    /// <summary>
+    /// Escoger aleatoriamente una cantidad de respuesta limitadas de una lista de preguntas
+    /// </summary>
+    /// <param name="list"></param>
     void SelectQuestionsFromList(List<Question> list)
     {
         if (list.Count >= questionsInGameCount)
@@ -156,8 +128,12 @@ public class ManagerG4 : MonoBehaviour
                 RecCallSelectQuestionsFromList(list, rnd);
             }
         }
-
     }
+    /// <summary>
+    /// Funcion recursiva para elegir aleatoriamente la pregunta de una lista sin repetirlas
+    /// </summary>
+    /// <param name="list"></param>
+    /// <param name="rnd"></param>
     void RecCallSelectQuestionsFromList(List<Question> list, int rnd)
     {
         if (usedInt.Contains(rnd))
@@ -173,7 +149,7 @@ public class ManagerG4 : MonoBehaviour
         }
     }
     /// <summary>
-    /// Selecciona una pregunta aleatoria de la lista de preguntas generada y la elimina de la lista
+    /// Selecciona una pregunta aleatoria de la lista de preguntas generada con selectQuestionFromList, la elimina de la lista y la envía al display
     /// </summary>
     void SelectQuestionToAnswer()
     {
@@ -181,25 +157,27 @@ public class ManagerG4 : MonoBehaviour
         selectedQuestionToAnswer = _selectedQuestionsList[rnd];
         _selectedQuestionsList.RemoveAt(rnd);
 
-
         triviaUI.SetQuestion(selectedQuestionToAnswer);
-
     }
+    /// <summary>
+    /// Obtiene la respuesta evalúa si está correcta, después llama a otra pregunta para mostrar o a la funcion RunOutOfQuestionsInTheme
+    /// </summary>
+    /// <param name="answered"></param>
+    /// <returns></returns>
     public bool Answer(string answered)
     {
         bool correctAnswer = false;
-        if (answered == selectedQuestionToAnswer.correctAnswer)
+        if (answered == selectedQuestionToAnswer.correctAnswer) //respuesta correcta
         {
-            //correcto
             correctAnswer = true;
             myPoints = myPoints + selectedQuestionToAnswer.points;
         }
-        else
+        else //respuesta incorrecta
         {
-            //Incorrecto
             _wrongAnswered.Add(selectedQuestionToAnswer); //recordar respuestas incorrectas
 
         }
+
         if (_selectedQuestionsList.Count != 0)
         {
             Invoke("SelectQuestionToAnswer", 1);
@@ -207,40 +185,8 @@ public class ManagerG4 : MonoBehaviour
         else
         {
             RunOutOfQuestionsInTheme();
-
         }
         return correctAnswer;
-    }
-    public IEnumerator TimerTriviaAndDeadEnd(int timeLimit, int tiempoDelay)
-    {
-        for (int i = tiempoDelay; i > 0; i--)
-        {
-            yield return new WaitForSeconds(1);
-        }
-
-        for (int i = timeLimit; i > 0; i--)
-        {
-            timer.text = i.ToString();
-            yield return new WaitForSeconds(1);
-        }
-        timer.text = null;
-        EndOfTheGame();
-    }
-    public void PlayAgainAudioQuestion(AudioSource audioSource)
-    {
-        if (audioSource.isPlaying)
-        {
-            audioSource.Stop();
-        }
-        audioSource.PlayOneShot(selectedQuestionToAnswer.questionAudioClip);
-    }
-    public void PlayAgainVideoQuestion(UnityEngine.Video.VideoPlayer videoPlayer)
-    {
-        if (videoPlayer.isPlaying)
-        {
-            videoPlayer.Stop();
-        }
-        videoPlayer.Play();
     }
     public void RunOutOfQuestionsInTheme()
     {
@@ -263,7 +209,6 @@ public class ManagerG4 : MonoBehaviour
         {
             EndOfTheGame();
         }
-
     }
     public void EndOfTheGame()
     {
@@ -273,66 +218,35 @@ public class ManagerG4 : MonoBehaviour
         themesCanvas.SetActive(false);
         StopAllCoroutines();
         finalCanvas.SetActive(true);
-        generalAnimationFinalCanvas.SetActive(true);
+        generalAnimationFinal.SetActive(true);
         generalFinalCanvas.SetActive(false);
-        StartCoroutine(WaitToShowSomething(3, GameObject.Find("GeneralFinalCanvas")));
-        if (myPoints / ((maxPoints * requirementPercentage) / 100) >= 1)
+        if (myPoints / ((maxPoints * requirementPercentage) / 100) >= 1)//evalua el porcentaje (si llega a lo exigido)
         {
-            if (myPoints == maxPoints)
+            if (myPoints == maxPoints) //Animación victoria jackpot
             {
-                StartCoroutine(FinalAnimation(1, "Character"));
-
+                StartCoroutine(FinalAnimation(1, jackpotFinalCanvas));
                 Jackpot();
             }
-            else
+            else //animación victoria
             {
                 PlaySFXSound(endGameVictory);
-                StartCoroutine(FinalAnimation(0, "Character"));
-                //Animacion de victoria
+                StartCoroutine(FinalAnimation(0, generalFinalCanvas));
             }
         }
-        else
+        else //animacion de derrota
         {
-            
             PlaySFXSound(endGameDefeat);
-            //animacion de derrota
-            StartCoroutine(FinalAnimation(2, "Character"));
+            StartCoroutine(FinalAnimation(2, generalFinalCanvas));
         }
-
-
-
-
-    }
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="animationInt">Win = 0, jackpot = 1, defeat = 2, talk = 3</param>
-    /// <param name="animatedObjectName"></param>
-    /// <param name="timeShowing"></param>
-    /// <returns></returns>
-    IEnumerator FinalAnimation(int animationInt, string animatedObjectName, float timeShowing = 3)
-    {
-        generalAnimationFinalCanvas.SetActive(true);
-        picarte.GetComponent<Animator>().SetInteger("Victoria cero Jackpot uno Derrota dos", animationInt);
-        yield return new WaitForSeconds(timeShowing);
-        generalAnimationFinalCanvas.SetActive(false);
-        generalFinalCanvas.SetActive(true);
-        dialogueManager.StartNewDialogueManager(finalCanvas.GetComponentInChildren<DialogueHolder>(), "FinalExplanation");
-        puntaje.text = myPoints + "/" + maxPoints;
-
-        GetAndShowWrongAnswered();
     }
     public void Jackpot()
     {
         PlaySFXSound(endGameJackpot);
-        Debug.Log("Jackpot!");
-    }
-    public void ReStartScene()
-    {
-        settingsTriviaCanvas.SetActive(true);
-        SceneManager.LoadScene("G4 MainScene");
     }
 
+    /// <summary>
+    /// Muestra las preguntas respondidas incorrectamente en el drid layout grup que encuentre activo
+    /// </summary>
     public void GetAndShowWrongAnswered()
     {
         foreach (Question question in _wrongAnswered)
@@ -341,13 +255,106 @@ public class ManagerG4 : MonoBehaviour
             wrongAnswered.name = question.questionInfo;
             wrongAnswered.GetComponentInChildren<Text>().text = question.questionInfo;
             wrongAnswered.transform.Find("Explanation").GetComponent<Text>().text = question.answerExplanation;
-
         }
     }
-    //Sound
     public void PlaySFXSound(AudioClip audioClip)
     {
         audioSourceSFX.PlayOneShot(audioClip);
+    }
+
+    //---------------------------------------------------Botones---------------------------------------------------------------------
+    public void PlayAgainAudioQuestion(AudioSource audioSource)
+    {
+        if (audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
+        audioSource.PlayOneShot(selectedQuestionToAnswer.questionAudioClip);
+    }
+    public void PlayAgainVideoQuestion(UnityEngine.Video.VideoPlayer videoPlayer)
+    {
+        if (videoPlayer.isPlaying)
+        {
+            videoPlayer.Stop();
+        }
+        videoPlayer.Play();
+    }
+    public void ReStartScene()
+    {
+        settingsTriviaCanvas.SetActive(true);
+        SceneManager.LoadScene("G4 MainScene");
+    }
+    /// <summary>
+    /// Se deshabilita el boton de la opcion seleccionada
+    /// </summary>
+    /// <param name="button">Se debe seleccionar por inspector el boton a deshabilitar</param>
+    public void RemoveButtonFromOptions(Button button)
+    {
+        Button[] buttons = themesCanvas.GetComponentsInChildren<Button>();
+        foreach (var but in buttons)
+        {
+            but.interactable = false;
+        }
+        notUsedThemes.Remove(button);
+        StartCoroutine(WaitToHideSomething(1, themesCanvas));
+    }
+    //---------------------------------------------------Enumerators-----------------------------------------------------------------
+    public IEnumerator TimerTriviaAndDeadEnd(int timeLimit, int tiempoDelay)
+    {
+        for (int i = tiempoDelay; i > 0; i--)
+        {
+            yield return new WaitForSeconds(1);
+        }
+
+        for (int i = timeLimit; i > 0; i--)
+        {
+            timer.text = i.ToString();
+            yield return new WaitForSeconds(1);
+        }
+        timer.text = null;
+        EndOfTheGame();
+    }
+    /// <summary>
+    /// Animacion de picarte al final del juego y activa el canvas correspondiente
+    /// </summary>
+    /// <param name="animationInt">Win = 0, jackpot = 1, defeat = 2, talk = 3</param>
+    /// <param name="animatedObjectName"></param>
+    /// <param name="timeShowing"></param>
+    /// <returns></returns>
+    IEnumerator FinalAnimation(int animationInt, GameObject finalCanvasToShow, float timeShowing = 3)
+    {
+        generalAnimationFinal.SetActive(true);
+        picarte.GetComponent<Animator>().SetInteger("Victoria cero Jackpot uno Derrota dos", animationInt);
+        yield return new WaitForSeconds(timeShowing);
+        generalAnimationFinal.SetActive(false);
+        if (finalCanvasToShow == generalFinalCanvas)
+        {
+            generalFinalCanvas.SetActive(true);
+            dialogueManager.StartNewDialogueManager(finalCanvas.GetComponentInChildren<DialogueHolder>(), "FinalExplanation");
+            GetAndShowWrongAnswered();
+        }
+        else if (finalCanvasToShow == jackpotFinalCanvas)
+        {
+            jackpotFinalCanvas.SetActive(true);
+            dialogueManager.StartNewDialogueManager(finalCanvas.GetComponentInChildren<DialogueHolder>(), "JackPot");
+        }
+        puntaje.text = myPoints + "/" + maxPoints;
+    }
+    /// <summary>
+    /// Esperar un tiempo para desactivar un objeto
+    /// </summary>
+    /// <param name="time">tiempo de espera</param>
+    /// <param name="elementToHide">elemento que se desactivara</param>
+    /// <returns></returns>
+    IEnumerator WaitToHideSomething(int time, GameObject elementToHide)
+    {
+        yield return new WaitForSeconds(time);
+        elementToHide.SetActive(false);
+    }
+    IEnumerator WaitToShowSomething(int time, GameObject elementToShow)
+    {
+        yield return new WaitForSeconds(time);
+        elementToShow.SetActive(true);
     }
 }
 
