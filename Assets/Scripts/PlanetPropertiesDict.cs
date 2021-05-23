@@ -54,9 +54,9 @@ public class PlanetPropertiesDict : MonoBehaviour
         SunOptions["opt2"] = new PlanetProperties       (10f,    0f,    35.35f,     0f);
 
 
-        bulletOptions["opt0"] = new bulletProperties(80f, 10f);
-        bulletOptions["opt1"] = new bulletProperties(40f, 10f);
-        bulletOptions["opt2"] = new bulletProperties(40f, 10f);
+        bulletOptions["opt0"] = new bulletProperties(25f, 10f);
+        bulletOptions["opt1"] = new bulletProperties(100f, 10f);
+        bulletOptions["opt2"] = new bulletProperties(1f, 10f);
 
     }
 
