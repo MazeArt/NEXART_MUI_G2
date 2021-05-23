@@ -154,7 +154,7 @@ public class PlanetManager : MonoBehaviour
 
         while (currentValue < targetValue)
         {
-//            Debug.LogFormat("evaluating current {0} vs target {1}::  ", currentValue, targetValue);
+            Debug.LogFormat("evaluating current {0} vs target {1}::  ", currentValue, targetValue);
 
             
             float timeElapsed = 0f;
@@ -188,12 +188,12 @@ public class PlanetManager : MonoBehaviour
             switch (param_to_change)
             {
                 case "xAxis":
-                    planet.GetComponent<OrbitMotion>().orbitPath.xAxis = valueChange;
+                   // planet.GetComponent<OrbitMotion>().orbitPath.xAxis = valueChange;
                     break;
 
                 case "Scale":
+                   // Debug.Log("Changing scale to" + targetValue);
                     planet.GetComponent<Transform>().localScale = new Vector3(valueChange, valueChange, valueChange);
-                    //Debug.Log("Changing scale to" + targetValue);
                     break;
 
                 case "Mass":
