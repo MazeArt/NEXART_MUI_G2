@@ -56,8 +56,13 @@ public class DialogueManager : MonoBehaviour
     /// </summary>
     /// <param name="dialogueHolder">el holder</param>
     /// <param name="wantedDialogue">nuevo dialogo</param>
-    public void StartNewDialogueManager(DialogueHolder dialogueHolder, string wantedDialogue)
+    public void StartNewDialogueManager(DialogueHolder dialogueHolder, string wantedDialogue, float waitForSeconds = 0)
     {
+        StartCoroutine(StartDialogue(dialogueHolder, wantedDialogue, waitForSeconds));
+    }
+    IEnumerator StartDialogue(DialogueHolder dialogueHolder, string wantedDialogue, float waitForSeconds = 0)
+    {
+        yield return new WaitForSeconds(waitForSeconds);
         activeHolder = dialogueHolder;
         activeHolder.dialoguePlayed = false;
         activeHolder.myDialogueIs = wantedDialogue;

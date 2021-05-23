@@ -10,23 +10,21 @@ public class ManagerG4 : MonoBehaviour
     [SerializeField] private TriviaUI triviaUI;
     [SerializeField] private QuizDataScriptable quizData;
     private List<Question> _questions;
-    public GameObject initialCanvas, themesCanvas, triviaCanvas, finalCanvas, settingsCanvas, settingsTriviaCanvas;
+    public GameObject initialCanvas, themesCanvas, triviaCanvas, finalCanvas, settingsTriviaCanvas, generalFinalCanvas, generalAnimationFinalCanvas;
     public int timeLimit;
     public int questionsInGameCount;
     private int selectedTheme;
     public Text timer;
     [SerializeField] private Button finishTheGameBtn;
     public Text puntaje;
-    public Text sliderPercentage;
-    public Text sliderSFX;
-    public Text sliderMusic;
     public AudioSource audioSourceMusic;
     public AudioSource audioSourceSFX;
+    public GameObject picarte;
 
 
-    [HideInInspector] public float requirementPercentage;
+    public float requirementPercentage;
     public GameObject wrongAnsweredPrefab;
-
+    public AudioClip endGameVictory, endGameDefeat, endGameJackpot, endThemeVictory, endThemeDefeat;
     private int timeToWaitForHide = 1;
     private Question selectedQuestionToAnswer;
 
@@ -41,8 +39,11 @@ public class ManagerG4 : MonoBehaviour
 
     void Start()
     {
-
+        StopAllCoroutines();
         dialogueManager = this.gameObject.GetComponent<DialogueManager>();
+        settingsTriviaCanvas = GameObject.FindGameObjectWithTag("Settings");
+        settingsTriviaCanvas.GetComponent<SettingsG4>().manager = this;
+        settingsTriviaCanvas.GetComponent<SettingsG4>().GetStartSettings();
         maxPoints = 0;
         myPoints = 0;
         _questions = quizData.questions;
@@ -51,82 +52,23 @@ public class ManagerG4 : MonoBehaviour
         {
             notUsedThemes.Add(button);
             Debug.Log(button.GetComponentInChildren<Text>().text);
-            
+
         }
-        settingsTriviaCanvas = GameObject.FindGameObjectWithTag("Settings");
-        settingsCanvas = settingsTriviaCanvas.GetComponent<DontDestroyOnLoadSettings>().settingCanvas;
-        sliderPercentage = settingsTriviaCanvas.GetComponent<DontDestroyOnLoadSettings>().sliderPercentage;
-        sliderSFX = settingsTriviaCanvas.GetComponent<DontDestroyOnLoadSettings>().sliderSFX;
-        sliderMusic = settingsTriviaCanvas.GetComponent<DontDestroyOnLoadSettings>().sliderMusic;
-        //SetInitialSettings();
+
         settingsTriviaCanvas.SetActive(true);
         triviaCanvas.SetActive(false);
         themesCanvas.SetActive(false);
         finalCanvas.SetActive(false);
         initialCanvas.SetActive(false);
-        settingsCanvas.SetActive(false);
+        generalAnimationFinalCanvas.SetActive(false);
 
+
+    }
+    public void GameIntroduction()
+    {
         //Se inicia el contador
         StopAllCoroutines();
         StartCoroutine(TimerTriviaAndDeadEnd(timeLimit, timeToWaitForHide));
-    }
-
-    public void SettingsPercentage(float porcentaje)
-    {
-        float porc = Mathf.Round(porcentaje);
-        requirementPercentage = porcentaje;
-        
-        sliderPercentage.text = porc.ToString() + '%';
-    }
-    public void SettingsQuestionsCount(string count)
-    {
-       int.TryParse(count, out questionsInGameCount);
-    }
-    public void SettingsTimeLimit(string count)
-    {
-        int.TryParse(count, out timeLimit);
-    }
-    public void SettingsActiveOrNotSettings()
-    {
-        if (settingsCanvas.active == true)
-        {
-            settingsCanvas.SetActive(false);
-        }
-        else
-        {
-            settingsCanvas.SetActive(true);
-        }
-    }
-    public void SettingsSoundMusic(float count)
-    {
-        audioSourceMusic.volume = count;
-        float text = Mathf.Round(audioSourceMusic.volume * 100);
-        sliderMusic.text = text.ToString();
-    }
-    public void SettingsSFX(float count)
-    {
-        audioSourceSFX.volume = count;
-        float text = Mathf.Round(audioSourceSFX.volume * 100);
-        sliderSFX.text = text.ToString();
-        
-    }
-    public void SetInitialSettings()
-    {
-        SettingsPercentage(requirementPercentage);
-        SettingsQuestionsCount(questionsInGameCount.ToString());
-        SettingsTimeLimit(timeLimit.ToString());
-        SettingsSoundMusic(audioSourceMusic.volume);
-        SettingsSFX(audioSourceSFX.volume);
-        sliderMusic.GetComponentInParent<Slider>().value = audioSourceMusic.volume;
-        sliderSFX.GetComponentInParent<Slider>().value = audioSourceSFX.volume;
-        sliderPercentage.GetComponentInParent<Slider>().value = requirementPercentage;
-    }
-
-    public void GameIntroduction()
-    {
-        //El profesor introduce y expone el objetivo
-        //(escena video)
-        //se presiona botón del canvas para continuar
         settingsTriviaCanvas.SetActive(false);
         initialCanvas.SetActive(true);
         dialogueManager.StartNewDialogueManager(initialCanvas.GetComponentInChildren<DialogueHolder>(), "InitialExplanation");
@@ -154,7 +96,7 @@ public class ManagerG4 : MonoBehaviour
             but.interactable = false;
         }
         notUsedThemes.Remove(button);
-        StartCoroutine(WaitToHideSomething(timeToWaitForHide, themesCanvas));
+        StartCoroutine(WaitToHideSomething(1, themesCanvas));
     }
     /// <summary>
     /// Esperar un tiempo para desactivar un objeto
@@ -167,13 +109,18 @@ public class ManagerG4 : MonoBehaviour
         yield return new WaitForSeconds(time);
         elementToHide.SetActive(false);
     }
+    IEnumerator WaitToShowSomething(int time, GameObject elementToShow)
+    {
+        yield return new WaitForSeconds(time);
+        elementToShow.SetActive(true);
+    }
     /// <summary>
     /// Se selecciona el tema en base al botón seleccionado. Se utiliza para seleccionar las preguntas relacionadas con el tema llenando la lista "_selectedQuestionsList"
     /// </summary>
     /// <param name="theme">Se debe configurar por inspector el numero del tema (del 0 a n-1) cuando n = numero de temas</param>
     public void SelectTheme(int theme)
     {
-        triviaCanvas.SetActive(true);
+        StartCoroutine(WaitToShowSomething(1, triviaCanvas));
         selectedTheme = theme;
         temp.Clear();
         usedInt.Clear();
@@ -187,7 +134,7 @@ public class ManagerG4 : MonoBehaviour
             }
 
         }
-            SelectQuestionsFromList(temp);
+        SelectQuestionsFromList(temp);
         SelectQuestionToAnswer();
 
     }
@@ -270,14 +217,13 @@ public class ManagerG4 : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
         }
-        
+
         for (int i = timeLimit; i > 0; i--)
         {
             timer.text = i.ToString();
             yield return new WaitForSeconds(1);
         }
         timer.text = null;
-        triviaCanvas.SetActive(false);
         EndOfTheGame();
     }
     public void PlayAgainAudioQuestion(AudioSource audioSource)
@@ -300,57 +246,98 @@ public class ManagerG4 : MonoBehaviour
     {
         if (notUsedThemes.Count != 0)
         {
-            triviaCanvas.SetActive(false);
-            initialCanvas.SetActive(true);
-            dialogueManager.StartNewDialogueManager(initialCanvas.GetComponentInChildren<DialogueHolder>(), "AskIfContinue");
+            StartCoroutine(WaitToHideSomething(1, triviaCanvas));
+            StartCoroutine(WaitToShowSomething(1, initialCanvas));
+            dialogueManager.StartNewDialogueManager(initialCanvas.GetComponentInChildren<DialogueHolder>(), "AskIfContinue", 1f);
             finishTheGameBtn.transform.gameObject.SetActive(true);
+            if (myPoints / ((maxPoints * requirementPercentage) / 100) >= 1)
+            {
+                PlaySFXSound(endThemeVictory);
+            }
+            else
+            {
+                PlaySFXSound(endThemeDefeat);
+            }
         }
         else
         {
             EndOfTheGame();
         }
-        
+
     }
     public void EndOfTheGame()
     {
-        StopAllCoroutines();
+        settingsTriviaCanvas.SetActive(false);
         triviaCanvas.SetActive(false);
         initialCanvas.SetActive(false);
         themesCanvas.SetActive(false);
+        StopAllCoroutines();
         finalCanvas.SetActive(true);
-        dialogueManager.StartNewDialogueManager(finalCanvas.GetComponentInChildren<DialogueHolder>(), "FinalExplanation");
-
-        Debug.Log("THE END");
-        puntaje.text = myPoints + "/" + maxPoints;
-        if (myPoints / (maxPoints * (requirementPercentage)) >= 1)
+        generalAnimationFinalCanvas.SetActive(true);
+        generalFinalCanvas.SetActive(false);
+        StartCoroutine(WaitToShowSomething(3, GameObject.Find("GeneralFinalCanvas")));
+        if (myPoints / ((maxPoints * requirementPercentage) / 100) >= 1)
         {
-            //Animacion de victoria
             if (myPoints == maxPoints)
             {
+                StartCoroutine(FinalAnimation(1, "Character"));
+
                 Jackpot();
+            }
+            else
+            {
+                PlaySFXSound(endGameVictory);
+                StartCoroutine(FinalAnimation(0, "Character"));
+                //Animacion de victoria
             }
         }
         else
         {
-
+            
+            PlaySFXSound(endGameDefeat);
             //animacion de derrota
+            StartCoroutine(FinalAnimation(2, "Character"));
         }
-            GetAndShowWrongAnswered();
+
+
+
+
     }
-    public void ReStartScene()
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="animationInt">Win = 0, jackpot = 1, defeat = 2, talk = 3</param>
+    /// <param name="animatedObjectName"></param>
+    /// <param name="timeShowing"></param>
+    /// <returns></returns>
+    IEnumerator FinalAnimation(int animationInt, string animatedObjectName, float timeShowing = 3)
     {
-        settingsCanvas.SetActive(true);
-        settingsTriviaCanvas.SetActive(true);
-        SceneManager.LoadScene("G4 MainScene");
+        generalAnimationFinalCanvas.SetActive(true);
+        picarte.GetComponent<Animator>().SetInteger("Victoria cero Jackpot uno Derrota dos", animationInt);
+        yield return new WaitForSeconds(timeShowing);
+        generalAnimationFinalCanvas.SetActive(false);
+        generalFinalCanvas.SetActive(true);
+        dialogueManager.StartNewDialogueManager(finalCanvas.GetComponentInChildren<DialogueHolder>(), "FinalExplanation");
+        puntaje.text = myPoints + "/" + maxPoints;
+
+        GetAndShowWrongAnswered();
     }
     public void Jackpot()
     {
+        PlaySFXSound(endGameJackpot);
         Debug.Log("Jackpot!");
     }
+    public void ReStartScene()
+    {
+        settingsTriviaCanvas.SetActive(true);
+        SceneManager.LoadScene("G4 MainScene");
+    }
+
     public void GetAndShowWrongAnswered()
     {
         foreach (Question question in _wrongAnswered)
-        {   GameObject wrongAnswered = Instantiate(wrongAnsweredPrefab, FindObjectOfType<GridLayoutGroup>().gameObject.transform);
+        {
+            GameObject wrongAnswered = Instantiate(wrongAnsweredPrefab, FindObjectOfType<GridLayoutGroup>().gameObject.transform);
             wrongAnswered.name = question.questionInfo;
             wrongAnswered.GetComponentInChildren<Text>().text = question.questionInfo;
             wrongAnswered.transform.Find("Explanation").GetComponent<Text>().text = question.answerExplanation;

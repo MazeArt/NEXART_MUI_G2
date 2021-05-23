@@ -1,7 +1,25 @@
 fileFormatVersion: 2
 guid: 0b077d3b4ced1a9419e4ed7c3397acee
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 5138034741634880799
+    second: PlaceHolderPhoto_0
+  - first:
+      213: -25364862016216108
+    second: PlaceHolderPhoto_1
+  - first:
+      213: -2126928084832848464
+    second: PlaceHolderPhoto_2
+  - first:
+      213: -5077041544185620189
+    second: PlaceHolderPhoto_3
+  - first:
+      213: -7709275419157718689
+    second: PlaceHolderPhoto_4
+  - first:
+      213: 2582879920001678508
+    second: PlaceHolderPhoto_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +59,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -161,7 +179,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: PlaceHolderPhoto_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 594
+        width: 391
+        height: 589
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1553c20067fd4740800000000000000
+      internalID: 5138034741634880799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaceHolderPhoto_1
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 601
+        width: 398
+        height: 588
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d32fb9dac2e5aff0800000000000000
+      internalID: -25364862016216108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaceHolderPhoto_2
+      rect:
+        serializedVersion: 2
+        x: 804
+        y: 599
+        width: 396
+        height: 593
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b57cb00d22ab72e0800000000000000
+      internalID: -2126928084832848464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaceHolderPhoto_3
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 0
+        width: 399
+        height: 591
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3295ae86d99ba89b0800000000000000
+      internalID: -5077041544185620189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaceHolderPhoto_4
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 0
+        width: 402
+        height: 595
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f59147d0ad6230590800000000000000
+      internalID: -7709275419157718689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaceHolderPhoto_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 395
+        height: 595
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cac70314a9b38d320800000000000000
+      internalID: 2582879920001678508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

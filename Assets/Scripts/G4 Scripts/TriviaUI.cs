@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TriviaUI : MonoBehaviour
 {
-    [SerializeField] private ManagerG4 triviaManager;
+    [SerializeField] private ManagerG4 manager;
     [SerializeField] private Text questionText;
     [SerializeField] private Image questionImage;
     [SerializeField] private UnityEngine.Video.VideoPlayer questionVideo;
@@ -14,12 +14,13 @@ public class TriviaUI : MonoBehaviour
     [SerializeField] private GameObject optionsHolder;
     [SerializeField] private List<Button> options;
     [SerializeField] private List<GameObject> optionsOrder;
-    [SerializeField] private List<Vector3> optionsOrderInitialPosition;
+    [HideInInspector][SerializeField] private List<Vector3> optionsOrderInitialPosition;
     [SerializeField] private List<GameObject> slotOptionsOrder;
     [SerializeField] private Button confirmButtonOrder;
-    [SerializeField] private Color correctColor, wrongColor, normalColor;
+    [SerializeField] private Color correctColor, wrongColor, normalColor, notHalfColor, moreHalfColor, fullColor;
     [SerializeField] private Transform poolOptionTransform;
     [SerializeField] public Image progressBarFill;
+    public AudioClip rightAnswer, wrongAnswer;
 
     private Question actualQuestion;
     private bool answered;
@@ -41,7 +42,20 @@ public class TriviaUI : MonoBehaviour
     }
     void Update()
     {
-        progressBarFill.fillAmount = triviaManager.myPoints / (triviaManager.maxPoints * (triviaManager.requirementPercentage / 100));
+        progressBarFill.fillAmount = manager.myPoints / ((manager.maxPoints * manager.requirementPercentage) / 100);
+        if (progressBarFill.fillAmount < 0.6)
+        {
+            progressBarFill.color = notHalfColor;
+        }
+        else if (progressBarFill.fillAmount >= 0.6 && 1 > progressBarFill.fillAmount)
+        {
+            progressBarFill.color = moreHalfColor;
+        }
+        else
+        {
+           progressBarFill.color = fullColor;
+        }
+    
     }
     public void SetQuestion(Question question)
     {
@@ -61,6 +75,7 @@ public class TriviaUI : MonoBehaviour
             case QuestionType.VIDEO:
                 questionVideo.transform.gameObject.SetActive(true);
                 questionVideo.clip = question.questionVideoClip;
+                questionVideo.SetDirectAudioVolume(0, manager.audioSourceMusic.volume);
                 FillQuestionOptionsNormal();
                 questionVideo.Play();
                 break;
@@ -68,6 +83,7 @@ public class TriviaUI : MonoBehaviour
                 questionAudio.transform.gameObject.SetActive(true);
                 FillQuestionOptionsNormal();
                 questionAudio.clip = question.questionAudioClip;
+                questionAudio.volume = manager.audioSourceMusic.volume;
                 questionAudio.Play();
                 break;
             case QuestionType.ORDER:
@@ -139,7 +155,7 @@ public class TriviaUI : MonoBehaviour
                         }
                     }
 
-                    isRightAnswer = triviaManager.Answer(slotOptionsOrder[0].GetComponent<DropSlot>().item.name + ", " + 
+                    isRightAnswer = manager.Answer(slotOptionsOrder[0].GetComponent<DropSlot>().item.name + ", " + 
                                                          slotOptionsOrder[1].GetComponent<DropSlot>().item.name + ", " + 
                                                          slotOptionsOrder[2].GetComponent<DropSlot>().item.name + ", " + 
                                                          slotOptionsOrder[3].GetComponent<DropSlot>().item.name);
@@ -154,15 +170,16 @@ public class TriviaUI : MonoBehaviour
                     }
                     break;
                 default:
-                    isRightAnswer = triviaManager.Answer(button.name);
+                    isRightAnswer = manager.Answer(button.name);
                     if (isRightAnswer)
                     {
                         button.image.color = correctColor;
-                        //agregar sonido aqui
+                        manager.PlaySFXSound(rightAnswer);
                     }
                     else
                     {
                         button.image.color = wrongColor;
+                        manager.PlaySFXSound(wrongAnswer);
                     }
                     break;
             }
