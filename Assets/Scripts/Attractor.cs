@@ -10,7 +10,6 @@ public class Attractor : MonoBehaviour
     const float G = 6.674f;
 
     public Rigidbody rb;
-    public OrbitManager orbitManager;
 
     void FixedUpdate()
     {
@@ -28,19 +27,15 @@ public class Attractor : MonoBehaviour
         Rigidbody rbToAttract = objToAttract.rb;
         //calcula la posion de este objeto menos la pos del obj-to-attract
         Vector3 direction = rb.position - rbToAttract.position;
-        //genera un vector de distancia del vector direcci?n
+        //genera un vector de distancia del vector dirección
         float distance = direction.magnitude;
 
-       // rb.mass = Check_planet_mass(rb.gameObject.name);
-
-        // aqu? usamos la ecuaci?n de Newton : F = G* (m1 * m2 ) / d^2 
+        // aquí usamos la ecuación de Newton : F = G* (m1 * m2 ) / d^2 
         float forceMagnitude = G * (rb.mass * rbToAttract.mass) / Mathf.Pow(distance, 2);
 
-        //aqu? creamos un vector de fureza : una fuerza en la direcci?n de los objetos con una magnitude dada la ecuaci?n de Newton
+        //aquí creamos un vector de fureza : una fuerza en la dirección de los objetos con una magnitude dada la ecuación de Newton
         Vector3 force = direction.normalized * forceMagnitude;
 
         rbToAttract.AddForce(force);
     }
-
-   
 }

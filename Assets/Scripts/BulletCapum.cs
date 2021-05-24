@@ -11,7 +11,7 @@ public class BulletCapum : MonoBehaviour
     }
     public IEnumerator BulletDestroy()
     {
-        yield return new WaitForSeconds(20);
+        yield return new WaitForSeconds(10);
         Destroy(gameObject);
     }
 }

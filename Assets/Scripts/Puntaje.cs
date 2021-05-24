@@ -17,13 +17,13 @@ public class Puntaje : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {        
-   //    DontDestroyOnLoad(gameObject);
-   //    EartD.destructionEarthEvent.AddListener(destructionEarthEvent);
-   //    if (EartD == null)
-   //    {
-   //        Destroy(gameObject);
-   //    }
-   //    
+        DontDestroyOnLoad(gameObject);
+        EartD.destructionEarthEvent.AddListener(destructionEarthEvent);
+        if (EartD == null)
+        {
+            Destroy(gameObject);
+        }
+        
         
     }    
 
