@@ -8,6 +8,7 @@ TagManager:
   - DragParent
   - DialogueHolder
   - Settings
+  - Draggable
   layers:
   - Default
   - TransparentFX
