@@ -9,6 +9,10 @@ public class EarthDestroy : MonoBehaviour
     public int points;
     public UnityEvent destructionEarthEvent;
     public bool add;
+    public Rigidbody EarthRb;
+    public GameObject ImpactAnim;
+    public GameObject ZoomDestroy;
+    public GameObject ImpactAsteroid;
 
     private void Start()
     {
@@ -16,7 +20,7 @@ public class EarthDestroy : MonoBehaviour
             destructionEarthEvent = new UnityEvent();
         add = true;
 
-        
+
     }
 
     public void OnCollisionEnter(Collision collision)
@@ -24,15 +28,28 @@ public class EarthDestroy : MonoBehaviour
         if (collision.gameObject.CompareTag("meteorito"))
         {
             destructionEarthEvent.Invoke();
-            Destroy(gameObject);
+            EarthRb.constraints = RigidbodyConstraints.FreezeAll;
+            ZoomDestroy.SetActive(true);
+            StartCoroutine(destructionWaiter());
+
             if (add)
             {
                 Puntaje.valorpuntaje++;
                 add = false;
             }
         }
-        
+
     }
 
+    public IEnumerator destructionWaiter()
+    {
+        yield return new WaitForSeconds(1);
+        ImpactAsteroid.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        ImpactAnim.SetActive(true);
+        yield return null;
+
+    }
+        
     
 }
