@@ -154,7 +154,7 @@ public class PlanetManager : MonoBehaviour
 
         while (currentValue < targetValue)
         {
-            Debug.LogFormat("evaluating current {0} vs target {1}::  ", currentValue, targetValue);
+//            Debug.LogFormat("evaluating current {0} vs target {1}::  ", currentValue, targetValue);
 
             
             float timeElapsed = 0f;

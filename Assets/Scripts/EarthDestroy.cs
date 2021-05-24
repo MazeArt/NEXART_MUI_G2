@@ -9,6 +9,7 @@ public class EarthDestroy : MonoBehaviour
     public int points;
     public UnityEvent destructionEarthEvent;
     public bool add;
+
     public Rigidbody EarthRb;
     public GameObject ImpactAnim;
     public GameObject ZoomDestroy;
@@ -28,9 +29,18 @@ public class EarthDestroy : MonoBehaviour
         if (collision.gameObject.CompareTag("meteorito"))
         {
             destructionEarthEvent.Invoke();
+
+            Destroy(gameObject);
+
             EarthRb.constraints = RigidbodyConstraints.FreezeAll;
             ZoomDestroy.SetActive(true);
             StartCoroutine(destructionWaiter());
+
+            Debug.Log("this is current orbit progress: " + this.gameObject.GetComponent<OrbitMotion>().orbitProgress);
+            Debug.Log("this is current fastwd: " + GameObject.Find("OrbitSlideManager").GetComponent<OrbitManager>().orbit_fastfwd);
+            this.gameObject.GetComponent<OrbitMotion>().orbitProgress = 0.87f;
+            GameObject.Find("OrbitSlideManager").GetComponent<OrbitManager>().orbit_fastfwd = 0f;
+
 
             if (add)
             {
