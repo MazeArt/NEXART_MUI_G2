@@ -22,7 +22,10 @@ public class CameraFollow : MonoBehaviour
         {
             MeteorCamera.transform.position = new Vector3(MeteorTransform.position.x, MeteorTransform.position.y, MeteorCamera.transform.position.z);
         }
-        
+        if (!MeteorTransform)
+        {
+            Destroy(MeteorCamera);
+        }
     }
 
     public IEnumerator BulletDestroy()

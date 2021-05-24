@@ -12,6 +12,7 @@ public class EarthDestroy : MonoBehaviour
     public Rigidbody EarthRb;
     public GameObject ImpactAnim;
     public GameObject ZoomDestroy;
+    public GameObject ImpactAsteroid;
 
     private void Start()
     {
@@ -19,7 +20,7 @@ public class EarthDestroy : MonoBehaviour
             destructionEarthEvent = new UnityEvent();
         add = true;
 
-        
+
     }
 
     public void OnCollisionEnter(Collision collision)
@@ -28,16 +29,27 @@ public class EarthDestroy : MonoBehaviour
         {
             destructionEarthEvent.Invoke();
             EarthRb.constraints = RigidbodyConstraints.FreezeAll;
-            ImpactAnim.SetActive(true);
             ZoomDestroy.SetActive(true);
+            StartCoroutine(destructionWaiter());
+
             if (add)
             {
                 Puntaje.valorpuntaje++;
                 add = false;
             }
         }
-        
+
     }
 
+    public IEnumerator destructionWaiter()
+    {
+        yield return new WaitForSeconds(1);
+        ImpactAsteroid.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        ImpactAnim.SetActive(true);
+        yield return null;
+
+    }
+        
     
 }
