@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Alnitak_Mat
+  m_Shader: {fileID: -6465566751694194690, guid: 7413844df442228438089fcd8be0f262, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_2a2d16ff95dc4b278fb6848522b6314d:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_63249a64c8fd4bbf99cd9508fa7cb63a:
+        m_Texture: {fileID: 2800000, guid: e41a64a10c9799b4aa99fe1cd008fa8c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_cbd0bcdc5f2944a6b4481bb86611962f:
+        m_Texture: {fileID: 2800000, guid: 2ba208d437e9b50449e43624e9b155f9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_205e9360cd23461abe5a3f08b5c02f53_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 316b66734c253fe4caa4049a1d48519e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_99c9fce4e2674c3ea86e74e186e8474e_Texture_1:
+        m_Texture: {fileID: 2800000, guid: e41a64a10c9799b4aa99fe1cd008fa8c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - Color_43645c920e28494cba5cd93adf992548: {r: 0.32894814, g: 0.25973654, b: 0.7169812, a: 1}
+  m_BuildTextureStacks: []

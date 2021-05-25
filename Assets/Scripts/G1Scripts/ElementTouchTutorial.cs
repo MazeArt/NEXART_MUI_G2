@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ElementTouchTutorial : MonoBehaviour
 {        
     public Canvas myCanvas;
     public TutorialTravel ttravel;
     private bool firstStep;
+    public GameObject tuto2;
     
     public GameObject naveCam;
 
@@ -23,7 +25,7 @@ public class ElementTouchTutorial : MonoBehaviour
                 Debug.Log("Hit " + hitInfo.transform.gameObject.name);
                 if (hitInfo.transform.gameObject.tag == "Galaxy")
                 {
-                    ttravel.tutorialPart = 3;
+                    SceneManager.LoadScene(1);
                 }
 
                 Debug.Log("Hit " + hitInfo.transform.gameObject.name);
@@ -38,9 +40,10 @@ public class ElementTouchTutorial : MonoBehaviour
                 {
                     ttravel.tutorialPart = 1;
                     firstStep = true;
-                    ;
+                    tuto2.SetActive(true);
                     ttravel.warp.GetComponent<Animator>().Play("Warpdrive__Sequence");
                     ttravel.starendtuto = true;
+                    ttravel.sliderTuto.SetActive(false);
                     
 
                 }

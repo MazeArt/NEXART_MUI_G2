@@ -15,6 +15,8 @@ public class ChangeLevel : MonoBehaviour
     public bool forward;
     public bool backward;
     public GameObject naveCam;
+    public Timer timeToStart;
+    
 
     private void Update()
     {
@@ -47,8 +49,11 @@ public class ChangeLevel : MonoBehaviour
 
     //primer evento en animacion descativa los planetas
     public void StartJourney()
-    {         
-            foreach (var item in planetsLevel)
+    {
+        
+        timeToStart.timerUI.gameObject.SetActive(true);
+        timeToStart.start = true;
+        foreach (var item in planetsLevel)
             {
                 item.SetActive(false);
             }

@@ -84,6 +84,36 @@ public class ElementDataBase : MonoBehaviour
                         { "Masa", 1/3 },
                         { "Gravedad", 1/4 }
                     })
+                    ,
+
+                    new Element(9, "Via Lactea", "Galaxia espiral, contiene el Sistema Solar  ",
+                    new Dictionary<string, int>
+                    {
+                        { "Masa", 1/3 },
+                        { "Gravedad", 1/4 }
+                    })
+                    ,
+
+                    new Element(10, "NGC 1803", "Galaxia espiral, en constelación de Pictor  ",
+                    new Dictionary<string, int>
+                    {
+                        { "Masa", 1/3 },
+                        { "Gravedad", 1/4 }
+                    }),
+
+                    new Element(11, "NGC 2336", "Galaxia espiral, en constelación Camelopardalis  ",
+                    new Dictionary<string, int>
+                    {
+                        { "Masa", 1/3 },
+                        { "Gravedad", 1/4 }
+                    }),
+
+                    new Element(12, "Messier 51A", "Galaxia espiral, primera clasificada como espiral  ",
+                    new Dictionary<string, int>
+                    {
+                        { "Masa", 1/3 },
+                        { "Gravedad", 1/4 }
+                    })
 
             };
     }

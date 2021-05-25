@@ -8,6 +8,7 @@ public class ElementTouch : MonoBehaviour
     public Inventory inventory;
     public GameObject textInfo;
     public Canvas myCanvas;
+    public ChangeLevel chlvl;
     
 
     void Update()
@@ -43,7 +44,7 @@ public class ElementTouch : MonoBehaviour
 
         RaycastHit hitInfoOutSide = new RaycastHit();
         bool hitOutside = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfoOutSide);
-        if (hitOutside)
+        if (hitOutside && chlvl.changeLVL== false)
         {
             Debug.Log("Hit " + hitInfoOutSide.transform.gameObject.name);
             if (hitInfoOutSide.transform.gameObject)

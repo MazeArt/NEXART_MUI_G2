@@ -11,6 +11,7 @@ public class TutorialTravel : MonoBehaviour
     public GameObject warp;
     public bool starendtuto;
     public GameObject galaxyKey;
+    public GameObject sliderTuto;
     private void Update()
     {
         if (tutorialPart == 1)
@@ -26,15 +27,7 @@ public class TutorialTravel : MonoBehaviour
         if (tutorialPart == 2)
         {
             RenderSettings.skybox = skyboxesTutorial[2];
-        }
-        if (tutorialPart == 3)
-        {
-
-        }
-        if (tutorialPart == 4)
-        {
-
-        }
+        }        
     }
 
     public void FinWarpTutorial()
@@ -45,6 +38,7 @@ public class TutorialTravel : MonoBehaviour
         naveCam.GetComponent<Animator>().Play("landing");
         Debug.Log("FinWarpTutorial");
         galaxyKey.SetActive(true);
+        sliderTuto.SetActive(true);
 
     }
 
