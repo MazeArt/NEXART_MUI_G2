@@ -101,7 +101,6 @@ public class ManagerG4 : MonoBehaviour
                 selectedQuestionFromList = question;
                 temp.Add(selectedQuestionFromList);
             }
-
         }
         SelectQuestionsFromList(temp);
         SelectQuestionToAnswer();
