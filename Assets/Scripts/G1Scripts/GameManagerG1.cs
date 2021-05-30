@@ -9,6 +9,8 @@ public class GameManagerG1 : MonoBehaviour
     public Timer timer;
     public Inventory inventory;
     public Text textPoints;
+    public Text textPointsOnScreen;
+    public Text textElements;
     public Text winText;
     public Text gameOverText;
 
@@ -19,11 +21,14 @@ public class GameManagerG1 : MonoBehaviour
             GameOver();
         }
 
-        if (inventory.localCount == 16)
+        if (inventory.FinalCount == 16)
         {
             textPoints.text = inventory.points.ToString();
+            
             Win();
         }
+        textPointsOnScreen.text = inventory.points.ToString();
+        textElements.text = inventory.FinalCount.ToString();
     }
 
     void GameOver()

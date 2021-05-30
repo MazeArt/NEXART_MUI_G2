@@ -35,6 +35,23 @@ public class ChangeLevel : MonoBehaviour
             sliderRot.gameObject.SetActive(false);
             backward = true;
         }
+        Debug.Log(lvl);
+    }
+
+    public void Forward()
+    {
+        gameObject.GetComponent<Animator>().Play("Warpdrive__Sequence");
+        sliderRot.value = 90;
+        sliderRot.gameObject.SetActive(false);
+        forward = true;
+    }
+
+    public void Backward()
+    {
+        gameObject.GetComponent<Animator>().Play("Warpdrive__Sequence");
+        sliderRot.value = 90;
+        sliderRot.gameObject.SetActive(false);
+        backward = true;
     }
 
     public void ChangeAnimation()

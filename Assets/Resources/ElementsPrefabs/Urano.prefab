@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1767397552460713169}
   - component: {fileID: 2957200570212882570}
   m_Layer: 0
-  m_Name: Uranus
+  m_Name: Urano
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2271274663802613430}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 698, y: -7, z: 3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4.67946, y: 4.67946, z: 4.67946}
   m_Children:
   - {fileID: 7849615997404780714}

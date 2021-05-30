@@ -26,7 +26,7 @@ public class Timer : MonoBehaviour
         {
             time = 0;
         }
-        timerUI.text = time.ToString("f0");
+        timerUI.text = "Tiempo restante: " + time.ToString("f0");
 
     }
          }

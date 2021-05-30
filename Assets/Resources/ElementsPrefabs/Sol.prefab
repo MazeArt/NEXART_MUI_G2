@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 661235908861715024}
   - component: {fileID: 661235908861715025}
   m_Layer: 0
-  m_Name: Sun
+  m_Name: Sol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 661235908861715026}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -126.46, y: 53.58913, z: 91.91096}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.3410392, y: 2.3390026, z: 2.3410392}
   m_Children:
   - {fileID: 3548193407356845052}

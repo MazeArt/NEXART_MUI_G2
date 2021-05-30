@@ -8,7 +8,7 @@ public class ElementTouchTutorial : MonoBehaviour
     public Canvas myCanvas;
     public TutorialTravel ttravel;
     private bool firstStep;
-    public GameObject tuto2;
+    
     
     public GameObject naveCam;
 
@@ -40,7 +40,7 @@ public class ElementTouchTutorial : MonoBehaviour
                 {
                     ttravel.tutorialPart = 1;
                     firstStep = true;
-                    tuto2.SetActive(true);
+                    
                     ttravel.warp.GetComponent<Animator>().Play("Warpdrive__Sequence");
                     ttravel.starendtuto = true;
                     ttravel.sliderTuto.SetActive(false);
