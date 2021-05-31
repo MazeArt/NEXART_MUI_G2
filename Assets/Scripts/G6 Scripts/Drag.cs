@@ -1,10 +1,8 @@
 using UnityEngine;
 
-
 public class Drag : MonoBehaviour
 {
-    GameObject origin;
-    RaycastHit hit;
+    GameObject destiny;
 
     private float step;
     public bool returning;
@@ -18,52 +16,36 @@ public class Drag : MonoBehaviour
     {
         if (returning)
         {
-            gameObject.transform.position = transform.position = Vector3.MoveTowards(transform.position, origin.transform.position, step * Time.deltaTime);
-            if (gameObject.transform.position == origin.transform.position)
+            gameObject.transform.position = transform.position = Vector3.MoveTowards(transform.position, destiny.transform.position, step * Time.deltaTime);
+            if (gameObject.transform.position == destiny.transform.position)
             {
                 returning = false;
             }
         }
-
     }
     void OnMouseDown()
     {
+        destiny = GameObject.Find("respawn");
         screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
-
         offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
-
     }
     private void OnTriggerEnter(Collider other)
     {
-        //    returning = true;
-        //    origin = other.gameObject;
+        if (other.name == "PinR" || other.name =="PinL")
+        {
+            returning = true;
+            destiny = other.gameObject;
+        }
         if (other.name == "vacio")
         {
-            gameObject.transform.position = new Vector3(0, 3, -2);
+            gameObject.transform.position = GameObject.Find("respawn").transform.position;
         }
     }
     void OnMouseDrag()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        ray.origin = gameObject.transform.position;
-        Debug.DrawRay(ray.origin, ray.direction * 8000, Color.green);
-
-
-            if (Physics.Raycast(ray, out hit) == true && hit.collider.name != null)
-            {
-                origin = hit.collider.gameObject;
-                Debug.Log(hit.collider.name);
-            }
-
         Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
-
         Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
         transform.position = curPosition;
-
-    }
-    void OnMouseUp()
-    {
-       returning = true;
     }
 }
 

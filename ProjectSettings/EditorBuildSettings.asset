@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/G2 MainScene.unity
-    guid: 20bb86da670fe874da2f7e90b1f73110
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/G4 Scenes/G4 MainScene.unity
-    guid: 667343bfa064bb74d9edea252e93a7f6
+    path: Assets/Scenes/G6 Balanza - copia.unity
+    guid: 78066246a2585024a8087709d845d251
   m_configObjects: {}

@@ -1,0 +1,26 @@
+Agrega a la escena:
+	-Holder en canvas
+	-DialogueManager en un manager (objeto constante en escena)
+	-AudioSource en el mismo manager
+	-Tu script con la linea que llama al dialogo
+
+Ejemplo:
+
+public class ManagerG6 : MonoBehaviour
+{
+    DialogueManager dialogueManager;
+    // Start is called before the first frame update
+    void Start()
+    {   //obtiene el DialogueManager en pantalla (solo 1 por escena)
+        dialogueManager = FindObjectOfType<DialogueManager>();
+
+        //Linea para que se genere un dialogo en el holder en pantalla
+        dialogueManager.StartNewDialogueManager(FindObjectOfType<DialogueHolder>().GetComponent<DialogueHolder>(), "DialogueName", 1f);
+    }
+
+}
+
+
+
+	-Si quieres agregar algún elemento que cancele el llamado del diálogo ponle el script "DontPlayDialogueWhenClickingThis".
+	-Para volver a reproducir el diálogo después de presionar un gameObject con el script anterior debes presionar el holder.
