@@ -8,9 +8,9 @@ public class Element
     public string title;
     public string description;
     public GameObject prefab;
-    public Dictionary<string, int> ElementStats = new Dictionary<string, int>();
+    public Dictionary<string, float> ElementStats = new Dictionary<string, float>();
 
-    public Element(int id, string title, string description,Dictionary<string, int> ElementStats)
+    public Element(int id, string title, string description,Dictionary<string, float> ElementStats)
     {
         this.id = id;
         this.title = title;

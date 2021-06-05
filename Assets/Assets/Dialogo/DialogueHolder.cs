@@ -16,9 +16,6 @@ public class DialogueHolder : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         dialogueManager.playingADialogue = true;
-        //if (dialogueManager.activeSentencePosition == 5)
-        //{
-        //    gameObject.SetActive(false);
-        //}
+        
     }
 }

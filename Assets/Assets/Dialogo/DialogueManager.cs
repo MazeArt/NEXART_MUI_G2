@@ -65,6 +65,7 @@ public class DialogueManager : MonoBehaviour
             {
                 holder.SetActive(false);
             }
+
         }
         else if (!playingADialogue)
         {

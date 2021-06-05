@@ -189,13 +189,45 @@ public class Inventory : MonoBehaviour
     }
 
     public void ElementInfo(string ElementTitle)
-    {
-        Element elementAdd = elementDataBase.GetElement(ElementTitle);        
-        Debug.Log("Nombre " + elementAdd.title);
-        nameText.text = elementAdd.title;
-        descriptionText.text = elementAdd.description;        
-        massText.text = "Masa: " + elementAdd.ElementStats["Masa"].ToString() + " x 10^23 kg ";        
-        gravityText.text =  "Gravedad: " +  elementAdd.ElementStats["Gravedad"].ToString() + " m/s2";
+    {        
+        
+
+        if (changeLvl.lvl == 3)
+        {
+            Element elementAdd = elementDataBase.GetElement(ElementTitle);
+            Debug.Log("Nombre " + elementAdd.title);
+            nameText.text = elementAdd.title;
+            descriptionText.text = elementAdd.description;
+            massText.text = "Distancia: " + elementAdd.ElementStats["Distancia"].ToString() + " Años Luz ";
+            gravityText.text = "Masa: " + elementAdd.ElementStats["Masa"].ToString() + " Masa solar ";
+        }
+        if (changeLvl.lvl == 1)
+        {
+            Element elementAdd = elementDataBase.GetElement(ElementTitle);
+            Debug.Log("Nombre " + elementAdd.title);
+            nameText.text = elementAdd.title;
+            descriptionText.text = elementAdd.description;
+            massText.text = "Masa: " + elementAdd.ElementStats["Distancia"].ToString() + " x 10^23 kg ";
+            gravityText.text = "Gravedad: " + elementAdd.ElementStats["Masa"].ToString() + " x 10^23 kg ";
+        }
+        if (changeLvl.lvl == 2)
+        {
+            Element elementAdd = elementDataBase.GetElement(ElementTitle);
+            Debug.Log("Nombre " + elementAdd.title);
+            nameText.text = elementAdd.title;
+            descriptionText.text = elementAdd.description;
+            massText.text = "Masa: " + elementAdd.ElementStats["Distancia"].ToString() + " x 10^23 kg ";
+            gravityText.text = "Gravedad: " + elementAdd.ElementStats["Masa"].ToString() + " x 10^23 kg ";
+        }
+        if (changeLvl.lvl == 4)
+        {
+            Element elementAdd = elementDataBase.GetElement(ElementTitle);
+            Debug.Log("Nombre " + elementAdd.title);
+            nameText.text = elementAdd.title;
+            descriptionText.text = elementAdd.description;
+            massText.text = "Masa: " + elementAdd.ElementStats["Distancia"].ToString() + " x 10^23 kg ";
+            gravityText.text = "Gravedad: " + elementAdd.ElementStats["Masa"].ToString() + " x 10^23 kg ";
+        }
     }
 
     #endregion
