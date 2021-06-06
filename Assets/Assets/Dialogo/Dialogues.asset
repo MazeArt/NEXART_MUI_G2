@@ -15,10 +15,14 @@ MonoBehaviour:
   dialogueScripts:
   - dialogueName: DialogueName
     dialogueScript:
-    - "\xA1Bienvenido a Explorando el Universo!"
-    - '!Debes encontrar los siguientes elementos espaciales!'
-    - '!Encuentralos todos!'
-    - 'Planetas: Luna, Marte, Saturno, Jupiter'
-    - 'Galaxias: Andromeda, Messier 51A, ESO 33-4, Via Lactea'
-    - 'Estrellas: Sol, Alnitak, Arturo, Sirius'
-    - 'Elementos Estelares: 51 pegasi b, NGC 1281, Sagittarius A, Kelt 9b'
+    - "\xA1Bienvenido El Universo y sus distintos objetos!"
+    - "Nosotros habitamos en una galaxia, la V\xEDa L\xE1ctea."
+    - "Pero, \xBFqu\xE9 exactamente es una galaxia?"
+    - En las Galaxias se forman las estrellas y todos los elementos celestes
+    - "Se desencadena la qu\xEDmica espacial y se crean los sistemas planetarios"
+    - En ella se desenvuelve la vida
+    - "\xA1An\xEDmate a descubrir los misterios que encierra una galaxia!"
+    - "\xA1Recolecta elementos celestes, planetas, estrellas y Galaxias! "
+    - Manten presionado los elementos para conocer sobre ellos
+    - "\xA1Doble Tap para recolectarlos!"
+    - 

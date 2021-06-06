@@ -174,64 +174,64 @@ public class ElementDataBase : MonoBehaviour
                     new Element(21, "PSR J0437-4715 ", "El púlsar gira alrededor de su eje 173,7 por seg",
                     new Dictionary<string, float>
                     {
-                        { "Distancia", 1/3 },
-                        { "Masa", 1/4 }
+                        { "Distancia", 509.8f },
+                        { "Masa", 3.58f }
                     }),
 
                     new Element(22, "51 pegasi b", "Dimidio​, planeta extrasolar, como júpiter caliente ",
                     new Dictionary<string, float>
                     {
-                        { "Distancia", 1/3 },
-                        { "Masa", 1/4 }
+                        { "Distancia", 50f },
+                        { "Masa", 2.208f }
                     }),
 
                     new Element(23, "Kelt 9b", "Exoplaneta gigante de gas más caliente conocido ",
                     new Dictionary<string, float>
                     {
-                        { "Distancia", 1/3 },
-                        { "Masa", 1/4 }
+                        { "Distancia", 650f },
+                        { "Masa", 2.88f }
                     }),
 
                     new Element(24, "Kepler - 7b", "Su temperatura es más caliente que la lava fundida ",
                     new Dictionary<string, float>
                     {
-                        { "Distancia", 1/3 },
-                        { "Masa", 1/4 }
+                        { "Distancia", 1000f },
+                        { "Masa", 0.433f }
                     }),
 
                     new Element(25, "Sagittarius A", "Compacta y brillante en el centro de la Vía Láctea ",
                     new Dictionary<string, float>
                     {
                         { "Distancia", 1/3 },
-                        { "Masa", 1/4 }
+                        { "Masa",  25.900f }
                     }),
 
                     new Element(26, "TON 618", "Agujero negro supermasivo más grande descubierto",
                     new Dictionary<string, float>
                     {
-                        { "Distancia", 1/3 },
-                        { "Masa", 1/4 }
+                        { "Distancia", 1.04f },
+                        { "Masa", 66f }
                     }),
 
                     new Element(27, "Messier 51A", "LLamada la Galaxia Remolino",
                     new Dictionary<string, float>
                     {
-                        { "Distancia", 1/3 },
-                        { "Masa", 1/4 }
+                        { "Distancia", 23.16f },
+                        { "Masa", 160 }
                     }),
 
                     new Element(28, "Sol", "Estrella de tipo-G, se encuentra en el centro del sistema solar",
                     new Dictionary<string, float>
                     {
-                        { "Distancia", 1/3 },
-                        { "Masa", 1/4 }
+                        { "Distancia", 149.6f }, 
+                        { "Masa", 1.989f }
                     }),
 
                     new Element(29, "Behemoth", "Agujero negro, céntrico rodeado de estrellas",
                     new Dictionary<string, float>
                     {
-                        { "Distancia", 1000 },
-                        { "Masa", 100 }
+                        { "Distancia", 331f },
+                        { "Masa", 21f }
                     })
 
             };

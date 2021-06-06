@@ -18,6 +18,7 @@ public class DialogueManager : MonoBehaviour
     public GameObject holder;
     bool sentenceTimeFinished = false;
     public bool playingADialogue = true;
+    public Animator dialogueAnimator;
 
     private void Awake()
     {
@@ -58,12 +59,15 @@ public class DialogueManager : MonoBehaviour
         if (playingADialogue)
         {
             activeSentencePosition++;
+            Debug.Log(activeSentencePosition);
             activeSentence = activeHolder.onScreenDialogue.dialogueScript[activeSentencePosition];
             StopCoroutine(WritingTheSentence(activeHolder));
             StartCoroutine(WritingTheSentence(activeHolder));
-            if (activeSentencePosition == 5)
+            if (activeSentencePosition == 10)
             {
-                holder.SetActive(false);
+                dialogueAnimator.Play("introOffAnim");
+
+                StartCoroutine(DialogueOffEvent());
             }
 
         }
@@ -72,6 +76,13 @@ public class DialogueManager : MonoBehaviour
             sentenceTimeFinished = true;
         }
     }
+
+    IEnumerator DialogueOffEvent()
+    {
+        yield return new WaitForSeconds(2);
+        holder.SetActive(false);
+    }
+
     /// <summary>
     /// Comienza a escribir un nuevo dialogo desde el principio en el holder
     /// </summary>

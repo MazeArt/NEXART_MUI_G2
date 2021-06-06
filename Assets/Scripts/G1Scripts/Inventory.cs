@@ -207,8 +207,8 @@ public class Inventory : MonoBehaviour
             Debug.Log("Nombre " + elementAdd.title);
             nameText.text = elementAdd.title;
             descriptionText.text = elementAdd.description;
-            massText.text = "Masa: " + elementAdd.ElementStats["Distancia"].ToString() + " x 10^23 kg ";
-            gravityText.text = "Gravedad: " + elementAdd.ElementStats["Masa"].ToString() + " x 10^23 kg ";
+            massText.text = "Masa: " + elementAdd.ElementStats["Distancia"].ToString() + " Años Luz ";
+            gravityText.text = "Gravedad: " + elementAdd.ElementStats["Masa"].ToString() + " Masa solar ";
         }
         if (changeLvl.lvl == 2)
         {
@@ -216,8 +216,8 @@ public class Inventory : MonoBehaviour
             Debug.Log("Nombre " + elementAdd.title);
             nameText.text = elementAdd.title;
             descriptionText.text = elementAdd.description;
-            massText.text = "Masa: " + elementAdd.ElementStats["Distancia"].ToString() + " x 10^23 kg ";
-            gravityText.text = "Gravedad: " + elementAdd.ElementStats["Masa"].ToString() + " x 10^23 kg ";
+            massText.text = "Masa: " + elementAdd.ElementStats["Distancia"].ToString() + " Años Luz ";
+            gravityText.text = "Gravedad: " + elementAdd.ElementStats["Masa"].ToString() + " Masa solar ";
         }
         if (changeLvl.lvl == 4)
         {
@@ -225,7 +225,7 @@ public class Inventory : MonoBehaviour
             Debug.Log("Nombre " + elementAdd.title);
             nameText.text = elementAdd.title;
             descriptionText.text = elementAdd.description;
-            massText.text = "Masa: " + elementAdd.ElementStats["Distancia"].ToString() + " x 10^23 kg ";
+            massText.text = "Masa: " + elementAdd.ElementStats["Distancia"].ToString() + " millones km ";
             gravityText.text = "Gravedad: " + elementAdd.ElementStats["Masa"].ToString() + " x 10^23 kg ";
         }
     }
