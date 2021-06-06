@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: VolleyBall_Mat
+  m_Shader: {fileID: -6465566751694194690, guid: ec462c61f23f3ad4cab16c701dd157b9, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _SampleTexture2D_2faa7e97b6564bc2b80e2e21d1750a5f_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 05ae514aa85094e42b32eb1d4cc35b73, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_5b7515fcaae9481aabe169820df4651e_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 5ef5c8023ff91374cbca274951f9b2bf, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_7a51748f4d11431d93a02196a511f4fa_Texture_1:
+        m_Texture: {fileID: 2800000, guid: bf278a0f311a525458aed6d20e36bd7b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_8571bf24c7f84d73bf4d5fbf69664872_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 6d1d72c1e873e4649a75637a03d1738e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_c0d1200528084bea82f491b7b0667894_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 28339ebfae4a3c3409951358090470af, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors: []
+  m_BuildTextureStacks: []

@@ -31,7 +31,7 @@ public class Drag : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "PinR" || other.name =="PinL")
+        if (other.name == "Pin")
         {
             returning = true;
             destiny = other.gameObject;

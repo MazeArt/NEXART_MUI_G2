@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class ObjToCompare : MonoBehaviour
 {
-    public string massCam1Space;
-    public string sizeCam1Space;
-    public string massCam2Earth;
-    public string sizeCam2Earth;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float massCam1Space;
+    public float volCam1Space;
+    public string massCam1SpaceString;
+    public float massCam2Earth;
+    public float volCam2Earth;
+    private Vector3 myPosition;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        myPosition = gameObject.transform.position;
+    }
+    public void ResetMyPosition()
+    {
+        gameObject.transform.position = myPosition;
     }
 }

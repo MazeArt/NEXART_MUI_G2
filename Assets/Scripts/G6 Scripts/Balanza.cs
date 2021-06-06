@@ -21,10 +21,10 @@ public class Balanza : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
 
-        var massC1 = collision.gameObject.GetComponent<ObjToCompare>().massCam1Space;
-        var sizeC1 = collision.gameObject.GetComponent<ObjToCompare>().sizeCam1Space;
-        var massC2 = collision.gameObject.GetComponent<ObjToCompare>().massCam2Earth;
-        var sizeC2 = collision.gameObject.GetComponent<ObjToCompare>().sizeCam2Earth;
+        var massC1 = collision.gameObject.GetComponent<ObjToCompare>().massCam1Space.ToString();
+        var sizeC1 = collision.gameObject.GetComponent<ObjToCompare>().volCam1Space.ToString();
+        var massC2 = collision.gameObject.GetComponent<ObjToCompare>().massCam2Earth.ToString();
+        var sizeC2 = collision.gameObject.GetComponent<ObjToCompare>().volCam2Earth.ToString();
         switch (IAm)
         {
             case "BalanzaR":
@@ -38,20 +38,20 @@ public class Balanza : MonoBehaviour
 
         }
     }
-    //private void OnCollisionExit(Collision collision)
-    //{
-    //    switch (IAm)
-    //    {
-    //        case "BalanzaDer":
-    //            manager.panelCam1R.SetActive(false);
-    //            manager.panelCam2R.SetActive(false);
-    //            break;
-    //        case "BalanzaIzq":
-    //            manager.panelCam1L.SetActive(false);
-    //            manager.panelCam2L.SetActive(false);
-    //            break;
-    //        default:
-    //            break;
-    //    }
-    //}
+    void OnTriggerExit(Collider other)
+    {
+        switch (IAm)
+        {
+            case "BalanzaR":
+                manager.panelCam1R.SetActive(false);
+                manager.panelCam2R.SetActive(false);
+                break;
+            case "BalanzaL":
+                manager.panelCam1L.SetActive(false);
+                manager.panelCam2L.SetActive(false);
+                break;
+            default:
+                break;
+        }
+    }
 }

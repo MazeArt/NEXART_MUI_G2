@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Basketball_Mat
+  m_Shader: {fileID: -6465566751694194690, guid: 23cf6a96447a0704d8a1343dcd9b2d87, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _SampleTexture2D_17b63b85609f410c83225239bfb33fcd_Texture_1:
+        m_Texture: {fileID: 2800000, guid: de1b2a9af42895245bbb4890d31d029f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_3563e73a0d2a41398379d480e66ed520_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 6555b30c8ec0fa24cbf8b15a2a156e91, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_4aacf89c3f6643b49f7f7f9c89eba0d9_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 69414806dad828643b5c8ff3bdecbf6c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_a52af70b3a9a422ca9837eccada47493_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 7ff188c9b329e714b9317ca9b0316ee0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_b74c47df21ce4e7e985aa06a139f6a33_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 23f2ee5e6e8ef0041838e4859ffe56c5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_da66b41f5db94298b651b331b9aca760_Texture_1:
+        m_Texture: {fileID: 2800000, guid: d4a36db32e197044da893b1b6a577b40, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - Color_9d6637e3c7c64e2b82e3e73290ceb8db: {r: 0.8962264, g: 0.7695967, b: 0.49377, a: 0}
+  m_BuildTextureStacks: []
