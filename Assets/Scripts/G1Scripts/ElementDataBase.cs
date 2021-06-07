@@ -232,6 +232,34 @@ public class ElementDataBase : MonoBehaviour
                     {
                         { "Distancia", 331f },
                         { "Masa", 21f }
+                    }),
+
+                    new Element(30, "NGC 6302", "Nebulosa planetaria bipolar en la constelación de Scorpius",
+                    new Dictionary<string, float>
+                    {
+                        { "Distancia", 3.400f },
+                        { "Masa", 10.1f }
+                    }),
+
+                    new Element(31, "NGC 6309", "Luminosidad de aproximadamente 1800 veces la del Sol",
+                    new Dictionary<string, float>
+                    {
+                        { "Distancia", 6.500f },
+                        { "Masa", 11.5f }
+                    }),
+
+                    new Element(32, "NGC 6618", "La nebulosa Omega",
+                    new Dictionary<string, float>
+                    {
+                        { "Distancia", 5.000f },
+                        { "Masa", 800f }
+                    }),
+
+                    new Element(33, "NGC 7662", "Nebulosa llamada Bola de Nieve Azul",
+                    new Dictionary<string, float>
+                    {
+                        { "Distancia", 1.800f },
+                        { "Masa", 0.605f }
                     })
 
             };
