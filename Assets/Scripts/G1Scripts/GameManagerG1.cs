@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -23,8 +22,8 @@ public class GameManagerG1 : MonoBehaviour
 
         if (inventory.FinalCount == 16)
         {
-            textPoints.text = inventory.points.ToString();
-            
+           
+
             Win();
         }
         textPointsOnScreen.text = inventory.points.ToString();
@@ -35,7 +34,7 @@ public class GameManagerG1 : MonoBehaviour
     {
         gameOverText.gameObject.SetActive(true);
         textPoints.gameObject.SetActive(true);
-        textPoints.text = inventory.points.ToString();
+        textPoints.text = "Tú puntaje fue de: " + inventory.points.ToString();
         StartCoroutine(TimerToEnd());
     }
     void Win()

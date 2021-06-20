@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class G1NaveRotation : MonoBehaviour
 {
-    private float rotation = 90;
+    private float rotation = 180;
     public Slider sliderRot;
       private void Start()
     {
@@ -15,7 +15,7 @@ public class G1NaveRotation : MonoBehaviour
     }
     private void Update()
     {
-        transform.localEulerAngles = new Vector3(0, Mathf.PingPong(sliderRot.value, 180) - 90, 0);
+        transform.localEulerAngles = new Vector3(0, Mathf.PingPong(sliderRot.value, 360) - 180, 0);
 
     }
 }

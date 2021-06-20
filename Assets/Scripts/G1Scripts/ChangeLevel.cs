@@ -16,6 +16,11 @@ public class ChangeLevel : MonoBehaviour
     public bool backward;
     public GameObject naveCam;
     public Timer timeToStart;
+    private int camValue = 0;
+    public GameObject botones;
+    public movimientoBotones movimientoBotones;
+    public GameObject warp;
+    public GameObject[] titles;
     
 
     private void Update()
@@ -23,7 +28,7 @@ public class ChangeLevel : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             gameObject.GetComponent<Animator>().Play("Warpdrive__Sequence");
-            sliderRot.value = 90;
+            sliderRot.value = camValue;
             sliderRot.gameObject.SetActive(false);
             forward = true;
         }
@@ -31,7 +36,7 @@ public class ChangeLevel : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X) && lvl >= 1)
         {
             gameObject.GetComponent<Animator>().Play("Warpdrive__Sequence");
-            sliderRot.value = 90;
+            sliderRot.value = camValue;
             sliderRot.gameObject.SetActive(false);
             backward = true;
         }
@@ -42,10 +47,14 @@ public class ChangeLevel : MonoBehaviour
     {
         if (lvl <= 3)
         {
+            warp.SetActive(true);
             gameObject.GetComponent<Animator>().Play("Warpdrive__Sequence");
-            sliderRot.value = 90;
+            sliderRot.value = camValue;
+            movimientoBotones.transform.localRotation = Quaternion.Euler(0, 0, 0);
             sliderRot.gameObject.SetActive(false);
+            botones.gameObject.SetActive(false);
             forward = true;
+            
         }
     }
 
@@ -53,10 +62,14 @@ public class ChangeLevel : MonoBehaviour
     {
         if (lvl >= 2)
         {
+            warp.SetActive(true);
             gameObject.GetComponent<Animator>().Play("Warpdrive__Sequence");
-            sliderRot.value = 90;
+            sliderRot.value = camValue;
+            movimientoBotones.transform.localRotation = Quaternion.Euler(0, 0, 0);
             sliderRot.gameObject.SetActive(false);
+            botones.gameObject.SetActive(false);
             backward = true;
+            
         }
     }
 
@@ -64,6 +77,7 @@ public class ChangeLevel : MonoBehaviour
     {
         gameObject.GetComponent<Animator>().Play("IdleParticle");
         sliderRot.gameObject.SetActive(true);
+        botones.gameObject.SetActive(true);
         forward = false;
         backward = false;
         changeLVL = false;
@@ -81,16 +95,22 @@ public class ChangeLevel : MonoBehaviour
                 item.SetActive(false);
             }
         changeLVL = true;
+        foreach (var item in titles)
+        {
+            item.SetActive(false);
+        }
     }
 
     //Comparacion de variables, adicion de estas para cambios de escena con planetas diferentes.
     public void EndJourney()
     {
         naveCam.GetComponent<Animator>().Play("landing");
+        warp.SetActive(false);
         #region forward
         if (lvl == 0 && forward)
         {
             planetsLevel[0].SetActive(true);
+            titles[0].SetActive(true);
             RenderSettings.skybox = sky[0];           
             lvl = 1;
             
@@ -99,6 +119,7 @@ public class ChangeLevel : MonoBehaviour
         else if (lvl == 1 && forward)
         {
             planetsLevel[1].SetActive(true);
+            titles[1].SetActive(true);
             RenderSettings.skybox = sky[1];
             lvl = 2;
            
@@ -107,6 +128,7 @@ public class ChangeLevel : MonoBehaviour
         else if (lvl == 2 && forward)
         {
             planetsLevel[2].SetActive(true);
+            titles[2].SetActive(true);
             RenderSettings.skybox = sky[2];           
             lvl = 3;
             
@@ -115,6 +137,7 @@ public class ChangeLevel : MonoBehaviour
         else if (lvl == 3 && forward)
         {
             planetsLevel[3].SetActive(true);
+            titles[3].SetActive(true);
             RenderSettings.skybox = sky[3];
             lvl = 4;
             

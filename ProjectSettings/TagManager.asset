@@ -10,6 +10,13 @@ TagManager:
   - Info
   - Galaxy
   - Draggable
+  - izquierda
+  - arriba
+  - abajo
+  - derecha
+  - Selector
+  - Forward
+  - Backward
   layers:
   - Default
   - TransparentFX
@@ -46,4 +53,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: back
+    uniqueID: 3617755201
+    locked: 0
+  - name: front
+    uniqueID: 3988741837
     locked: 0

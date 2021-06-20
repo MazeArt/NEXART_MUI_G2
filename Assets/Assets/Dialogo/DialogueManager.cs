@@ -19,6 +19,7 @@ public class DialogueManager : MonoBehaviour
     bool sentenceTimeFinished = false;
     public bool playingADialogue = true;
     public Animator dialogueAnimator;
+    public ElementTouch elementTouch;
 
     private void Awake()
     {
@@ -63,11 +64,18 @@ public class DialogueManager : MonoBehaviour
             activeSentence = activeHolder.onScreenDialogue.dialogueScript[activeSentencePosition];
             StopCoroutine(WritingTheSentence(activeHolder));
             StartCoroutine(WritingTheSentence(activeHolder));
-            if (activeSentencePosition == 10)
+            if (activeSentencePosition == 11)
             {
+                elementTouch.picarteIntruccions = false;
                 dialogueAnimator.Play("introOffAnim");
 
                 StartCoroutine(DialogueOffEvent());
+
+            }if (activeSentencePosition == 10)
+            {
+                elementTouch.picarteIntruccions = false;
+                
+
             }
 
         }

@@ -17,12 +17,13 @@ MonoBehaviour:
     dialogueScript:
     - "\xA1Bienvenido El Universo y sus distintos objetos!"
     - "Nosotros habitamos en una galaxia, la V\xEDa L\xE1ctea."
-    - "Pero, \xBFqu\xE9 exactamente es una galaxia?"
     - En las Galaxias se forman las estrellas y todos los elementos celestes
     - "Se desencadena la qu\xEDmica espacial y se crean los sistemas planetarios"
     - En ella se desenvuelve la vida
     - "\xA1An\xEDmate a descubrir los misterios que encierra una galaxia!"
+    - Ahora te presentaremos los elementos de esta
     - "\xA1Recolecta elementos celestes, planetas, estrellas y Galaxias! "
+    - "\xBFCrees que los puedas recolectar?"
     - Manten presionado los elementos para conocer sobre ellos
     - "\xA1Doble Tap para recolectarlos!"
     - 

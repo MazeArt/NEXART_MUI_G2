@@ -27,9 +27,9 @@ public class Inventory : MonoBehaviour
     public ChangeLevel changeLvl;
     //public List<GameObject> lvlOne = new List<GameObject>();
     public GameObject lvlOne;
-    public List<GameObject> lvlTwo = new List<GameObject>();
-    public List<GameObject> lvlThree = new List<GameObject>();
-    public List<GameObject> lvlFourth = new List<GameObject>();
+    public GameObject lvlTwo;
+    public GameObject lvlThree;
+    public GameObject lvlFourth;
     #region Texts
     public Text nameText;
     public Text descriptionText;
@@ -50,22 +50,10 @@ public class Inventory : MonoBehaviour
             }
 
             lvlOne.SetActive(false);
-            foreach (var v in lvlTwo)
-            {
-                
-                v.SetActive(false);
-            }
-
-            foreach (var v in lvlThree)
-            {
-                
-                v.SetActive(false);
-            }
-            foreach (var v in lvlFourth)
-            {
-
-                v.SetActive(false);
-            }
+            lvlTwo.SetActive(false);
+            lvlThree.SetActive(false);
+            lvlFourth.SetActive(false);
+            
         }
         if (changeLvl.lvl == 1)
         {
@@ -76,32 +64,19 @@ public class Inventory : MonoBehaviour
         if (changeLvl.lvl == 2)
         {
             textSpace[1].SetActive(true);
-            foreach (var v in lvlTwo)
-            {
-                v.SetActive(true);
-                
-            }
+            lvlTwo.SetActive(true);
         }
 
         if (changeLvl.lvl == 3)
         {
             textSpace[2].SetActive(true);
-            foreach (var v in lvlThree)
-            {
-                v.SetActive(true);
-                
-            }
+            lvlThree.SetActive(true);
         }
 
         if (changeLvl.lvl == 4)
         {
             textSpace[3].SetActive(true);
-            foreach (var v in lvlFourth)
-            {
-                v.SetActive(true);
-                Debug.Log("Cuarto!!!!");
-                
-            }
+            lvlFourth.SetActive(true);
         }
 
 
@@ -171,20 +146,20 @@ public class Inventory : MonoBehaviour
         //    lvlOne.Add(p);
         //}
 
-        if (changeLvl.lvl == 2)
-        {
-            lvlTwo.Add(p);
-        }
+        //if (changeLvl.lvl == 2)
+        //{
+        //    lvlTwo.Add(p);
+        //}
 
-        if (changeLvl.lvl == 3)
-        {
-            lvlThree.Add(p);
-        }
+        //if (changeLvl.lvl == 3)
+        //{
+        //    lvlThree.Add(p);
+        //}
 
-        if (changeLvl.lvl == 4)
-        {
-            lvlFourth.Add(p);
-        }
+        //if (changeLvl.lvl == 4)
+        //{
+        //    lvlFourth.Add(p);
+        //}
         #endregion
     }
 
